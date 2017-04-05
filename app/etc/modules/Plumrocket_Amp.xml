@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Plumrocket_Amp>
+			<active>true</active>
+			<codePool>community</codePool>
+			<version>1.3.4</version>
+			<name>Accelerated Mobile Pages</name>
+			<wiki>http://wiki.plumrocket.com/wiki/Magento_Accelerated_Mobile_Pages_v1.x_Extension</wiki>
+			<depends>
+				<Plumrocket_Base />
+			</depends>
+		</Plumrocket_Amp>
+	</modules>
+</config>

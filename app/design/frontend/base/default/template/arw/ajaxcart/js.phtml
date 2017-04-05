@@ -1,0 +1,8 @@
+<?php
+if(Mage::getStoreConfig('ajaxcart/general/enable')): ?>
+    <script type="text/javascript">
+        //<![CDATA[
+        var ajaxCartObj = new ajaxCart(<?php echo Mage::helper('ajaxcart')->jsParam($this)?>);
+        //]]>
+    </script>
+<?php endif; ?>

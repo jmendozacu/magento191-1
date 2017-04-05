@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <bz_navigation translate="label" module="bz_navigation">
+            <label>Catalog Navigation</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>250</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>Catalog Navigation</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <ajax translate="label">
+                            <label>Enable AJAX Navigation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ajax>
+                        <category_mode translate="label">
+                            <label>Enable Category As Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[When enable sub category as facet and show on the URL path, if not use link to sub category page.]]></comment>
+                        </category_mode>
+                        <use_separator>
+                            <label>Use Separator</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[When used: www.domain.com/cat1/cat2/separator/filter1/value1/filter2/value2 if not used www.domain.com/cat1/cat2/filter1/value1/filter2/value2/2 the last number 2 is used to determine number of filters]]></comment>
+                        </use_separator>
+                        <url_separator translate="label">
+                            <label>Filter URL Path Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[URL friendly word like "where", "by, "find" no additional empty space in front or at the end of the word, you can not use "/","?" or other reserved URL key words]]></comment>
+                        </url_separator>
+                        <search_url>
+                            <label>Search URL Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[replace old path xx.com/catalogsearch/result/index to for example xxx.com/Search_URL_Path/search_keyword/filter1/value1/filter2/value2]]></comment>
+                        </search_url>
+                    </fields>
+                </general>
+            </groups>
+        </bz_navigation>
+    </sections>
+</config>

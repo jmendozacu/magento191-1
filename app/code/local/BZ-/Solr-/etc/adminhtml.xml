@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <solr_search translate="title" module="bz_solr">
+                                <title>Solr Search Settings</title>
+                            </solr_search>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

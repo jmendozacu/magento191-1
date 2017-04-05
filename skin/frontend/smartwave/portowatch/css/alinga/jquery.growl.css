@@ -1,0 +1,117 @@
+#growls {z-index:50000;position:fixed;}
+#growls.tl {top:10px;left:10px;}
+#growls.tr {top:10px;right:10px;}
+#growls.br {bottom:10px;right:10px;}
+#growls.tc {top:10px;right:10px;left:10px;}
+#growls.bc {bottom:10px;right:10px;left:10px;}
+#growls.tc .growl,#growls.bc .growl {margin-left:auto;margin-right:auto;}
+.bottom-line { display: inline-block; }
+.bottom-line:nth-child(2n){ padding-left:15px; }
+.growl {
+opacity:1;
+position:relative;
+border-radius:4px;
+-webkit-transition:all .4s ease-in-out;
+-moz-transition:all .4s ease-in-out;
+transition:all .4s ease-in-out;
+}
+.growl.growl-small {
+width:335px;
+margin:5px;
+}
+.growl.growl-medium {
+width:335px;
+text-align:left;
+margin:10px;
+}
+.growl.growl-large {
+width:335px;
+margin:15px;
+}
+#growls .growl{ padding:10px 5px 30px 0;}
+.notice-product-link > img{padding-left:5px}
+.bottom-line.price{font-size:13px}
+.growl.growl-default {
+color:#FFF;
+background:#333;
+-moz-box-shadow:0 0 6px #000;
+-webkit-box-shadow:0 0 6px #000;
+box-shadow:0 0 6px #000;
+}
+.growl.growl-error {
+color:#FFF;
+background:#C0392B;
+}
+.growl.growl-notice {
+color:#FFF;
+background:#2ECC71;
+}
+.growl.growl-warning {
+color:#FFF;
+background:#F39C12;
+}
+.growl .growl-close {
+cursor:pointer;
+float:right;
+font-size:24px;
+line-height:18px;
+font-weight:400;
+font-family:helvetica, verdana, sans-serif;
+padding-right: 3px;
+padding-top: 3px;
+}
+.growl .growl-title {
+font-size:20px;
+display:none;
+line-height:24px;
+margin-bottom:12px;
+}
+.growl .growl-message {
+font-size:14px;
+line-height:18px;
+}
+.growl-medium .notice-img {
+display:inline;
+margin-bottom:10px;
+text-align:left;
+vertical-align:top;
+width:25%;
+float:left;
+}
+.growl-medium .time-ago {
+font-size:10px;
+font-style:italic;
+color:#ccc;
+margin:2px 0;
+}
+.growl-medium a {
+color:#999;
+}
+.growl .growl-close:hover {
+color:#999;
+}
+.notice-text {
+display:inline-block;
+padding-bottom:0;
+padding-left:10px;
+text-align:left;
+width:65%;
+font-size:11px;
+}
+#growls.default,#growls.bl {
+bottom:10px;
+left:10px;
+}
+.growl.growl-incoming,.growl.growl-outgoing {
+opacity:0;
+filter:alpha(opacity=0);
+}
+@mediamax-width479px{
+	.growl.growl-medium {
+	width:auto;
+	}
+
+	#growls.default {
+	left:auto;
+	}
+}

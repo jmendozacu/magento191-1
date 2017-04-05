@@ -1,0 +1,77 @@
+<div class="header-container">
+<div class="header-stripe"></div>
+    <div class="header container">
+        <div class="quick-access">
+            <?php echo $this->getChildHtml('topLinks') ?>
+            <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+
+            <?php echo $this->getChildHtml('store_language'); ?>
+            <?php echo $this->getChildHtml('store_currency'); ?>
+        </div>
+
+
+                <?php if ($this->getIsHomePage()):?>
+                    <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                <?php else:?>
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <?php endif?>
+            <div class="service-section-wrapper col-xs-9">
+                <div class="service-section">
+                    <a href="<?php echo $this->geturl('main-express-shipping');?>">
+                        <img class="service-image" src="<?php echo$this->getSkinUrl('images/logistic.png');?>"/>
+                        <p class="service-text">NEXT DAY DELIVERY</p>
+                    </a>
+                </div>
+
+                <div class="service-section">
+                    <a href="<?php echo $this->geturl('main-money-back-guarantee');?>">
+                        <img class="service-image" src="<?php echo$this->getSkinUrl('images/cart.png');?>"/>
+                        <p class="service-text">60 DAY RETURNS</p>
+                    </a>
+                </div>
+                <div class="service-section">
+                    <a href="<?php echo $this->geturl('main-official-casio-warranty');?>">
+                        <img class="service-image" src="<?php echo$this->getSkinUrl('images/emblem.png');?>"/>
+                        <p class="service-text">FULL WARRANTY</p>
+                    </a>
+                </div>
+                <div class="store-phone">
+                    <!--<img src="<?php /*echo $this->getSkinUrl('images/phone.png');*/?>"/>-->
+                    <span style="display: block; text-align: right"><?php echo Mage::getStoreConfig('general/store_information/phone');?></span>
+                    <span style="display:block; font-size: 10px; margin-top:5px;">21-23 Aristoc Rd, Glen Waverley, VIC 3150</span>
+                </div>
+
+                <div class="cart-area pull-right">
+                    <?php echo '<div class="custom-block">'.$this->getLayout()->createBlock('cms/block')->setBlockId($custom_block)->toHtml().'</div>'; ?>
+                    <?php echo $this->getChildHtml('minicart'); ?>
+                </div>
+            </div>
+        <?php echo $this->getChildHtml('topMenu') ?>
+        <?php echo $this->getChildHtml('topSearch'); ?>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+    jQuery(document).ready(function(){
+        <?php
+            //if($sticky_menu){
+        ?>
+        var scrolled = false;
+        jQuery(window).scroll(function(){
+            if(200<jQuery(window).scrollTop() && !scrolled){
+                jQuery('.header-container').addClass('sticky-header').css('top','-50px').animate({top:'0px'}, 500);
+                scrolled = true;
+            }
+            if(200>jQuery(window).scrollTop() && scrolled){
+                jQuery('.header-container').removeClass('sticky-header');
+                scrolled = false;
+            }
+        })
+        <?php
+            //}
+        ?>
+    });
+    //]]>
+</script>

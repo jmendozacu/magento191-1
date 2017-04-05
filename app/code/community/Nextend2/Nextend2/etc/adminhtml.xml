@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <nextend2_nextend2 translate="title" module="nextend2_nextend2">
+                        <title>Nextend2 Library</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+                            <index translate="title">
+                                <title>Index Action</title>
+                                <sort_order>1</sort_order>
+                            </index>
+                        </children>
+                    </nextend2_nextend2>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

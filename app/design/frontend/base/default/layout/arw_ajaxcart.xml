@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    
+   <default>
+     <reference name="head"> 
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/product.js</script></action>
+			<action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery-1.11.1.min.js</script></action>
+			<action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery-migrate-1.2.1.min.js</script></action>
+			<action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery.noconflict.js</script></action>
+			
+			<action method="addItem" ifconfig="ajaxcart/general/enable"><type>skin_js</type><name>arw/ajaxcart/ajaxcart.js</name><params/></action>
+			<action method="addItem" ifconfig="ajaxcart/general/enable" ><type>skin_css</type><name>arw/ajaxcart/ajaxcart.css</name><params/></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>arw/ajaxcart/configurable.js</script></action>
+      </reference> 
+      <!-- <reference name="content"> 
+          <block type="ajaxcart/ajaxcart" ifconfig="ajaxcart/general/enable" name="ajaxcart.js" before="-" />
+      </reference> -->
+	<reference name="after_body_start">
+		<block type="ajaxcart/ajaxcart" name="arw_ajax_js" as="ajaxcart.js" before="-"></block>
+	</reference>
+   </default>
+   
+	<cms_page>
+		 <reference name="head">  
+				<action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action> 
+				<action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action> 
+				<action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action> 
+		  </reference> 
+	</cms_page>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addJs"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>arw/ajaxcart/configurable.js</script></action>
+        </reference>
+    </catalog_product_view>
+    
+    <catalog_category_default>
+        <reference name="head"> 
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action> 
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action> 
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+        </reference> 
+    </catalog_category_default>  
+    
+    <catalogsearch_result_index>
+        <reference name="head">
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action>            
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+        </reference> 
+    </catalogsearch_result_index>  
+    
+    <catalogsearch_advanced_result>
+       <reference name="head">
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action>            
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+       </reference> 
+    </catalogsearch_advanced_result>
+	
+    <catalog_category_layered>
+        <reference name="head">
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action>     
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+         </reference>  
+    </catalog_category_layered> 
+    
+    <checkout_cart_index>
+        <reference name="head">
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>prototype/validation.js</script></action>     
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+         </reference>  
+    </checkout_cart_index>
+</layout>

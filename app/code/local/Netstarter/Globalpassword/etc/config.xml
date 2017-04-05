@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Netstarter_Globalpassword>
+            <version>0.0.1.1</version>
+        </Netstarter_Globalpassword>
+    </modules>
+    <global>
+        <models>
+            <netstarter_globalpassword>
+                <class>Netstarter_Globalpassword_Model</class>
+            </netstarter_globalpassword>
+<!--            <customer>
+                <rewrite>
+                    <customer>Netstarter_Globalpassword_Model_Customer</customer>
+                </rewrite>
+            </customer>-->
+        </models>
+        <helpers>
+            <netstarter_globalpassword>
+                <class>Netstarter_Globalpassword_Helper</class>
+            </netstarter_globalpassword>
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,62 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+
+    $ration_width = 500;
+    $ration_height = 500;
+?>
+<?php if (count($this->getGalleryImages()) > 1) : ?>
+    <amp-carousel
+        width="<?php echo $ration_height; ?>"
+        height="<?php echo $ration_height; ?>"
+        layout="responsive"
+        type="slides"
+        autoplay
+        delay="5000"
+    >
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <?php if ($this->isGalleryImageVisible($_image)): ?>
+                <amp-img
+                    src="<?php echo (string)$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize($ration_width, $ration_height); ?>"
+                    width="<?php echo $ration_width; ?>"
+                    height="<?php echo $ration_height; ?>"
+                    layout="responsive"
+                ></amp-img>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </amp-carousel>
+<?php else : ?>
+    <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+        <p class="product-image product-image-zoom">
+            <?php
+            $_img = '<amp-img  height="500" width="500" layout="responsive" id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'"></amp-img>';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+        </p>
+    <?php else: ?>
+        <p class="product-image">
+            <?php
+            $_img = '<amp-img  height="500" width="500" layout="responsive" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'"></amp-img>';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>

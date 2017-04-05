@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_International>
+            <version>0.0.0.1</version>
+        </Netstarter_International>
+    </modules>
+    <global>
+        <models>
+            <netstarter_international>
+                <class>Netstarter_International_Model</class>
+            </netstarter_international>
+        </models>
+        <helpers>
+            <netstarter_international>
+                <class>Netstarter_International_Helper</class>
+            </netstarter_international>
+        </helpers>
+    </global>
+    <default>
+        <carriers>
+            <netstarter_international>
+                <active>1</active>
+                <model>netstarter_international/carrier_international</model>
+                <title>Netstarter International</title>
+                <name>International</name>
+            </netstarter_international>
+        </carriers>
+    </default>
+</config>

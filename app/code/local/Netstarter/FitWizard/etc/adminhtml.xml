@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <netstarter_extensions translate="title">
+                        <title>Netstarter Extensions</title>
+                        <sort_order>1</sort_order>
+                    </netstarter_extensions>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <netstarter_fitwizard>
+                                        <title>Netstarter Bra Finder</title>
+                                    </netstarter_fitwizard>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <catalog>
+            <children>
+                <netstarter_fitwizard translate="title">
+                    <title>Netstarter Bra Finder</title>
+                    <sort_order>26</sort_order>
+                    <children>
+                        <bra_finder_upload translate="title">
+                            <title>Category Assignment Upload</title>
+                            <action>admin_fitwizard/adminhtml_settings/index/</action>
+                        </bra_finder_upload>
+                    </children>
+                </netstarter_fitwizard>
+            </children>
+        </catalog>
+    </menu>
+</config>

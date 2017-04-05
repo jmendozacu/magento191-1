@@ -1,0 +1,77 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<div class="product-review-list">
+    <?php if (count($_items)):?>
+        <div class="review-heading">
+            <h4>
+                <?php echo $this->__('Customer Reviews') ?>
+                <span><?php echo count($_items); ?> item(s)</span>
+            </h4>
+            <?php echo $this->getChildHtml('toolbar') ?>
+        </div>
+
+
+    	<ul class="product-review-list-ul">
+	        <?php foreach ($_items as $_review):?>
+	        	<li>
+	                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>">
+	                    <?php echo $this->escapeHtml($_review->getTitle()) ?>
+	                </a>
+	                <div class="review-text">
+		                <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
+	                </div>
+	                <?php $_votes = $_review->getRatingVotes(); ?>
+	                <?php if (count($_votes)): ?>
+						<table class="data-table" id="product-review-list-table">
+							<tbody>
+		                        <?php foreach ($_votes as $_vote): ?>
+			                        <tr>
+			                            <th class="label"><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+			                            <td class="data">
+											<div class="prod-rate-hld">
+												<div>
+													<?php
+													$i = 0;
+													$ratingSummary = $_vote->getPercent();
+													while ($i < 100) :
+														$starClass = 'emptystar';
+														if ($i < $ratingSummary) {
+															$starClass = ($ratingSummary - $i < 12) ? 'halfstar' : 'fullstar';
+														}
+														$i = $i + 20; ?>
+														<div class="icon f-<?php echo $starClass ?>"></div>
+													<?php endwhile; ?>
+												</div>
+											</div>
+			                            </td>
+			                        </tr>
+			                    <?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php endif; ?>
+	                <div class="review-meta">
+	                	<span class="review-author"><?php echo $this->__('Review by %s', $this->escapeHtml($_review->getNickname())) ?></span>
+		               <span class="review-posted"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></span>
+	                </div>
+	        	</li>
+			<?php endforeach; ?>
+    	</ul>
+    <?php endif; ?>
+</div>
+<?php echo $this->getChildHtml('amp.product.review.form') ?>

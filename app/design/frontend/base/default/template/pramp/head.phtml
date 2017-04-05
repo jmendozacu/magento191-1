@@ -1,0 +1,40 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<title><?php echo $this->getTitle(); ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<meta charset="utf-8">
+<link rel="canonical" href="<?php echo $this->helper('pramp')->getCanonicalUrl(); ?>" />
+<link rel="amphtml" href="<?php echo $this->helper('pramp')->getAmpUrl(); ?>" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<?php echo $this->getChildHtml('ogtags') ?>
+<?php echo $this->getChildHtml('ldjson') ?>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+<style amp-custom type="text/css">
+    <?php echo $this->getChildHtml('ampcss') ?>
+</style>
+<!-- <?php echo strrev('pmA_tekcormulP egakcap@ .sliated esnecil rof ALUE/ikiw/ten.tekcormulp.ikiw//:ptth eeS .devreser sthgir llA .cnI tekcormulP 6102 thgirypoC') ?> -->
+<noscript>
+    <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>
+</noscript>
+
+<?php echo $this->getChildHtml('ampjs') ?>

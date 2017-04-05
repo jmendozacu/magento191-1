@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<widgets>
+    <afeature type="afeature/view" translate="name" module="afeature" template="afeature/view.phtml">
+        <name>Afeature Block</name>
+        <description>Display all afeature banners</description>
+        <parameters>
+            <template>
+                <required>1</required>
+                <label>Frontend Template</label>
+                <value>afeature/spot_light.phtml</value>
+                <type>select</type>
+                <visible>1</visible>
+                <values>
+                    <slider translate="label">
+                        <value>afeature/carousal.phtml</value>
+                        <label>Carousal Template</label>
+                    </slider>
+                    <spot translate="label">
+                        <value>afeature/spot_light.phtml</value>
+                        <label>Spot Light Template</label>
+                    </spot>
+                    <catgeoryspot translate="label">
+                        <value>afeature/category_spot_light.phtml</value>
+                        <label>Category Spot Light Template</label>
+                    </catgeoryspot>
+                    <tabletswap translate="label">
+                        <value>afeature/tablet_swap.phtml</value>
+                        <label>Tablet Image Swapper Template</label>
+                    </tabletswap>
+                </values>
+            </template>
+             <awq>
+                <label>Title of block</label>
+                <type>text</type>
+                <visible>1</visible>
+                <required>0</required>
+            </awq>
+            <banner_ids translate="label">
+                <visible>1</visible>
+                <label>Specify Banners</label>
+                <type>label</type>
+                <helper_block>
+                    <type>afeature/adminhtml_widget_chooser</type>
+                </helper_block>
+            </banner_ids>
+        </parameters>
+    </afeature>
+</widgets>

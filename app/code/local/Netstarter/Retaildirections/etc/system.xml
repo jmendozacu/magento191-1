@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <netstarter_retaildirections translate="label" module="netstarter_retaildirections">
+            <label>Retail Directions API</label>
+            <tab>service</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>201</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <connection translate="label">
+                    <label>Connection Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <mode translate="label">
+                            <label>Production</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Is it production enviroment? Answering "No" means using sandbox details.</comment>
+                        </mode>
+
+                        <url_production translate="label">
+                            <label>URL Production</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url_production>
+                        <username_production translate="label">
+                            <label>Username Production</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </username_production>
+                        <password_production translate="label">
+                            <label>Password Production</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password_production>
+
+                        <url_sandbox translate="label">
+                            <label>URL Sandbox</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url_sandbox>
+                        <username_sandbox translate="label">
+                            <label>Username Sandbox</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </username_sandbox>
+                        <password_sandbox translate="label">
+                            <label>Password Sandbox</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password_sandbox>
+                    </fields>
+                </connection>
+                <general translate="label">
+                    <label>General Environment Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <store_id translate="label">
+                            <label>Store ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </store_id>
+                        <supply_channel_id>
+                            <label>Supply Channel ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </supply_channel_id>
+                        <!--
+                        <store_id_mapping translate="label">
+                            <label>Store ID</label>
+                            <frontend_model>netstarter_retaildirections/adminhtml_form_field_storeconfig</frontend_model>
+                            <backend_model>netstarter_retaildirections/system_config_backend_storeconfig</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </store_id_mapping>
+                        <supply_channel_mapping>
+                            <label>Supply Channel ID</label>
+                            <frontend_model>netstarter_retaildirections/adminhtml_form_field_storeconfig</frontend_model>
+                            <backend_model>netstarter_retaildirections/system_config_backend_storeconfig</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </supply_channel_mapping>
+                        -->
+                    </fields>
+                </general>
+                <!--
+                <parse translate="label">
+                    <label>Development Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <log translate="label">
+                            <label>Log is active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>This option doesn't override Magento logging settings.
+                                Magento logging should be "on" for module log to work.
+                            </comment>
+                        </log>
+                        <log_file translate="label">
+                            <label>Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                    </fields>
+                </parse>
+                -->
+                <product translate="label">
+                    <label>Product Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <refs_per_call translate="label">
+                            <label>Product references per call to BulkItemDetailsGet</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>The amount of Product References grouped per API call. A higher value will
+                                reduce the amount of API calls, but may increase memory usage (memory limit risk)
+                                and per call response time (timeout risk).
+                            </comment>
+                        </refs_per_call>
+                        <attribute_set_id>
+                            <label>Magento Attribute Set Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>The Magento Attribute Set Id used on product creation. All products have the
+                                same attrbiute set.
+                            </comment>
+                        </attribute_set_id>
+                        <tax_id>
+                            <label>Magento Default Tax Class</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/resource_class_collection</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>The Magento tax class used on product creation.</comment>
+                        </tax_id>
+                        <sku_blacklist translate="label">
+                            <label>Blacklist of SKUs</label>
+                            <comment>These SKUs will be ignored during the tranlsation process. Please notice it needs to be item_colour_refs. Comma-separated values.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sku_blacklist>
+                        <corenoncore_overwrite>
+                            <label>Should ignore API core/noncore values?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </corenoncore_overwrite>
+                        <corenoncore_default>
+                            <label>Default core/noncore value should be?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>netstarter_retaildirections/system_config_source_corenoncore</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><corenoncore_overwrite>1</corenoncore_overwrite></depends>
+                        </corenoncore_default>
+                        
+                        <default_category_id>
+                            <label>Default Category Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>
+                                Category where all regular products will be created at for this website.
+                            </comment>
+                        </default_category_id>
+                        <on_sale_category_id>
+                            <label>On Sale Category Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>
+                                Category where all on sale products will be created at for this website.
+                            </comment>
+                        </on_sale_category_id>
+                        <is_default>
+                            <label>Is this website the default for product data?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[
+                            * The website where all attributes are retrieved from.<br />
+                            * Only one website should be marked as default.<br />
+                            * There are specific fields per website product data (e.g.: price AU, price NZ).<br />
+                            * These fields will be assumed to to go on &lt;websitecode&gt;_&lt;column&gt; prefix in the
+                            database (product entity of this module). These columns are not automatically
+                            created in the table.
+                            ]]></comment>
+                        </is_default>
+                        
+                        <log_file translate="label">
+                            <label>API Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                        <translation_log_file translate="label">
+                            <label>Translation Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </translation_log_file>
+                    </fields>
+                </product>
+                <product_inventory translate="label">
+                    <label>Product Inventory Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <log_file translate="label">
+                            <label>API Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                    </fields>
+                </product_inventory>
+                <customer translate="label">
+                    <label>Customer Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <log_file translate="label">
+                            <label>API Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                    </fields>
+                </customer>
+                <order translate="label">
+                    <label>Order Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <shipping_methods translate="label">
+                            <label>Shipping Methods Code Mapping</label>
+                            <comment>Set the RetailDirection's code for Magento shipping methods</comment>
+                            <frontend_model>netstarter_retaildirections/adminhtml_form_field_shipping_grid</frontend_model>
+                            <backend_model>netstarter_retaildirections/system_config_backend_shipping</backend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shipping_methods>
+                        <payment_methods translate="label">
+                            <label>Payment Methods Code Mapping</label>
+                            <comment>Set the RetailDirection's code for Magento payment methods</comment>
+                            <frontend_model>netstarter_retaildirections/adminhtml_form_field_payment_grid</frontend_model>
+                            <backend_model>netstarter_retaildirections/system_config_backend_payment</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </payment_methods>
+                        <giftwrapcode translate="label">
+                            <label>Global Gift Warp Sell code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Global Gift Warp Sell code.</comment>
+                        </giftwrapcode>
+                        <log_file translate="label">
+                            <label>API Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                        <giftwrapunitprice translate="label">
+                            <label>Global Gift Warp Unit price</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Global Gift Warp Unit price.</comment>
+                        </giftwrapunitprice>
+                    </fields>
+                </order>
+                <gcsetting translate="label">
+                    <label>Giftcard Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <haspin translate="label">
+                            <label>Is pin required</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Is pin number required.</comment>
+                        </haspin>
+                        <validation translate="label">
+                            <label>Validation Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Validation Regular Expression.</comment>
+                        </validation>
+                        <scheme_code translate="label">
+                            <label>Giftcard scheme code</label>
+                            <comment>Set the Gif Card Scheme Code</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </scheme_code>
+                        <log_file translate="label">
+                            <label>API Log file</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                    </fields>
+                </gcsetting>
+            </groups>
+        </netstarter_retaildirections>
+        <giftcardsapi translate="label">
+            <groups>
+                <netstarter_retaildirections translate="label">
+                    <label>Retail Directions</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <name translate="label">
+                            <label>Method Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </name>
+                    </fields>
+                </netstarter_retaildirections>
+            </groups>
+        </giftcardsapi>
+    </sections>
+</config>

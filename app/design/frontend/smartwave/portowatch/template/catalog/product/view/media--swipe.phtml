@@ -1,0 +1,192 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+$wishlistArray = Mage::helper('newizze_guestwishlist')->getWlProductsIds();
+$productsInWish = array_keys($wishlistArray);
+
+
+//$url_video = Mage::getModel('iwd_productvideo/productvideo')->getVideoCollectionByProduct($_product->getId());
+//print_r($url_video);
+//if(isset($url_video[0])){
+//  $video = $url_video[0]->getUrl();
+//}
+
+$protocol = Mage::app()->getStore()->isCurrentlySecure() ? "https:" : "http:";
+//global $videos;
+$initVideoBlog = Mage::getBlockSingleton('iwd_productvideo/frontend_Init');
+$layerVideoBlock = Mage::getBlockSingleton('iwd_productvideo/frontend_Player');//IWD_Productvideo_Block_Frontend_Player;
+$videos = $initVideoBlog->getVideosCollection();
+if (count($videos) > 0) {
+    $video = $videos[0];
+}
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<?php if (Mage::getModel('iwd_productvideo/productvideo')->getVideoCollectionByProduct($_product->getId())): ?>
+<div id="video-product" >
+<img class="desktop-mask" src="<?php echo  Mage::getBaseUrl().'/skin/frontend/smartwave/portowatch/images/casio/mask.jpg' ?>" />
+<img class="mobile-mask" src="<?php echo  Mage::getBaseUrl().'/skin/frontend/smartwave/portowatch/images/casio/mask.jpg' ?>" />
+</div>
+<?php endif;?>
+
+    <ul id="imageGallery" class="slickslider">
+           <?php foreach ($_product->getMediaGalleryImages() as $image) : ?>
+            <li data-thumb="<?php echo Mage::helper('catalog/image')->init($_product, 'image', $image->getFile())->keepAspectRatio(true)->resize('92'); ?>" data-src="<?php echo Mage::helper('catalog/image')->init($_product, 'image', $image->getFile())->keepAspectRatio(true)->resize('337'); ?>">
+                <img  class="fgc-thumb" src="<?php echo Mage::helper('catalog/image')->init($_product, 'image', $image->getFile())->keepAspectRatio(true)->resize('337'); ?>" alt="<?php echo $_product->getName() ?>" />
+            </li>
+    <?php endforeach; ?>
+    <?php if (Mage::getModel('iwd_productvideo/productvideo')->getVideoCollectionByProduct($_product->getId())): ?>
+         <li id="video-product-show" data-thumb="<?php echo $this->getSkinUrl('images/playButtonHover.png'); ?>">
+        <?php
+$helperVideo = $this->helper('iwd_productvideo');
+//$video = $this->getVideo();
+$protocol = Mage::app()->getStore()->isCurrentlySecure() ? "https:" : "http:";
+?>
+       
+<?php if ($helperVideo->isLocalVideoPlayer($video)): ?>
+    <video class="iwd-pv-player local-video-player video-js vjs-default-skin" controls
+           preload="none" width="100%" height="100%" <?php if($layerVideoBlock->isAutoplayVideo()): ?>autoplay<?php endif; ?>
+           poster="<?php echo $helperVideo->GetMediaImageUrl($video['image']) ?>" data-setup="{}">
+        <?php echo $helperVideo->GetVideoSource($video); ?>
+    </video>
+<?php else: ?>
+    <?php if ($video['video_type'] == 'youtube'): ?>
+        <iframe id="youtube_video_player_<?php echo $video["video_id"] ?>"
+                class="iwd-pv-player youtube-video-player"
+                src="<?php echo $protocol; ?>//www.youtube.com/embed/<?php echo $video['url'] ?>?enablejsapi=1<?php if($layerVideoBlock->isAutoplayVideo()): ?>&autoplay=1<?php endif; ?><?php if($layerVideoBlock->notShowRelatedVideo()): ?>&rel=0<?php endif; ?>"
+                width="100%" height="100%" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
+    <?php elseif ($video['video_type'] == 'vimeo'): ?>
+        <iframe class="iwd-pv-player vimeo-video-player"
+                src="<?php echo $protocol; ?>//player.vimeo.com/video/<?php echo $video['url']; ?><?php if($layerVideoBlock->isAutoplayVideo()): ?>?autoplay=1<?php endif; ?>"
+                width="100%" height="100%" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
+    <?php elseif ($video['video_type'] == 'wistia'): ?>
+        <div style="height: 100%" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+            <span style="display: none;" itemprop="name"><?php  echo $video['title'] ?></span>
+            <span style="display: none;" itemprop="description"><?php  echo Mage::registry('current_product')->getDescription(); ?></span>
+            <meta itemprop="thumbnailUrl" content="<?php  echo Mage::helper('iwd_productvideo')->GetImageUrl($video['image'], 337, 190); ?>" />
+            <meta itemprop="embedURL" content="<?php  echo $protocol; ?>//fast.wistia.net/embed/iframe/<?php  echo $video['url']; ?>?<?php  if($layerVideoBlock->isAutoplayVideo()): ?>?autoPlay=true<?php endif; ?>" />
+            <iframe src="<?php  echo $protocol; ?>//fast.wistia.net/embed/iframe/<?php  echo $video['url']; ?>?<?php  if($layerVideoBlock->isAutoplayVideo()): ?>?autoPlay=true<?php  endif; ?>"
+                    allowtransparency="true"
+                    frameborder="0"
+                    scrolling="no"
+                    autoPlay="true"
+                    class="iwd-pv-player wistia-video-player"
+                    name="wistia_embed"
+                    mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen allowfullscreen
+                    width="100%" height="100%">
+            </iframe>
+            </div>
+<!--<div class="wistia_embed wistia_async_<?php //echo $video['url']  ?>" style="height:190px;width:337px">&nbsp;</div>-->
+<?php endif; ?>
+<?php endif; ?>
+         </li>
+    <?php endif; ?>
+	
+     
+    </ul>
+    <?php else: ?>
+    <p class="product-image">
+    <?php
+    $_img = '<img class="fgc" src="' . $this->helper('catalog/image')->init($_product, 'image')->resize(265) . '" alt="' . $this->escapeHtml($this->getImageLabel()) . '" title="' . $this->escapeHtml($this->getImageLabel()) . '" />';
+    echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+    </p>
+    <?php endif; ?>
+<script src="<?php echo $protocol;?>//fast.wistia.com/assets/external/E-v1.js" async></script>
+<script>
+    jQuery(document).ready(function () {
+//        var w_box = jQuery('.product-img-box').outerWidth();
+//        var w_content= jQuery('#video-product').outerWidth();
+//        var pc = (w_box -  w_content)/2;
+//        jQuery('#video-product').css({'left':pc+'px'})
+       setTimeout(function(){
+            jQuery('#imageGallery').lightSlider({
+                gallery:true,
+                item:1,
+                loop:true,
+                adaptiveHeight:true,
+                enableTouch:true,
+                pager: true,
+                thumbItem:9,
+                slideMargin:0,
+                enableDrag: false,
+                controls: false,
+                currentPagerPosition:'left',
+                responsive : [
+                    {
+                        breakpoint:480,
+                        settings: {
+                            pager: true,
+                            gallery: false
+                        }
+                    }
+                ],
+                onSliderLoad: function(el) {
+                   // alert(6);
+                    el.lightGallery({
+                        selector: '#imageGallery .lslide',
+                        zoom:false,
+                        fullScreen:false
+                    });
+                }
+            });
+        },500);
+    });
+    jQuery(window).load(function () {
+        jQuery('.fgc-thumb').show();
+      //  jQuery('#imageGallery').css({'position': 'static'});
+         //jQuery('#video-product').css({'background': 'transparent'});
+      //  me= jQuery('#video-product');
+       // if (me.length > 0 ){
+      //      me.hide();
+      //  }
+    });
+</script>
+<?php //$this->getChild("addto_wishlist")->setData("product", $_product);  ?>
+<?php //echo $this->getChildHtml('addto_wishlist');  ?>
+
+  <?php if (Mage::getModel('iwd_productvideo/productvideo')->getVideoCollectionByProduct($_product->getId())): ?>
+<style>
+   /*.fgc-thumb,*/
+   #video-product{
+display: none
+}
+#imageGallery{
+ /*position: absolute;*/
+}
+</style>
+<?php endif?>

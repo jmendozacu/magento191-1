@@ -1,0 +1,90 @@
+<?php
+$priceTextColor = $this->helper('pramp')->getPriceTextColor();
+$buttonTextColor = $this->helper('pramp')->getButtonTextColor();
+$buttonTextColorHover = $this->helper('pramp')->getButtonTextColorHover();
+$buttonBgColor = $this->helper('pramp')->getButtonBgColor();
+$buttonBgColorHover = $this->helper('pramp')->getButtonBgColorHover();
+?>
+
+.f-fullstar,.f-halfstar,.f-emptystar{display:inline-block}
+.f-fullstar:before{content:"\e90a"}
+.f-halfstar:before{content:"\e90b"}
+.f-emptystar:before{content:"\e90c"}
+
+.catalog-product-view .col-main {font-size:0}
+.product-img-box,.product-shop{width:50%;display:inline-block;margin-bottom:10px;padding:20px 0 0 20px;box-sizing:border-box;font-size:14px;vertical-align:top}
+.product-shop{padding:20px 20px 0 0;margin-bottom:0}
+.dir-rtl .product-shop{padding:20px 0 0 20px}
+.product-shop .description{margin-top:20px}
+.product-img-box{float:right}
+.dir-rtl .product-img-box{float:left;padding:20px 20px 0 0}
+
+.btn-cart{background:<?php echo $buttonBgColor ?>;display:inline-block;color:<?php echo $buttonTextColor ?>;border:0;min-height:40px;line-height:40px;font-size:16px;padding:0px 30px;text-transform:uppercase}
+.btn-cart:hover,.btn-cart:focus{background:<?php  echo $buttonBgColorHover ?>;color:<?php echo $buttonTextColorHover ?>;text-decoration:none}
+.price{color:<?php echo $priceTextColor ?>;font-size:24px}
+.price-box{margin:0 0 15px 0;line-height:normal}
+.price-box>p{display:inline-block;vertical-align:middle;margin:0}
+.price-box .price-label{display:none}
+.price-box .old-price .price {color:#a0a0a0;text-decoration:line-through;font-size:16px}
+
+.additional-information{margin-top:20px}
+.additional-information .title{font-weight:700}
+.additional-information table{font-size:12px;border:1px solid #c9c7c7;border-collapse:collapse;text-align:left;margin-top:10px}
+.additional-information table th{border-right:1px solid #c9c7c7;border-bottom:1px solid #c9c7c7;background:#f4f4f4;padding:5px 10px}
+.dir-rtl .additional-information table th{border-right:0;border-left:1px solid #c9c7c7;text-align:right;}
+.additional-information table td{border-bottom:1px solid #c9c7c7;padding:5px 10px}
+.dir-rtl .additional-information table td{text-align:right}
+.additional-information table th.label{width:25%}
+@media (max-width:640px){
+.product-img-box,.product-shop,.dir-rtl .product-shop,.dir-rtl .product-img-box{width:100%;display:block;padding:15px 0;float:none}
+}
+
+.product-img-box amp-carousel{box-shadow:0 0 5px #ccc;border:5px solid #fff;height:320px;text-align:center;}
+
+.product-related {width: 50%;}
+@media (max-width:679px) {
+.product-related {width: 100%;}
+}
+
+.related-prod-hld{font-size:12px;margin:0 0 10px;margin-top:15px}
+.related-prod-hld .title{font-size:18px;padding-bottom:10px}
+.related-prod-hld amp-carousel{box-shadow:0 0 5px #ccc;border:5px solid #fff;height:320px;text-align:center;display:block}
+.related-prod-hld amp-carousel .price-box{margin-top:8px}
+.related-prod-hld a{display:block;text-align:center}
+.related-prod-hld .price-box .price{font-size:14px}
+.related-prod-hld .price-box span{font-weight:700}
+
+.col-main .related-prod-hld .old-price,.col-main .related-prod-hld .special-price{display:inline-block;margin-top:0}
+.col-main .related-prod-hld .old-price *{line-height:normal}
+.col-main .related-prod-hld .save-price{display:none}
+.related-prod-hld .save-price{display:none}
+.related-prod-hld .amp-carousel-button{transform:scale(1);margin-top:-17px}
+
+.product-review-list{margin:25px 0 0 0}
+.prod-rate-hld{white-space:nowrap}
+#product-review-list-table{margin:15px 0}
+#product-review-list-table th{padding-right:20px;font-size:12px}
+
+section[expanded] .show-more {display: none}
+section:not([expanded]) .show-less {display: none}
+.nested-accordion h4 {font-size: 14px;background-color: #ddd}
+form.amp-form-submit-success [submit-success],
+form.amp-form-submit-error [submit-error]{margin-top: 16px}
+form.amp-form-submit-success [submit-success] {color: green}
+form.amp-form-submit-error [submit-error] {color: red}
+form.amp-form-submit-success.hide-inputs > input {display: none}
+.horizontal-display {display: flex;align-items: center}
+.other-input {margin: 0 16px}
+form.amp-form-submit-success > input{display: none}
+.product-review-list-ul {font-size: 14px}
+.product-review-list-ul li {margin: 25px 5px}
+.product-review-form {font-size: 12px}
+.product-review-form .form-row{max-width:500px}
+.product-review-form .form-row textarea,.product-review-form .form-row input{width:100%;margin:0px;box-sizing:border-box}
+.product-review-form .form-row input[type=submit]{margin-top:10px}
+form.amp-form-submit-success [submit-success],
+form.amp-form-submit-error [submit-error]{margin-top: 16px}
+form.amp-form-submit-success [submit-success] .message-success {color: green}
+form.amp-form-submit-success [submit-success] .message-error {color: red}
+form.amp-form-submit-error [submit-error]{color: red}
+form.amp-form-submit-success .form-row {display: none}

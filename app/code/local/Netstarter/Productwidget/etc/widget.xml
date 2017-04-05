@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<widgets>
+    <productwidget type="productwidget/view" module="productwidget">
+        <name>Product Widget</name>
+        <description type="desc">Widget to Custom Bestseller Products</description>
+
+        <parameters>
+            <display_title>
+                <label>Display Title</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+            </display_title>
+            <template translate="label">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <text translate="label">
+                        <value>productwidget/template_default.phtml</value>
+                        <label>Default Template</label>
+                    </text>
+                    <image translate="label">
+                        <value>productwidget/template_image.phtml</value>
+                        <label>Image Only Template</label>
+                    </image>
+                </values>
+            </template>
+            <display_mode translate="label">
+                <label>Type</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <custom translate="label">
+                        <value>1</value>
+                        <label>Custom Product Assign</label>
+                    </custom>
+                    <upsell translate="label">
+                        <value>2</value>
+                        <label>Fetch from Upsell</label>
+                    </upsell>
+                    <lookbook translate="label">
+                        <value>3</value>
+                        <label>Fetch from Complete the look</label>
+                    </lookbook>
+                </values>
+            </display_mode>
+            <product_ids translate="label">
+                <visible>1</visible>
+                <label>Specify Products</label>
+                <type>label</type>
+                <helper_block>
+                    <type>productwidget/adminhtml_widget_chooser</type>
+                </helper_block>
+                <depends>
+                    <display_mode>
+                        <value>1</value>
+                    </display_mode>
+                </depends>
+            </product_ids>
+        </parameters>
+    </productwidget>
+</widgets>

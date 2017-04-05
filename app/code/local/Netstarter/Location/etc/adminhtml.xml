@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <storelocator translate="title" module="location">
+            <title>Store Locator</title>
+            <sort_order>999</sort_order>
+            <children>
+                <main>
+                    <title>Manage Main Page</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/system_config/edit/section/storelocator_config</action>
+                </main>
+                <stores>
+                    <title>Manage Stores</title>
+                    <sort_order>2</sort_order>
+                    <action>locationsys/adminhtml_location/index</action>
+                </stores>
+                <postcodes>
+                    <title>Manage Postcodes</title>
+                    <sort_order>3</sort_order>
+                    <action>locationsys/adminhtml_postcodes/index</action>
+                </postcodes>
+            </children>
+        </storelocator>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <storelocator translate="title" module="location">
+                        <title>Store Locator</title>
+                        <sort_order>1</sort_order>
+                        <children>
+                            <main translate="title">
+                                <title>Manage Main Page</title>
+                            </main>
+                            <stores translate="title">
+                                <title>Manage Stores</title>
+                            </stores>
+                        </children>
+                    </storelocator>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <storelocator_config>
+                                        <title>Store Locator Configuration</title>
+                                    </storelocator_config>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <placeholders>
+        <locationlist>
+            <block>location/stores</block>
+            <name>location.list</name>
+            <placeholder>STORE_LOCATOR_LIST</placeholder>
+            <container>Netstarter_Location_Model_Container_List</container>
+            <cache_lifetime>84600</cache_lifetime> 
+        </locationlist>
+    </placeholders>
+</config>

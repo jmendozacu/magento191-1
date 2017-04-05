@@ -1,0 +1,445 @@
+<?xml version="1.0"?>
+<!--
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="catalog_product_price_template">
+            <action method="addPriceBlockType">
+                <type>msrp</type>
+                <block>catalog/product_price</block>
+                <template>pramp/catalog/product/price_msrp.phtml</template>
+            </action>
+            <action method="addPriceBlockType">
+                <type>msrp_item</type>
+                <block>catalog/product_price</block>
+                <template>pramp/catalog/product/price_msrp.phtml</template>
+            </action>
+            <action method="addPriceBlockType">
+                <type>msrp_noform</type>
+                <block>catalog/product_price</block>
+                <template>pramp/catalog/product/price_msrp.phtml</template>
+            </action>
+        </reference>
+    </default>
+
+    <amp_default>
+        <!-- Set root template -->
+        <reference name="root">
+            <!-- Set head, header and footer templates -->
+            <block type="core/text_list" name="amp_after_body_start" translate="label">
+                <block type="core/template" name="amp_google_analytics" template="pramp/googleanalytics/ga.phtml" />
+            </block>
+            <reference name="head">
+                <action method="setTemplate">
+                    <template>pramp/head.phtml</template>
+                </action>
+                <block type="core/text_list" name="ampcss">
+                    <block type="pramp/page_head_style" name="ampcss.style" as="ampcss.style" template="pramp/head/css/style.phtml"/>
+                </block>
+                <block type="pramp/page_head_js" name="ampjs">
+                    <action method="addJs">
+                        <src>https://cdn.ampproject.org/v0/amp-analytics-0.1.js</src>
+                        <type>amp-analytics</type>
+                    </action>
+                    <action method="addJs">
+                        <src>https://cdn.ampproject.org/v0/amp-carousel-0.1.js</src>
+                        <type>amp-carousel</type>
+                    </action>
+                    <action method="addJs">
+                        <src>https://cdn.ampproject.org/v0/amp-youtube-0.1.js</src>
+                        <type>amp-youtube</type>
+                    </action>
+                </block>
+                <!--load algoliasearch on head-->          
+                <block type="core/text" name="algolia-polyfill" as="algolia-polyfill">
+                    <action method="setText">
+                        <text>
+                        <![CDATA[<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                            <!--[if lte IE 9]>
+                                <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+                        <![endif]-->]]>
+                        </text>
+                    </action>
+                </block>
+                <block type="core/template" template="algoliasearch/ampbeforetopsearch.phtml" as="beforetopsearch" name="beforetopsearch"/>
+                <!--End load-->
+            </reference>
+            <block type="page/html_header" name="amp.header" as="amp.header">
+                <action method="setTemplate">
+                    <template>pramp/header.phtml</template>
+                </action>
+                <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+                    <action method="unsetChildren" />
+                    <block type="pramp/page_html_topmenu" name="catalog.topnav.amp" template="pramp/header/topmenu.phtml">
+                        <block type="pramp/page_html_topmenu_renderer" name="catalog.topnav.renderer.amp" template="pramp/header/topmenu/renderer.phtml"/>
+                    </block>
+                </block>
+                <!--Add block miss-->
+                <block type="core/template" name="mobile.nav" template="smartwave/megamenu/html/mobilemenu.phtml" />
+                <block type="core/template" name="top.search" as="topSearch" template="algoliasearch/amptopsearch.phtml"/>
+                <block type="checkout/cart_sidebar" name="minicart">
+                    <action method="setTemplate">
+                        <template>checkout/cart/minicart.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>default</type>
+                        <block>checkout/cart_item_renderer</block>
+                        <template>checkout/cart/minicart/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>simple</type>
+                        <block>checkout/cart_item_renderer</block>
+                        <template>checkout/cart/minicart/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>grouped</type>
+                        <block>checkout/cart_item_renderer_grouped</block>
+                        <template>checkout/cart/minicart/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>configurable</type>
+                        <block>checkout/cart_item_renderer_configurable</block>
+                        <template>checkout/cart/minicart/default.phtml</template>
+                    </action>
+                    <block type="core/text_list" name="minicart.extra_actions" as="extra_actions" translate="label" module="checkout">
+                        <label>Shopping Cart Cartheader Extra Actions</label>
+                    </block>
+                    <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+                </block>
+                <!--end add block miss-->
+            </block>
+            <reference name="global_notices">
+                <action method="setTemplate">
+                    <template>pramp/notices.phtml</template>
+                </action>
+            </reference>
+            <reference name="breadcrumbs">
+                <action method="setTemplate">
+                    <template>pramp/breadcrumbs.phtml</template>
+                </action>
+            </reference>
+            <reference name="content">
+                <remove name="product.tooltip" />
+            </reference>
+            <block type="pramp/page_footer" name="amp.footer" as="amp.footer" template="pramp/footer.phtml">
+                <block type="cms/block" name="amp.footer.links">
+                    <action method="setBlockId">
+                        <block_id>footer_links_amp</block_id>
+                    </action>
+                </block>
+                <block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/tvfooter_subscribe.phtml"/>
+            </block>
+            <block type="core/text_list" name="amp_before_body_end" translate="label" />
+            <!-- Remove other blocks -->
+            <remove name="header"/>
+            <remove name="top.links"/>
+            <remove name="catalog.topnav" />
+            <remove name="footer"/>
+            <!--            <remove name="after_body_start"/>
+            <remove name="before_body_end"/>-->
+            <remove name="right"/>
+            <remove name="left"/>
+            <remove name="external.pagecache.cookie"/>
+            <!-- Remove Amasty blocks -->
+            <remove name="amshopby.navtop" />
+            <remove name="amshopby.navleft" />
+            <remove name="amshopby.top" />
+            <remove name="amshopby.bottom" />
+            <remove name="amlabel_script" />
+            <remove name="ammeta.innertext" />
+            <remove name="ammeta.afterproduct" />
+            <remove name="ampromo.items" />
+            <remove name="ampromo.add" />
+            <remove name="ampromo_notification" />
+            <remove name="ampromo.onepage.review.before" />
+            <remove name="ampromo.banner.after_name" />
+            <remove name="ampromo.gift" />
+            <remove name="ampromo.banner.top" />
+            <remove name="ampromo.label" />
+            <remove name="ampromo.after.name" />
+            <remove name="ampromo_notification" />
+            <remove name="amseoreviews.reviews.form" />
+            <remove name="youamaajaxlogin" />
+            <remove name="search.block" />
+            <reference name="header">
+                <block type="core/template" template="algoliasearch/amptopsearch.phtml"/>
+            </reference>
+        </reference>
+        
+        <reference name="amp_before_body_end">
+            <block type="core/template" template="algoliasearch/frontjs.phtml"/>
+        </reference>
+        <reference name="amp_before_body_end">
+            <block type="core/template" template="algoliasearch/ampbeforecontent.phtml"/>
+        </reference>
+        
+    </amp_default>
+    <amp_cms_index_index>
+        <reference name="head">
+            <block type="pramp/page_head_og_cms" name="ogtags" as="ogtags" template="pramp/head/ogtags.phtml"></block>
+            <block type="pramp/page_head_ldjson_cms" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+                       
+            <reference name="ampcss">
+                <block type="pramp/page_head_style" name="ampcss.index" as="ampcss.index" template="pramp/head/css/index.phtml"/>
+            </reference>
+        </reference>        
+    </amp_cms_index_index>
+    <amp_cms_page_view>
+        <reference name="head">
+            <block type="pramp/page_head_og_cms" name="ogtags" as="ogtags" template="pramp/head/ogtags.phtml"></block>
+            <block type="pramp/page_head_ldjson_cms" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+        </reference>
+    </amp_cms_page_view>
+    <amp_catalog_category_view>
+        <reference name="head">
+            <block type="pramp/page_head_og_category" name="ogtags" as="ogtags" template="pramp/head/ogtags.phtml"></block>
+            <block type="pramp/page_head_ldjson_category" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+            <reference name="ampcss">
+                <block type="pramp/page_head_style" name="ampcss.category" as="ampcss.category" template="pramp/head/css/category.phtml"/>
+            </reference>
+        </reference>
+        <reference name="catalog.left">
+            <block type="core/template" name="partner" before="catalog.category" template="catalog/category/casio.phtml"/>
+            <!-- <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/> -->
+            <block type="catalog/layer_view" name="catalog.leftnav" after="currency"
+                   template="catalog/layer/view.phtml">
+                <action method="unsetChild">
+                    <child>category_filter</child>
+                </action>
+            </block>
+        </reference>
+        <reference name="catalog.leftnav">
+            <action method="setTemplate">
+                <template>pramp/catalog/category/filter.phtml</template>
+            </action>
+        </reference> 
+
+        <reference name="catalog.leftnav.state.renderers">
+            <action method="setTemplate">
+                <template>pramp/catalog/layer/state.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <reference name="category.products">
+                <action method="setTemplate">
+                    <template>pramp/catalog/category/view.phtml</template>
+                </action>
+                <reference name="product_list">
+                    <action method="append">
+                        <block>catalog.leftnav</block>
+                    </action>
+                    <action method="append">
+                        <block>catalog.leftnav.state.renderers</block>
+                    </action>
+                    <action method="setTemplate">
+                        <template>pramp/catalog/product/list.phtml</template>
+                    </action>
+                    <block type="pramp/catalog_product_list_toolbar" name="product_list_toolbar" template="pramp/catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager">
+                            <action method="setTemplate">
+                                <template>pramp/catalog/product/list/pager.phtml</template>
+                            </action>
+                        </block>
+                    </block>
+                </reference>
+            </reference>
+        </reference>
+    </amp_catalog_category_view>
+    <amp_catalog_product_view>
+        <reference name="head">
+            <block type="pramp/page_head_og_product" name="ogtags" as="ogtags" template="pramp/head/ogtags.phtml"></block>
+            <block type="pramp/page_head_ldjson_product" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+            <reference name="ampcss">
+                <block type="pramp/page_head_style" name="ampcss.product" as="ampcss.product" template="pramp/head/css/product.phtml"/>
+            </reference>
+            <reference name="ampjs">
+                <action method="addJs">
+                    <src>https://cdn.ampproject.org/v0/amp-iframe-0.1.js</src>
+                    <type>amp-iframe</type>
+                </action>
+                <action method="addJs">
+                    <src>https://cdn.ampproject.org/v0/amp-accordion-0.1.js</src>
+                    <type>amp-accordion</type>
+                </action>
+                <action method="addJs">
+                    <src>https://cdn.ampproject.org/v0/amp-form-0.1.js</src>
+                    <type>amp-form</type>
+                </action>
+                <action method="addJs">
+                    <src>https://cdn.ampproject.org/v0/amp-mustache-0.1.js</src>
+                    <type>amp-mustache</type>
+                    <element>template</element>
+                </action>
+            </reference>
+            
+        </reference>
+        <reference name="product.info">
+            <action method="setTemplate">
+                <template>pramp/catalog/product/view.phtml</template>
+            </action>
+            <action method="setIframeWidth">
+                <number>300</number>
+            </action>
+            <action method="setIframeHeight">
+                <number>300</number>
+            </action>
+            <block type="pramp/catalog_product_view_media" name="product.info.media.amp" as="media" template="pramp/catalog/product/view/media.phtml"/>
+            <reference name="product.attributes">
+                <action method="setTemplate">
+                    <template>pramp/catalog/product/view/attributes.phtml</template>
+                </action>
+            </reference>
+            <block type="page/html_pager" name="product_review_list.toolbar">
+                <action method="setTemplate">
+                    <template>pramp/catalog/product/list/pager.phtml</template>
+                </action>
+            </block>
+            <block type="pramp/review_product_view_list" name="amp.product.review.list" as="amp.product.review.list" template="pramp/review/product/view/list.phtml">
+                <block type="pramp/review_form" name="amp.product.review.form" as="amp.product.review.form" template="pramp/review/form.phtml"/>
+            </block>
+            <block type="pramp/catalog_product_list_related" name="amp.product.related" before="-" template="pramp/catalog/product/list/related.phtml"/>
+        </reference>
+    </amp_catalog_product_view>
+
+    <amp_catalog_product_view_only_options>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/plumrocket/pramp/amp.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/plumrocket/pramp/amp-custom.css</name>
+            </action>
+            
+        </reference>
+        <reference name="content">
+            <reference name="product.info">
+                <action method="setTemplate">
+                    <template>pramp/catalog/product/view-options.phtml</template>
+                </action>
+
+                <block type="core/text_list" name="alert.urls" as="alert_urls" translate="label">
+                    <label>Alert Urls</label>
+                </block>
+
+                <reference name="product.info.options.wrapper.bottom">
+                    <remove name="product.info.sharing"/>
+                    <remove name="product.info.addto"/>
+                </reference>
+            </reference>
+        </reference>
+    </amp_catalog_product_view_only_options>
+
+    <pramp_search_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+            <reference name="breadcrumbs">
+                <action method="addCrumb">
+                    <crumbName>search</crumbName>
+                    <crumbInfo>
+                        <label>Search</label>
+                        <title>Search</title>
+                    </crumbInfo>
+                </action>
+            </reference>
+            <reference name="content">
+                <block type="pramp/catalogsearch_form" name="pramp_search" template="pramp/catalogsearch/form.phtml" />
+                <action method="setAllowedBlocks">
+                    <name>pramp_search</name>
+                </action>
+            </reference>
+
+        </reference>
+    </pramp_search_index>
+
+    <amp_pramp_search_index>
+        <reference name="root">
+            <reference name="head">
+                <block type="pramp/page_head_og_cms" name="ogtags" as="ogtags" template="pramp/head/ogtags.phtml"></block>
+                <block type="pramp/page_head_ldjson_cms" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+                <reference name="ampjs">
+                    <action method="addJs">
+                        <src>https://cdn.ampproject.org/v0/amp-form-0.1.js</src>
+                        <type>amp-form</type>
+                    </action>
+                </reference>
+            </reference>
+        </reference>
+    </amp_pramp_search_index>
+
+    <amp_catalogsearch_result_index>
+        <reference name="head">
+            <block type="pramp/page_head_ldjson_cms" name="ldjson" as="ldjson" template="pramp/head/ldjson.phtml"></block>
+            <reference name="ampcss">
+                <block type="pramp/page_head_style" name="ampcss.category" as="ampcss.category" template="pramp/head/css/category.phtml"/>
+            </reference>
+            <reference name="ampjs">
+                <action method="addJs">
+                    <src>https://cdn.ampproject.org/v0/amp-form-0.1.js</src>
+                    <type>amp-form</type>
+                </action>
+            </reference>
+        </reference>
+
+        <reference name="catalogsearch.leftnav">
+            <action method="setTemplate">
+                <template>pramp/catalog/category/filter.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="catalogsearch.leftnav.state.renderers">
+            <action method="setTemplate">
+                <template>pramp/catalog/layer/state.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <reference name="search.result">
+                <action method="setTemplate">
+                    <template>pramp/catalogsearch/result.phtml</template>
+                </action>
+                <reference name="search_result_list">
+                    <action method="append">
+                        <block>catalogsearch.leftnav</block>
+                    </action>
+                    <action method="append">
+                        <block>catalogsearch.leftnav.state.renderers</block>
+                    </action>
+                    <action method="setTemplate">
+                        <template>pramp/catalog/product/list.phtml</template>
+                    </action>
+                    <block type="pramp/catalog_product_list_toolbar" name="product_list_toolbar" template="pramp/catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager">
+                            <action method="setTemplate">
+                                <template>pramp/catalog/product/list/pager.phtml</template>
+                            </action>
+                        </block>
+                    </block>
+                </reference>
+            </reference>
+        </reference>
+    </amp_catalogsearch_result_index>
+
+    <amp_non_amp_page>
+        <reference name="head">
+            <block type="pramp/page_head_nonamp" name="nonamp" as="nonamp" template="pramp/head/nonamp.phtml"></block>
+        </reference>
+    </amp_non_amp_page>
+</layout>

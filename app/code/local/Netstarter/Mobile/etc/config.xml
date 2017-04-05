@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Netstarter_Mobile>
+        	<version>0.1.0</version>
+        </Netstarter_Mobile>
+	</modules>  	
+	<global>
+		<helpers>
+    		<mobile>
+        		<class>Netstarter_Mobile_Helper</class>
+    		</mobile>      		
+		</helpers>
+	</global>
+</config> 

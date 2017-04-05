@@ -1,0 +1,121 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+
+$ration_width = 500;
+$ration_height = 500;
+//global $videos;
+$initVideoBlog = Mage::getBlockSingleton('iwd_productvideo/frontend_Init');
+$layerVideoBlock = Mage::getBlockSingleton('iwd_productvideo/frontend_Player'); //IWD_Productvideo_Block_Frontend_Player;
+$videos = $initVideoBlog->getVideosCollection();
+if (count($videos) > 0) {
+    $video = $videos[0];
+}
+?>
+<?php if (count($this->getGalleryImages()) > 1) : ?>
+    <amp-carousel
+        width="<?php echo $ration_height; ?>"
+        height="<?php echo $ration_height; ?>"
+        layout="responsive"
+        type="slides"
+        >
+            <?php foreach ($this->getGalleryImages() as $_image): ?>
+                <?php if ($this->isGalleryImageVisible($_image)): ?>
+                <amp-img
+                    src="<?php echo (string) $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize($ration_width, $ration_height); ?>"
+                    width="<?php echo $ration_width; ?>"
+                    height="<?php echo $ration_height; ?>"
+                    layout="responsive"
+                    ></amp-img>
+                <?php endif; ?>
+                <?php if (Mage::getModel('iwd_productvideo/productvideo')->getVideoCollectionByProduct($_product->getId())): ?>
+                <div id="video-product-show" data-thumb="<?php echo $this->getSkinUrl('images/playButtonHover.png'); ?>">
+                    <?php
+                    $helperVideo = $this->helper('iwd_productvideo');
+                    $protocol = Mage::app()->getStore()->isCurrentlySecure() ? "https:" : "http:";
+                    ?>
+
+                    <?php if ($helperVideo->isLocalVideoPlayer($video)): ?>
+                        <video class="iwd-pv-player local-video-player video-js vjs-default-skin" controls
+                               preload="none" width="100%" height="100%" <?php if ($layerVideoBlock->isAutoplayVideo()): ?>autoplay<?php endif; ?>
+                               poster="<?php echo $helperVideo->GetMediaImageUrl($video['image']) ?>" data-setup="{}">
+                                   <?php echo $helperVideo->GetVideoSource($video); ?>
+                        </video>
+                    <?php else: ?>
+                        <?php if ($video['video_type'] == 'youtube'): ?>
+                            <iframe id="youtube_video_player_<?php echo $video["video_id"] ?>"
+                                    class="iwd-pv-player youtube-video-player"
+                                    src="<?php echo $protocol; ?>//www.youtube.com/embed/<?php echo $video['url'] ?>?enablejsapi=1<?php if ($layerVideoBlock->isAutoplayVideo()): ?>&autoplay=1<?php endif; ?><?php if ($layerVideoBlock->notShowRelatedVideo()): ?>&rel=0<?php endif; ?>"
+                                    width="100%" height="100%" frameborder="0"
+                                    webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                            </iframe>
+                        <?php elseif ($video['video_type'] == 'vimeo'): ?>
+                            <iframe class="iwd-pv-player vimeo-video-player"
+                                    src="<?php echo $protocol; ?>//player.vimeo.com/video/<?php echo $video['url']; ?><?php if ($layerVideoBlock->isAutoplayVideo()): ?>?autoplay=1<?php endif; ?>"
+                                    width="100%" height="100%" frameborder="0"
+                                    webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                            </iframe>
+                        <?php elseif ($video['video_type'] == 'wistia'): ?>
+
+                            <div id="iframe-bg" style="height: 100%" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+
+                                <meta itemprop="thumbnailUrl" content="<?php echo Mage::helper('iwd_productvideo')->GetImageUrl($video['image'], 337, 190); ?>" />
+                                <meta itemprop="embedURL" content="<?php echo $protocol; ?>//fast.wistia.net/embed/iframe/<?php echo $video['url']; ?>?<?php if ($layerVideoBlock->isAutoplayVideo()): ?>?autoPlay=true<?php endif; ?>" />
+                                <iframe src="<?php echo $protocol; ?>//fast.wistia.net/embed/iframe/<?php echo $video['url']; ?>?<?php if ($layerVideoBlock->isAutoplayVideo()): ?>?autoPlay=true<?php endif; ?>"
+                                        allowtransparency="true"
+                                        frameborder="0"
+                                        scrolling="no"
+                                        autoPlay="false"
+                                        class="iwd-pv-player wistia-video-player"
+                                        name="wistia_embed"
+                                        mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen allowfullscreen
+                                        width="100%" height="100%" style="" >
+
+                                </iframe>
+
+                                <div class="iframe_cover"></div> 
+
+                            </div>
+
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </amp-carousel>
+<?php else : ?>
+    <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+        <p class="product-image product-image-zoom">
+            <?php
+            $_img = '<amp-img  height="500" width="500" layout="responsive" id="image" src="' . $this->helper('catalog/image')->init($_product, 'image')->resize(500) . '" alt="' . $this->escapeHtml($this->getImageLabel()) . '" title="' . $this->escapeHtml($this->getImageLabel()) . '"></amp-img>';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+        </p>
+    <?php else: ?>
+        <p class="product-image">
+            <?php
+            $_img = '<amp-img  height="500" width="500" layout="responsive" src="' . $this->helper('catalog/image')->init($_product, 'image')->resize(500) . '" alt="' . $this->escapeHtml($this->getImageLabel()) . '" title="' . $this->escapeHtml($this->getImageLabel()) . '"></amp-img>';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>
+

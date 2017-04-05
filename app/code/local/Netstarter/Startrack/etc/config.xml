@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_Startrack>
+            <version>0.0.0.1</version>
+        </Netstarter_Startrack>
+    </modules>
+    <global>
+        <models>
+            <netstarter_startrack>
+                <class>Netstarter_Startrack_Model</class>
+            </netstarter_startrack>
+        </models>
+        <helpers>
+            <netstarter_startrack>
+                <class>Netstarter_Startrack_Helper</class>
+            </netstarter_startrack>
+        </helpers>
+        <blocks>
+            <netstarter_startrack>
+                <class>Netstarter_Startrack_Block</class>
+            </netstarter_startrack>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Netstarter_Startrack after="Mage_Adminhtml">Netstarter_Startrack_Adminhtml</Netstarter_Startrack>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <netstarter_startrack>
+                    <file>netstarter/startrack.xml</file>
+                </netstarter_startrack>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <carriers>
+            <netstarter_startrack>
+                <active>1</active>
+                <model>netstarter_startrack/carrier_startrack</model>
+                <title>Netstarter Startrack</title>
+                <name>Startrack</name>
+            </netstarter_startrack>
+        </carriers>
+    </default>
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>default</name>
+                </package>
+                <theme>
+                    <default>bnt</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
+</config>

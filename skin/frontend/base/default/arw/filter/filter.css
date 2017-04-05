@@ -1,0 +1,29 @@
+.price-slider{
+        height: 8px;
+        width: 100%;
+        background: #383838;
+        position: relative;
+        margin: 10px 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+.price-slider .price-slider-handle{
+        height: 15px;
+        width: 25px;
+        position: absolute;
+        top: -4px;
+		border-radius: 5px;
+    }
+.price-slider-handle.min{
+        background: #a5965b;
+    }
+.price-slider-handle.max{
+        background: #a5965b;
+    }
+.layer-price{
+        text-align: center;
+    }

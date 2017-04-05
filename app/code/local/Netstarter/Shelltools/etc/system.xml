@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <netstarter_shelltools translate="label" module="netstarter_shelltools">
+            <label>Netstarter Shell Tools</label>
+            <tab>advanced</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>5001</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <email translate="label">
+                    <label>Email Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <sender_name translate="label">
+                            <label>Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sender_name>
+                        <sender_email translate="label">
+                            <label>Sender Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sender_email>
+                        <recipient_email translate="label">
+                            <label>Recipient Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Comma-separated email list.</comment>
+                        </recipient_email>
+                        <recipient_email_sales translate="label">
+                            <label>Recipient Email for sales report</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Comma-separated email list.</comment>
+                        </recipient_email_sales>
+                        <subject translate="label">
+                            <label>Email Subject</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[A %s will be substituted for a unique identifier.]]></comment>
+                        </subject>
+                    </fields>
+                </email>
+                <log translate="label">
+                    <label>Log Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <is_active>
+                            <label>Log is active?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>This option doesn't override Magento logging settings.
+                                Magento logging should be "on" for module log to work.
+                            </comment>
+                        </is_active>
+                        <log_file translate="label">
+                            <label>Default Log File</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Inside var/log directory.</comment>
+                        </log_file>
+                    </fields>
+                </log>
+            </groups>
+        </netstarter_shelltools>
+    </sections>
+</config>

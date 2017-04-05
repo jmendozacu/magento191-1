@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bz_navigation translate="title" module="bz_navigation">
+                                        <title>Catalog Navigation Section</title>
+                                    </bz_navigation>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <catalog>
+                        <children>
+                            <bz_navigation translate="title" module="bz_navigation">
+                                <title>Catalog Navigation</title>
+                                <children>
+                                    <bz_navigation_filter translate="title">
+                                        <title>Navigation Filters</title>
+                                    </bz_navigation_filter>
+                                    <bz_navigation_filter_option translate="title">
+                                        <title>Navigation Filter Options</title>
+                                    </bz_navigation_filter_option>
+                                </children>
+                            </bz_navigation>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <catalog>
+            <children>
+                <bz_navigation translate="title" module="bz_navigation">
+                    <title>Catalog Navigation</title>
+                    <sort_order>25</sort_order>
+                    <children>
+                        <bz_navigation_filter translate="title" module="bz_navigation">
+                            <title>Navigation Filters</title>
+                            <action>bz_navigation/adminhtml_option/</action>
+                        </bz_navigation_filter>
+                    </children>
+                </bz_navigation>
+            </children>
+        </catalog>
+    </menu>
+</config>

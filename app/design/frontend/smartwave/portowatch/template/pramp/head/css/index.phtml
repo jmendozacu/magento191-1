@@ -1,0 +1,22 @@
+.amp-cat a{margin:1%;width:31%;letter-spacing:0;display:inline-block;color:#636363;box-sizing:border-box;text-transform:uppercase;font-size:20px;position:relative}
+.amp-cat a:hover{opacity:0.6;text-decoration:none}
+.amp-cat a > span{display:block;background-color:#f4f4f4;background-size:cover;background-position:center}
+.amp-cat a span span{display:inline-block;line-height:normal;background:#fff;padding:3px 10px;min-width:80px;position:absolute;top:50%;transform:translate(-50%,-50%);left:50%}
+
+.amp-cat a.women > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/women.jpg') ?>")}
+.amp-cat a.men > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/men.jpg') ?>")}
+.amp-cat a.accessories > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/accessories.jpg') ?>")}
+.amp-cat a.home-decor > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/homedecor.jpg') ?>")}
+.amp-cat a.sale > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/sale.jpg') ?>")}
+.amp-cat a.vip > span{background-image:url("<?php echo $this->getAmpSkinUrl('images/plumrocket/pramp/photos/vip.jpg') ?>")}
+
+@media (max-width:760px){
+.amp-cat{margin-left:0;margin-right:0}
+.amp-cat a > span{line-height:100px}
+.amp-cat a{width:48%;font-size: 15px;}
+.amp-cat a.sale,.amp-cat a.vip{width:auto;display:block;margin-bottom:2%}
+}
+@media (max-width:550px){
+.amp-cat a{margin-bottom:2%}
+.amp-cat a.sale,.amp-cat a.vip{width:48%;display:inline-block;margin-bottom:2%;margin-top: 0}
+} 

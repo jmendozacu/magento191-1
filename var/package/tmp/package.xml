@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package>
+    <name>Strategery_InfiniteScroll2</name>
+    <version>3.5.3</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/afl-3.0.php">Academic Free License (AFL 3.0)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Automatically load the next page of products by AJAX after the end of the list.</summary>
+    <description>&lt;h2&gt;Description:&lt;/h2&gt;&#xD;
+&lt;p&gt;This extension is for when the user reaches the end of the current product list, the next page is loaded automatically by AJAX after the end of the list.&#xD;
+Easy to install and configure, this module works 100% out of the box with Magento's default theme, and also gives to you the posibility to configurate the custom selectors of your custom theme.&#xD;
+Now you can get a more friendly UI by helping the user to save clicks and time.&lt;/p&gt;&#xD;
+&lt;h2&gt;Installation:&lt;/h2&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;Download from Magento Connect.&lt;/li&gt;&#xD;
+&lt;li&gt;Configure the selectos for your theme on System / Configuration seccion.&lt;/li&gt;&#xD;
+&lt;li&gt;Refresh your Magento cache.&lt;/li&gt;&#xD;
+&lt;li&gt;Scroll to infinity and beyond!&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;h2&gt;Configuration:&lt;/h2&gt;&#xD;
+&lt;p&gt;If you have a different theme other than the default, you will need to copy the default theme files to your custom theme folder and configure the plugin by going to&#xD;
+System / Configuration / Strategery / InfiniteScroll.&lt;br /&gt;&#xD;
+NOTE: If you have another JS module that adds some custom behavior to the product list, remember to use our callback function to add that behavior to the products loaded by InfiniteScroll.&lt;/p&gt;&#xD;
+&lt;h2&gt;Demo:&lt;/h2&gt;&#xD;
+&lt;p&gt;&lt;a href="http://demo.usestrategery.com/infinite-scroll"&gt;http://demo.usestrategery.com/infinite-scroll&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;p&gt;Admin:&lt;br /&gt;&#xD;
+&lt;a href="http://demo.usestrategery.com/infinite-scroll/admin"&gt;http://demo.usestrategery.com/infinite-scroll/admin&lt;/a&gt;&lt;br /&gt;&#xD;
+User: demo&lt;br /&gt;&#xD;
+Password: demo1234&lt;/p&gt;&#xD;
+&lt;h2&gt;Reporting Issues / Support&lt;/h2&gt;&#xD;
+&lt;p&gt;To report issues or request support please visit our &lt;a href="https://github.com/Strategery-Inc/Magento-InfiniteScroll/issues"&gt;Github repository.&lt;/a&gt;&lt;/p&gt;</description>
+    <notes>- Refactor for Marketplace migration.</notes>
+    <authors><author><name>Strategery</name><user>MAG000343402</user><email>contact@usestrategery.com</email></author><author><name>Damian A. Pastorini</name><user>MAG002087848</user><email>damian.pastorini@strategery.io</email></author></authors>
+    <date>2016-11-04</date>
+    <time>13:28:52</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Strategery_Infinitescroll.xml" hash="a5256b7370148292e109ba86b450e914"/></dir></target><target name="magecommunity"><dir name="Strategery"><dir name="Infinitescroll"><dir name="Block"><file name="Init.php" hash="d4fbff4f715a86e331f75b0d1028fb16"/></dir><dir name="Helper"><file name="Data.php" hash="9337c9bc6d01683e365f1f348423cf9b"/></dir><dir name="Model"><dir name="Admin"><file name="Feed.php" hash="280bef470899cf5431847950bf077cdf"/></dir><file name="Observer.php" hash="0dffc39ee08626b27b9781826d2dbd11"/></dir><dir name="etc"><file name="adminhtml.xml" hash="52a5f5e56f8c89be2f5e0a5eae4cc673"/><file name="config.xml" hash="1e7775cfb65f1efcfdd88b4b228d9e69"/><file name="system.xml" hash="c5d96191bf085119b94845eb28b50605"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="strategery-infinitescroll.xml" hash="944f83fad37fd682cc00110c6e74e616"/></dir><dir name="template"><dir name="strategery"><dir name="infinitescroll"><file name="init.phtml" hash="e15b50a0d86ab02451c0be29a0eea237"/><file name="swatches.phtml" hash="f9a9ee9691ac59519df0f29831d3394e"/></dir></dir></dir></dir></dir></dir></target><target name="mage"><dir name="js"><dir name="jquery"><dir name="infinitescroll"><file name="jquery-ias.min.js" hash="cfe10e85a71ad6610334c946d03c1088"/><file name="jquery.easing-1.3.pack.js" hash="83e56485c52e15ff74e1c02615af14af"/><file name="jquery.ui.totop.min.js" hash="c0c43bf13983cd65ab4584b479d2a2d9"/></dir><file name="jquery.1.10.2.min.js" hash="081a630addf862ccdaa440a5705d11af"/></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="js"><dir name="infinitescroll"><file name="ias_config.js" hash="4383a924f5f5447af26c49a4c1283bc2"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

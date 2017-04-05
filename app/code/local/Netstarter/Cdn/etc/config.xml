@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Netstarter_Cdn>
+			<version>0.1.0</version>
+		</Netstarter_Cdn>
+	</modules>
+	<global>
+        <helpers>
+            <cdn>
+                <class>Netstarter_Cdn_Helper</class>
+            </cdn>
+        </helpers>
+        <blocks>
+            <cdn>
+                <class>Netstarter_Cdn_Block</class>
+            </cdn>
+            <page>
+                <rewrite>
+                    <html_head>Netstarter_Cdn_Block_Html_Head</html_head>
+                </rewrite>
+            </page>
+        </blocks>
+        <models>
+            <cdn>
+                <class>Netstarter_Cdn_Model</class>
+            </cdn>
+            <core>
+                <rewrite>
+                    <design_package>Netstarter_Cdn_Model_Package</design_package>
+                </rewrite>
+            </core>
+        </models>
+	</global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <cdn>
+                                            <title>Cdn Config</title>
+                                        </cdn>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

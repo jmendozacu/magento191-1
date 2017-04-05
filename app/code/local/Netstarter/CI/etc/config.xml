@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Netstarter_CI>
+            <version>0.0.1</version>
+        </Netstarter_CI>
+    </modules>
+    <global>
+        <helpers>
+            <ci>
+                <class>Netstarter_CI_Helper</class>
+            </ci>
+        </helpers>
+    </global>
+</config>

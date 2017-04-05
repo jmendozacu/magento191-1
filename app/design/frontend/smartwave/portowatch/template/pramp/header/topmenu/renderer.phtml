@@ -1,0 +1,73 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+$html = '';
+
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$childrenCount = $children->count();
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+foreach ($children as $child) {
+    $child->setLevel($childLevel);
+    $child->setIsFirst($counter == 1);
+    $child->setIsLast($counter == $childrenCount);
+    $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+    $outermostClassCode = 'level'. $childLevel;
+    $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
+    if ($_hasChildren && $childLevel >= 2) {
+        $_hasChildren = false;
+    }
+
+    $html .= '<li '. ($_hasChildren ? $this->_getRenderedMenuItemAttributes($child) : str_replace('parent', '', $this->_getRenderedMenuItemAttributes($child))) .'>';
+    $html .= '<a href="'. ($_hasChildren ? '#submenu' : $this->helper('pramp')->getAmpUrl($child->getUrl())) .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '<div class="'. $childrenWrapClass .'">';
+    }
+
+    $nextChildLevel = $childLevel + 1;
+
+    if (!empty($_hasChildren)) {
+        $html .= '<ul class="level'. $childLevel .'">';
+        $html .=     '<li class="level'. $nextChildLevel .' view-all">';
+        $html .=         '<a class="level'. $nextChildLevel .'" href="'. $this->helper('pramp')->getAmpUrl($child->getUrl()) .'">';
+        $html .=             $this->__('View All') . ' ' . $this->escapeHtml($this->__($child->getName()));
+        $html .=         '</a>';
+        $html .=     '</li>';
+        $html .=     $this->render($child, $childrenWrapClass);
+        $html .= '</ul>';
+    }
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '</div>';
+    }
+
+    $html .= '</li>';
+
+    $counter++;
+}
+
+return $html;

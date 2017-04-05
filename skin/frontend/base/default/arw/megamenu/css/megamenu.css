@@ -1,0 +1,391 @@
+.megamenu {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: auto;
+}
+.megamenu:before,
+.megamenu:after {
+    content: " ";
+    display: table;
+}
+.megamenu:after {
+    clear: both;
+}
+.primary-menu.style-2 .megamenu {
+    margin-top: -1px;
+}
+.primary-menu.style-2 .megamenu > li > a {
+    border-top: 1px solid;
+    border-top-color: transparent;
+}
+.megamenu ul {
+    padding-left: 0;
+}
+.megamenu li {
+    display: inline-block;
+}
+.megamenu li a {
+    display: inline-block;
+    text-transform: capitalize;
+}
+.megamenu li a span {
+    position: relative;
+}
+.megamenu li a span .category_icon {
+    right: 102%;
+    position: absolute;
+    top: 2px;
+}
+.megamenu li a span .cat-label {
+    bottom: 100%;
+    font-size: 11px;
+    line-height: 1.4;
+    left: 75%;
+    margin-bottom: 0.5em;
+    padding: 0 5px;
+    position: absolute;
+}
+.megamenu li a.level-top span .category_icon {
+    right: 105%;
+}
+.megamenu li img {
+    height: auto;
+    max-width: 100%;
+}
+.megamenu > li {
+    float: left;
+}
+.megamenu > li > a {
+    padding: 1.5em 2em;
+    text-transform: uppercase;
+}
+.megamenu > li > a > span {
+    font-size: 1em;
+}
+.megamenu .parent .shown-sub {
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 999;
+}
+.megamenu .level0.sub-wrapper {
+    display: none;
+}
+.megamenu .sub-wrapper {
+    border: 1px solid;
+    padding-top: 2em;
+}
+.megamenu .sub-wrapper.dropdown {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.megamenu .sub-wrapper .container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+.megamenu .sub-wrapper .container.pad-bot-50 {
+    padding-bottom: 0;
+}
+.megamenu .sub-wrapper .arw_tab_slider {
+    margin-top: 0;
+}
+.megamenu .sub-wrapper .arw_tab_slider .slider-tab {
+    display: none;
+}
+.megamenu .sub-wrapper .block.pad-top-50 {
+    padding-top: 0 !important;
+}
+.megamenu .sub-wrapper .block.border-top {
+    border-top: none;
+}
+.megamenu .sub-wrapper .block .block-title {
+    margin-top: 0 !important;
+}
+.megamenu .arwmenu-block ul {
+    list-style: disc;
+}
+.megamenu .arwmenu-block ul:before,
+.megamenu .arwmenu-block ul:after {
+    content: " ";
+    display: table;
+}
+.megamenu .arwmenu-block ul:after {
+    clear: both;
+}
+.megamenu .arwmenu-block ul li {
+    padding-left: 1em;
+}
+.megamenu .arwmenu-block ul li.parent {
+    position: relative;
+}
+.megamenu .arwmenu-block ul li.parent .shown-sub {
+    left: 90%;
+    padding-top: 0;
+    position: absolute;
+    top: 0;
+}
+.megamenu .arwmenu-block ul li.classic {
+    display: block;
+    float: left;
+    width: 100%;
+}
+.megamenu .arwmenu-block ul li.classic a {
+    padding: 0.5em;
+}
+.megamenu .arwmenu-block ul.level0 .title-group {
+    margin-bottom: 1em;
+}
+.megamenu .arwmenu-block ul.level0 > .groups > a {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.megamenu .arwmenu-block ul.level0 > .classic > a {
+    text-transform: uppercase;
+}
+.megamenu .arwmenu-block ul.level0 .no-child .category_image {
+    width: 100%;
+}
+.megamenu .arwmenu-block .groups {
+    margin-bottom: 2em;
+    padding-left: 1.5em;
+}
+.megamenu .arwmenu-block .groups.item {
+    float: left;
+}
+.megamenu .arwmenu-block .groups .title-group {
+    display: block;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-align: left;
+}
+.megamenu .arwmenu-block .groups .category_image {
+    display: block;
+    float: left;
+    width: 40%;
+}
+.megamenu .arwmenu-block .groups .category_image img {
+    height: auto;
+    max-width: 100%;
+}
+.megamenu .arwmenu-block .groups .category_image + .groups-wrapper {
+    display: block;
+    float: right;
+    width: 60%;
+}
+.megamenu .arwmenu-block .groups .groups-wrapper ul li {
+    display: block;
+    float: left;
+    width: 100%;
+}
+.megamenu .arwmenu-block .groups .groups-wrapper ul li a {
+    font-size: 0.929em;
+    padding: 0.25em;
+    white-space: normal;
+}
+.megamenu .arwmenu-block .groups .groups-wrapper ul li a.title-group {
+    margin-bottom: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+.megamenu .m-dropdown {
+    position: relative;
+}
+.megamenu .m-dropdown .dropdown {
+    width: auto;
+}
+.megamenu .m-dropdown .dropdown ul {
+    min-width: 10em;
+}
+.megamenu .m-dropdown .dropdown ul li {
+    display: block;
+    float: left;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+.megamenu .m-dropdown .dropdown ul li a {
+    font-size: 1em;
+    padding: 0.5em;
+}
+.megamenu .m-dropdown .dropdown ul li.classic {
+    padding-right: 0.5em;
+}
+.megamenu .m-dropdown .dropdown ul li.classic .shown-sub {
+    left: 90%;
+    padding-bottom: 0;
+    position: absolute;
+    top: 0;
+}
+.megamenu .m-dropdown .dropdown ul li.groups {
+    margin: 0;
+    padding: 0;
+}
+.megamenu .m-dropdown .dropdown ul li.groups .title-group {
+    margin-bottom: 0;
+}
+.megamenu .m-dropdown .dropdown ul li.groups .groups-wrapper .title-group {
+    margin: 0;
+    padding: 0.5em;
+}
+.megamenu .m-dropdown .dropdown .list_item_dropdown ul.level0 {
+    min-width: 15em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.megamenu .arw_tab_slider {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* COLOR */
+
+.megamenu {
+    background-color: transparent;
+}
+.style-2 .megamenu > li > a:hover,
+.style-2 .megamenu > li > a:active,
+.style-2 .megamenu > li > a:focus {
+    border-top-color: #ec6467;
+}
+.style-2 .megamenu > li.active > a {
+    border-top-color: #ec6467;
+}
+.megamenu ul li a {
+    color: #444444;
+}
+.megamenu ul li a:hover,
+.megamenu ul li a:active,
+.megamenu ul li a:focus {
+    color: #ec6467;
+}
+.megamenu ul li.active > a {
+    color: #ec6467;
+}
+.megamenu > li > a {
+    color: #444444;
+}
+.megamenu > li > a:hover,
+.megamenu > li > a:active,
+.megamenu > li > a:focus {
+    color: #ec6467;
+}
+.megamenu > li.active > a {
+    color: #ec6467;
+}
+.megamenu .sub-wrapper {
+    background-color: #ffffff;
+    border-color: #eeeeee;
+}
+/* Itemgrid: different numbers of columns
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Clear every first item in each row (row: group of n items) */
+
+/* Item grid: 1 column */
+.itemgrid-1col .item { width:98%; }
+
+/* Item grid: 2 columns */
+.itemgrid-2col .item { width:48%; }
+.itemgrid-2col .item:nth-child(2n+1) { clear:left; }
+
+/* Item grid: 3 columns */
+.itemgrid-3col .item { width:31.333%; }
+.itemgrid-3col .item:nth-child(3n+1) { clear:left; }
+
+/* Item grid: 4 columns */
+.itemgrid-4col .item { width:23%; }
+.itemgrid-4col .item:nth-child(4n+1) { clear:left; }
+.itemgrid-4col .item.dop { width:48%; }
+
+/* Item grid: 5 columns */
+.itemgrid-5col .item { width:18%; }
+.itemgrid-5col .item:nth-child(5n+1) { clear:left; }
+.itemgrid-5col .item.dop { width:38%; }
+
+/* Item grid: 6 columns */
+.itemgrid-6col .item { width:14.66%; }
+.itemgrid-6col .item:nth-child(6n+1) { clear:left; }
+.itemgrid-6col .item.dop { width:29.32%; }
+
+/* Item grid: 7 columns */
+.itemgrid-7col .item { width:12.286%; }
+.itemgrid-7col .item:nth-child(7n+1) { clear:left; }
+
+
+/*Grid column*/
+.grid12-12, .grid-full {
+    width: 98%;
+}
+.grid12-1, .grid12-2,
+.grid12-3,
+.grid12-4, .grid12-5,
+.grid12-6, .grid12-7,
+.grid12-8, .grid12-9,
+.grid12-10, .grid12-11,
+.grid12-12, .grid4-1,
+.grid4-2, .grid4-3,
+.grid2-1, .grid-full,
+.grid-col2-sidebar,
+.grid-col2-main {
+    position: relative;
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+/* Grid units */
+.grid12-1,
+.grid12-2,
+.grid12-3,
+.grid12-4,
+.grid12-5,
+.grid12-6,
+.grid12-7,
+.grid12-8,
+.grid12-9,
+.grid12-10,
+.grid12-11,
+.grid12-12,
+
+    /* Deprecated: other grid units */
+.grid4-1,
+.grid4-2,
+.grid4-3,
+.grid2-1,
+
+    /* Alias for full-width units */
+.grid-full,
+
+    /* Special grid units */
+.grid-col2-sidebar,
+.grid-col2-main
+{
+    position:relative;
+    display:inline;
+    float:left;
+    margin-left:1%;
+    margin-right:1%;
+}
+
+/* Basic grid units width */
+.grid12-1	{ width:6.33%; }
+.grid12-2	{ width:14.66%; }
+.grid12-3,
+.grid4-1	{ width:23%; }
+.grid12-4	{ width:31.33%; }
+.grid12-5	{ width:39.67%; }
+.grid12-6,
+.grid4-2,
+.grid2-1	{ width:48%; }
+.grid12-7	{ width:56.33%; }
+.grid12-8	{ width:64.67%; }
+.grid12-9,
+.grid4-3	{ width:73%; }
+.grid12-10	{ width:81.33%; }
+.grid12-11	{ width:89.67%; }
+.grid12-12,
+.grid-full	{ width:98%; }

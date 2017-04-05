@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <placeholders>
+        <catalog_breadcrumbs>
+            <block>page/html_breadcrumbs</block>
+            <name>breadcrumbs</name>
+            <placeholder>PAGE_BREADCRUMBS</placeholder>
+            <container>Netstarter_Modulerewrites_Model_Container_Breadcrumbs</container>
+            <cache_lifetime>86400</cache_lifetime>
+        </catalog_breadcrumbs>
+        <newsletter>
+            <block>newsletter/subscribe</block>
+            <name>footer.newsletter</name>
+            <placeholder>Newsletter_Container</placeholder>
+            <container>Netstarter_Modulerewrites_Model_Container_Newsletter</container>
+            <cache_lifetime>84600</cache_lifetime> 
+        </newsletter>
+        <ismobile>
+            <block>core/template</block>
+            <name>is_mobile</name>
+            <placeholder>IS_MOBILE</placeholder>
+            <container>Netstarter_Modulerewrites_Model_Container_Ismobile</container>
+            <cache_lifetime>84600</cache_lifetime>
+        </ismobile>
+    </placeholders>
+</config>

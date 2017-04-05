@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <curvesence>
+            <label>Try before you buy</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1010</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <tbyb translate="label">
+                    <label>Try before you buy</label>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Is Try Before You Buy Active?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>
+                                * Turning off this option will disable checkout changes, cron and related reports.
+                                * Please turn off the token payment method as well.
+                            </comment>
+                        </active>
+                        <nooffuturepaymentday translate="label">
+                            <label>No of days for future payment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </nooffuturepaymentday>
+                        <pament_methods translate="label">
+                            <label>Payment Methods</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>netstarter_tbyb/source_payment</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pament_methods>
+                        <template_new_order translate="label">
+                            <label>New Order Confirmation Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </template_new_order>
+                        <template_cancelled translate="label">
+                            <label>Cancelled Item Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </template_cancelled>
+                        <template_charged translate="label">
+                            <label>Customer Charged Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </template_charged>
+                    </fields>
+                </tbyb>
+            </groups>
+        </curvesence>
+    </sections>
+</config>

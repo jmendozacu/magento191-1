@@ -1,0 +1,164 @@
+<config>
+    <modules>
+        <Netstarter_Seo>
+            <version>1.0.7</version>
+        </Netstarter_Seo>
+    </modules>
+
+    <admin>
+        <!--<secure_url>
+            <adminmodule>/adminmodule</adminmodule>
+        </secure_url>-->
+        <routers>
+            <nsredirects>
+                <use>admin</use>
+                <args>
+                    <module>Netstarter_Seo</module>
+                    <frontName>nsredirects</frontName>
+                </args>
+            </nsredirects>
+        </routers>
+    </admin>
+
+
+    <frontend>
+        <layout>
+            <updates>
+                <darttag>
+                    <file>seo.xml</file>
+                </darttag>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <models>
+            <netstarter_seo>
+                <class>Netstarter_Seo_Model</class>
+                <resourceModel>netstarter_seo_resource</resourceModel>
+            </netstarter_seo>
+            <netstarter_seo_resource>
+                <class>Netstarter_Seo_Model_Resource</class>
+                <entities>
+                    <seocms>
+                        <table>nets_seocms</table>
+                    </seocms>
+                </entities>
+            </netstarter_seo_resource>
+            <sitemap>
+                <rewrite>
+                    <sitemap>Netstarter_Seo_Model_Sitemap</sitemap>
+                </rewrite>
+            </sitemap>
+            <catalog>
+                <rewrite>
+                    <!--<url>Netstarter_Seo_Model_Catalog_Url</url>-->
+                    <category_attribute_backend_image>Netstarter_Seo_Model_Catalog_Category_Attribute_Backend_Image</category_attribute_backend_image>
+                </rewrite>
+            </catalog>
+            <!--<catalog_resource>
+                <rewrite>
+                    <url>Netstarter_Seo_Model_Resource_Catalog_Url</url>
+                </rewrite>
+            </catalog_resource>-->
+        </models>
+        <blocks>
+            <netstarter_seo>
+                <class>Netstarter_Seo_Block</class>
+            </netstarter_seo>
+            <page>
+                <rewrite>
+                    <html_head>Netstarter_Seo_Block_Page_Html_Head</html_head>
+                </rewrite>
+            </page>
+        </blocks>
+
+        <helpers>
+            <Netstarter_Seo>
+                <class>Netstarter_Seo_Helper</class>
+            </Netstarter_Seo>
+        </helpers>
+
+        <events>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <netstarter_page_edit_tab_content>
+                        <type>singleton</type>
+                        <class>Netstarter_Seo_Model_Observer</class>
+                        <method>cmsField</method>
+                    </netstarter_page_edit_tab_content>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
+
+            <controller_action_layout_render_before_cms_page_view>
+                <observers>
+                    <netstarter_cms_page_metatitle>
+                        <type>singleton</type>
+                        <class>Netstarter_Seo_Model_Observer</class>
+                        <method>setMetaTitle</method>
+                    </netstarter_cms_page_metatitle>
+                </observers>
+            </controller_action_layout_render_before_cms_page_view>
+
+            <controller_action_layout_render_before_cms_page_view>
+                <observers>
+                    <netstarter_cms_canonical_url>
+                        <type>singleton</type>
+                        <class>Netstarter_Seo_Model_Observer</class>
+                        <method>setCanonicalCmsUrl</method>
+                    </netstarter_cms_canonical_url>
+                </observers>
+            </controller_action_layout_render_before_cms_page_view>
+
+
+            <cms_page_prepare_save>
+                <observers>
+                    <netstarter_seocms>
+                        <type>singleton</type>
+                        <class>Netstarter_Seo_Model_Observer</class>
+                        <method>setCmsSeo</method>
+                    </netstarter_seocms>
+                </observers>
+            </cms_page_prepare_save>
+
+            <!-- <catalog_controller_product_init>
+                 <observers>
+                     <netstarter_page_edit_tab_content>
+                         <type>singleton</type>
+                         <class>Netstarter_Seo_Model_Observer</class>
+                         <method>setcanonicalProductUrl</method>
+                     </netstarter_page_edit_tab_content>
+                 </observers>
+             </catalog_controller_product_init>-->
+
+        </events>
+
+
+        <resources>
+            <seo_setup>
+                <setup>
+                    <module>Netstarter_Seo</module>
+                    <class>Netstarter_Seo_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </seo_setup>
+
+            <seo_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </seo_write>
+
+            <seo_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </seo_read>
+        </resources>
+
+    </global>
+
+
+</config>

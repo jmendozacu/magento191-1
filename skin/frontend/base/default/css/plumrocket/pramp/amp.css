@@ -1,0 +1,22 @@
+/*
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+
+.catalog-product-view .wrapper { min-width: 0px; }
+.catalog-product-view .main-container {padding: 0px; margin:0px;}
+.catalog-product-view .product-view .add-to-cart .qty-wrapper,
+.catalog-product-view .product-view .add-to-cart-buttons {margin:0px; padding:0px;}
+.catalog-product-view .product-view .add-to-cart {border:none;margin:0px; padding:0px;}
+.catalog-product-view .product-view .add-to-cart button {margin:0px;}

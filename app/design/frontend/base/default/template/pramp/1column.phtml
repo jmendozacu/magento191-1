@@ -1,0 +1,52 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+<!DOCTYPE html>
+<html amp lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<?php $rtlClass = $this->helper('pramp')->getRtlEnabled() ? 'dir-rtl' : '' ?>
+<body<?php echo $this->getBodyClass() ? ' class="'.$this->getBodyClass() . ' ' . $rtlClass .'"' : ' class="' . $rtlClass . '"' ?>>
+<?php echo $this->getChildHtml('amp_after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('amp.header') ?>
+        <div class="main-container col1-layout">
+            <div class="main">
+                <?php
+                    if ($breadcrumbsHtml = $this->getChildHtml('breadcrumbsContainer')) {
+                        echo $breadcrumbsHtml;
+                    } else {
+                        echo $this->getChildHtml('breadcrumbs');
+                    }
+                ?>
+                <div class="col-main">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+                    <?php echo $this->getChildHtml('content') ?>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('amp.footer') ?>
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+        <?php echo $this->getChildHtml('amp_before_body_end') ?>
+    </div>
+</div>
+<?php //echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <placeholders>
+        <compare_list_sidebar>
+            <block>catalog/product_compare_sidebar</block>
+            <name>catalog.compare.sidebar</name>
+            <placeholder>COMPARELIST_SIDEBAR</placeholder>
+            <container>Enterprise_PageCache_Model_Container_Sidebar_Comparelist</container>
+            <cache_lifetime>86400</cache_lifetime>
+        </compare_list_sidebar>
+    </placeholders>
+</config>

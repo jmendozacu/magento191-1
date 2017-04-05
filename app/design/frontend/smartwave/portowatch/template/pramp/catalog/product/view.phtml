@@ -1,0 +1,125 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+<div class="product-view">
+    <?php
+    $_helper = $this->helper('catalog/output');
+    $_helperAMP = $this->helper('pramp');
+    $_product = $this->getProduct();
+    $_iframeSrc = $_helperAMP->getIframeSrc($_product);
+    ?>
+    <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+    <div class="product-shop">
+        <!-- Product name -->
+        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+    </div>
+
+    <!-- Product image -->
+    <div class="product-img-box">
+        <?php echo $this->getChildHtml('media'); ?>
+    </div>
+    <div class="tvclearfix"></div>
+    <?php
+//get category ids of product to check show logo category
+    $baby_catid = Mage::getStoreConfig("legenda_setting/general_settings/baby_catid");
+    $g_shock_catid = Mage::getStoreConfig("legenda_setting/general_settings/gshock_catid");
+    $cat_ids = $_product->getCategoryIds();
+
+
+//end
+    ?>
+    <div id="brand-wacth">
+        <div id="list-social">
+
+            <a href="https://www.facebook.com/buywatchesonline.com.au/" target="_blank">
+                <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social1.png'; ?>"  height="24" width="24" class="">
+            </a>
+            <a href="http://instagram.com/buywatchesonline.com.au" target="_blank">
+                <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social2.png'; ?>"  height="24" width="24" class="">
+            </a>
+            <a href="https://www.youtube.com/channel/UCsZjmaQxS-BYmiUBhuhoG5g" target="_blank">
+                <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social3.png'; ?>"  height="24" width="24" class="">
+            </a>
+        </div>
+        <?php if (in_array($baby_catid, $cat_ids)) {//Baby G  ?>
+            <p class="more-casio" id="baby-desktop"><a href="/baby-g.html" title="More Casio Baby-G Watches">More Casio Baby-G Watches</a></p>
+            <a class="baby-g" href="/baby-g.html" title="More Casio Baby-G Watches"><img height="168" width="168" src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/babyg.jpg'; ?>" alt="More Casio Baby-G Watches"/></a>
+            <p class="more-casio" id="baby-mobile"><a href="/baby-g.html" title="More Casio Baby-G Watches">More Casio Baby-G Watches</a></p>
+        <?php } ?>
+
+        <?php if (in_array($g_shock_catid, $cat_ids)) {//G Shock   ?>
+            <p class="more-casio" id="g-shock-desktop"><a href="/g-shock.html" title="More Casio G Shock Watches">More Casio G Shock Watches</a></p>
+            <a class="g-shock"  href="/g-shock.html" title="More Casio G Shock Watches"><img height="168" width="168" src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/gshock.jpg'; ?>" alt="More Casio G Shock Watches" /></a>
+            <p class="more-casio" id="g-shock-mobile"><a href="/g-shock.html" title="More Casio G Shock Watches">More Casio G Shock Watches</a></p>
+        <?php } ?>
+    </div>
+    <div class="tvclearfix"></div>
+    <!-- Product description -->
+    <?php if ($_product->getShortDescription()): ?>
+        <div class="short-description">
+            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Review Summary -->
+    <?php echo $this->getReviewsSummaryHtml($_product, 'default', true) ?>
+
+    <div class="product-shop">
+        <?php if (!$_product->canConfigure() && $_product->isSaleable()): ?>
+            <?php echo $this->getPriceHtml($_product) ?>
+            <div>
+                <a class="button btn-cart" href="<?php echo $_helperAMP->getAddToCartUrl($_product) ?>"><i class="icon-cart"></i><?php echo $this->__('Add to Cart'); ?></a>
+                <div class="partner-banner">
+                    <img class="partner-banner_img" src="https://www.buywatchesonline.com.au/skin/frontend/smartwave/portowatch/images/casio.png">
+                </div>
+            </div>
+        <?php elseif ($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+            <?php if ($_iframeSrc) : ?>
+                <div class="iframe-container">
+                    <amp-iframe id="choose-options" width=<?php echo $this->getIframeWidth() ?> height=<?php echo $this->getIframeHeight() ?>
+                                sandbox="allow-scripts allow-forms allow-top-navigation allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox"
+                                layout="responsive"
+                                frameborder="0"
+                                src="<?php echo $_iframeSrc ?>">
+                    </amp-iframe>
+                </div>
+            <?php else : ?>
+                <?php echo $this->getPriceHtml($_product) ?>
+                <a class="button btn-cart" href="<?php echo $_helperAMP->getCanonicalUrl($_product->getUrl(), array('noforce' => 1)); ?>"><?php echo $this->__('Choose Options') ?></a>
+            <?php endif; ?>
+
+        <?php else: ?>
+            <?php echo $this->getPriceHtml($_product) ?>
+            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+        <?php endif; ?>
+
+        <div class="description">
+            <?php
+            $description = $this->helper('catalog/output')->productAttribute($this->getProduct(), $_product->getDescription(), 'description');
+            $description = str_replace('"}}"', '"', $description);
+            echo $description;
+            ?>
+        </div>
+        <?php if ($attributeBlock = $this->getLayout()->getBlock('product.attributes')) : ?>
+            <?php echo $attributeBlock->toHtml() ?>
+        <?php endif; ?>
+    </div>
+    <!-- Review List -->
+    <?php echo $this->getChildHtml('amp.product.review.list') ?>
+    <!-- Related Products -->
+    <?php echo $this->getChildHtml('amp.product.related') ?>
+</div>

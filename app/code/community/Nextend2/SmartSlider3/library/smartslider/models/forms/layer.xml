@@ -1,0 +1,267 @@
+<root>
+  <params name="slide-editor-settings" classes="n2-sidebar-tab-switcher n2-tab-bordered n2-sidebar-tab-bg" type="tabbedsidebar" active="1" underlined="1">
+    <params name="item" type="grouppedsidebar" tip="Layer" icon="n2-i-window-layer">
+      <params name="itemproperties" type="raw" hidetitle="1">
+        <param name="items" type="items" label="" default=""/>
+      </params>
+    </params>
+    <params name="style" type="grouppedsidebar" tip="Design" icon="n2-i-window-design">
+      <params name="basiccss" type="basiccss" hidetitle="1">
+        <params name="basiccssfont" type="basiccssfont" label="Font">
+          <param name="family" label="Family" style="width:150px;" type="family" default="Arial, Helvetica"/>
+          <param name="color" label="Color" type="color" alpha="1" default="000000FF"/>
+          <param name="size" label="Size" type="connected" default="14|*|px" translateable="0">
+            <param type="numberautocompleteslider" style="width: 22px;" min="1" max="100" step="1" values="8,10,12,14,18,24,30,48,72"/>
+            <param type="units">
+              <unit value="px">px</unit>
+              <unit value="%">%</unit>
+            </param>
+          </param>
+          <param name="weight" label="Font weight" type="list" default="" translateable="1">
+            <option value="0">Normal</option>
+            <option value="1">Bold</option>
+            <option value="200">200 - Extra Light</option>
+            <option value="300">300 - Light</option>
+            <option value="600">600 - Semi Bold</option>
+            <option value="700">700 - Bold</option>
+            <option value="800">800 - Extra Bold</option>
+          </param>
+          <param name="lineheight" label="Line height" type="autocompleteslider" default="1" min="0" max="3" step="0.1" style="width:30px;" values="normal,1,1.2,1.5,1.8,2"/>
+          <param name="textalign" type="textalign" label="Text align" default="left"/>
+          <param name="decoration" label="Decoration" type="decoration" default=""/>
+        </params>
+        <params name="basiccssstyle" type="basiccssstyle" label="Style">
+          <param name="backgroundcolor" label="Background color" type="color" alpha="1" default="000000FF"/>
+          <param name="padding" label="Padding" type="connected" default="0|*|0|*|0|*|0|*|px" translateable="0">
+            <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
+            <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
+            <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
+            <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
+            <param type="units">
+              <unit value="px">px</unit>
+              <unit value="em">em</unit>
+              <unit value="%">%</unit>
+            </param>
+          </param>
+          <param name="border" label="Border" type="mixed" default="0|*|solid|*|000000ff" translateable="0">
+            <param type="number" style="width: 22px;">
+              <unit value="px">px</unit>
+            </param>
+            <param type="list" translateable="1">
+              <option value="none">None</option>
+              <option value="dotted">Dotted</option>
+              <option value="dashed">Dashed</option>
+              <option value="solid">Solid</option>
+              <option value="double">Double</option>
+              <option value="groove">Groove</option>
+              <option value="ridge">Ridge</option>
+              <option value="inset">Inset</option>
+              <option value="outset">Outset</option>
+            </param>
+            <param type="color" alpha="1"/></param>
+          <param name="opacity" label="Opacity" type="numberautocomplete" default="100" values="0,50,90,100" style="width: 22px;">
+            <unit value="%">%</unit>
+          </param>
+          <param name="borderradius" label="Border radius" type="numberautocomplete" default="0" values="0,3,5,10,99" style="width: 22px;">
+            <unit value="px">px</unit>
+          </param>
+        </params>
+      </params>
+    </params>
+    <params name="animations" type="grouppedsidebar" tip="Animation" id="smartslider-animation-tab" icon="n2-i-window-animation">
+      <params name="animations-tabbed" classes="n2-sidebar-tab-switcher n2-tab-bordered n2-sidebar-tab-bg" type="tabbedsidebar" active="1" underlined="1">
+        <params name="animations-in" type="grouppedsidebar" label="In" id="smartslider-animation-tab-in">
+          <params name="animations-form" hidetitle="1">
+            <param type="group">
+              <param name="-anim-duration" label="Duration" type="numberautocomplete" default="500" style="width: 40px;" min="0" values="500,800,1000,1500,2000">
+                <unit value="ms">ms</unit>
+              </param>
+              <param name="-anim-delay" label="Delay" type="numberautocomplete" default="0" style="width: 40px;" min="0" values="0,500,800,1000,1500,2000">
+                <unit value="ms">ms</unit>
+              </param>
+              <param name="-anim-ease" label="Easing" type="jqueryeasing" default="easeOutCubic"/></param>
+            <param type="group">
+              <param name="-anim-opacity" label="Opacity" type="numberautocomplete" default="100" style="width: 22px;" min="0" max="100" values="0,50,100">
+                <unit value="%">%</unit>
+              </param>
+              <param label="Offset" type="group">
+                <param name="-anim-x" type="numberautocomplete" sublabel="X" style="width: 32px;" default="0" values="-800,-400,-200,-100,-50,0,50,100,200,400,800">
+                  <unit value="px">px</unit>
+                </param>
+                <param name="-anim-y" type="numberautocomplete" sublabel="Y" style="width: 32px;" default="0" values="-800,-400,-200,-100,-50,0,50,100,200,400,800">
+                  <unit value="px">px</unit>
+                </param>
+              </param>
+            </param>
+            <param label="Rotate" type="group">
+              <param name="-anim-rotationX" type="numberautocomplete" sublabel="X" style="width: 32px;" default="0" values="0,90,180,-90,-180">
+                <unit value="degree">&#xB0;</unit>
+              </param>
+              <param name="-anim-rotationY" type="numberautocomplete" sublabel="Y" style="width: 32px;" default="0" values="0,90,180,-90,-180">
+                <unit value="degree">&#xB0;</unit>
+              </param>
+              <param name="-anim-rotationZ" type="numberautocomplete" sublabel="Z" style="width: 32px;" default="0" values="0,90,180,-90,-180">
+                <unit value="degree">&#xB0;</unit>
+              </param>
+            </param>
+            <param label="Scale" type="group">
+              <param name="-anim-scaleX" type="numberautocomplete" sublabel="X" style="width: 32px;" min="0" default="100" values="0,50,100,150">
+                <unit value="%">%</unit>
+              </param>
+              <param name="-anim-scaleY" type="numberautocomplete" sublabel="Y" style="width: 32px;" min="0" default="100" values="0,50,100,150">
+                <unit value="%">%</unit>
+              </param>
+            </param>
+          </params>
+        </params>
+        <params name="animations-loop" type="grouppedsidebar" label="Loop" id="smartslider-animation-tab-loop">
+          <params name="animations-loop" hidetitle="1" type="raw"></params>
+        </params>
+        <params name="animations-out" type="grouppedsidebar" label="Out" id="smartslider-animation-tab-out">
+          <params name="animations-out" hidetitle="1" type="raw"></params>
+        </params>
+        <params name="animations-events" type="grouppedsidebar" label="Events" id="smartslider-animation-tab-events">
+          <params name="animations-events" hidetitle="1">
+            <param type="editorgroup" label="Events">
+              <param name="in-play-event" type="autocomplete" label="Plays in when:" default="" style="width:260px;">
+                <option>layerAnimationPlayIn</option>
+                <option>LayerClick</option>
+                <option>LayerMouseEnter</option>
+                <option>LayerMouseLeave</option>
+                <option>SlideClick</option>
+                <option>SlideMouseEnter</option>
+                <option>SlideMouseLeave</option>
+                <option>SliderClick</option>
+                <option>SliderMouseEnter</option>
+                <option>SliderMouseLeave</option>
+              </param>
+              <param name="out-play-event" type="autocomplete" label="Plays out when:" default="" style="width:260px;" class="n2-expert">
+                <option>layerAnimationPlayIn</option>
+                <option>LayerClick</option>
+                <option>LayerMouseEnter</option>
+                <option>LayerMouseLeave</option>
+                <option>SlideClick</option>
+                <option>SlideMouseEnter</option>
+                <option>SlideMouseLeave</option>
+                <option>SliderClick</option>
+                <option>SliderMouseEnter</option>
+                <option>SliderMouseLeave</option>
+              </param>
+              <param name="loop-play-event" type="autocomplete" label="Plays loop when:" default="" style="width:260px;" class="n2-expert">
+                <option>layerAnimationPlayIn</option>
+                <option>LayerClick</option>
+                <option>LayerMouseEnter</option>
+                <option>LayerMouseLeave</option>
+                <option>SlideClick</option>
+                <option>SlideMouseEnter</option>
+                <option>SlideMouseLeave</option>
+                <option>SliderClick</option>
+                <option>SliderMouseEnter</option>
+                <option>SliderMouseLeave</option>
+              </param>
+              <param name="loop-pause-event" type="autocomplete" label="Pauses loop when:" default="" style="width:260px;" class="n2-expert">
+                <option>layerAnimationPlayIn</option>
+                <option>LayerClick</option>
+                <option>LayerMouseEnter</option>
+                <option>LayerMouseLeave</option>
+                <option>SlideClick</option>
+                <option>SlideMouseEnter</option>
+                <option>SlideMouseLeave</option>
+                <option>SliderClick</option>
+                <option>SliderMouseEnter</option>
+                <option>SliderMouseLeave</option>
+              </param>
+              <param name="loop-stop-event" type="autocomplete" label="Stops loop when:" default="" style="width:260px;" class="n2-expert">
+                <option>layerAnimationPlayIn</option>
+                <option>LayerClick</option>
+                <option>LayerMouseEnter</option>
+                <option>LayerMouseLeave</option>
+                <option>SlideClick</option>
+                <option>SlideMouseEnter</option>
+                <option>SlideMouseLeave</option>
+                <option>SliderClick</option>
+                <option>SliderMouseEnter</option>
+                <option>SliderMouseLeave</option>
+              </param>
+            </param>
+            <param type="editorgroup" label="Trigger custom event on">
+              <param name="onclick" type="text" label="Click" default="" style="width:73px;"/>
+              <param name="onmouseenter" type="text" label="Mouse enter" default="" style="width:73px;"/>
+              <param name="onmouseleave" type="text" label="Mouse leave" default="" style="width:73px;"/>
+              <param name="onplay" type="text" label="Media started" default="" style="width:73px;"/>
+              <param name="onpause" type="text" label="Media paused" default="" style="width:73px;"/>
+              <param name="onstop" type="text" label="Media stopped" default="" style="width:73px;"/></param>
+          </params>
+        </params>
+      </params>
+    </params>
+    <params name="position" type="grouppedsidebar" tip="Settings" icon="n2-i-window-settings">
+      <params name="layerproperties" label="Layer properties" hidetitle="1">
+        <param type="text" name="generator-visible" label="Hide layer if provided variable is empty" default="" class="n2-ss-generator-param" style="width:270px;"/>
+        <param type="group">
+          <param name="parallax" type="list" label="Parallax depth" default="0" tip="More parallax options in slider settings -&gt; Layer animations tab.">
+            <option value="0">Off</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </param>
+          <param name="crop" type="list" label="Crop" default="visible">
+            <option value="visible">Off</option>
+            <option value="hidden">On</option>
+            <option value="auto">Scroll</option>
+            <option value="mask">Mask</option>
+          </param>
+          <param name="rotation" type="number" label="Rotation" default="0" style="width:32px">
+            <unit>deg</unit>
+          </param>
+        </param>
+        <param type="group">
+          <param type="halign" name="align" label="#Align" default="left"/>
+          <param type="valign" name="valign" label=" " default="top"/></param>
+        <param type="group">
+          <param name="adaptive-font" type="onoff" label="Adaptive sizing" default="0"/>
+          <param name="font-size" type="numberautocomplete" label="#Font size modifier" default="100" style="width:32px" values="60,80,100,120,140,160,180">
+            <unit value="%">%</unit>
+          </param>
+        </param>
+        <param type="group">
+          <param name="left" type="text" label="Position #X" default="" style="width:32px;">
+            <unit value="px">px</unit>
+          </param>
+          <param name="top" type="text" label="Position #Y" default="" style="width:32px;">
+            <unit value="px">px</unit>
+          </param>
+          <param name="responsive-position" type="onoff" label="Responsive" default="1"/></param>
+        <param type="group">
+          <param name="width" type="text" label="#Width" default="" style="width:32px;">
+            <unit value="px">px</unit>
+          </param>
+          <param name="height" type="text" label="#Height" default="" style="width:32px;">
+            <unit value="px">px</unit>
+          </param>
+          <param name="responsive-size" type="onoff" label="Responsive" default="1"/></param>
+        <param type="devices" name="show" label="Show on" default=""/>
+        <param type="group" class="n2-ss-parent-picker n2-expert">
+          <param type="layerpicker" name="parentid" label="Parent" default="" class="n2-layer-picker-container"/>
+          <param type="halign" name="parentalign" label="#Horizontal" default="left"/>
+          <param type="valign" name="parentvalign" label="#Vertical" default="top"/></param>
+        <param type="group">
+          <param name="inneralign" type="list" label="Inner align" default="left">
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+          </param>
+          <param type="text" name="class" label="CSS class" default=""/></param>
+        <param name="resettodesktop" type="button" label="Reset position" default="Reset"/>
+        <param type="text" name="id" label="ID" default="" class="n2-hidden"/>
+      </params>
+    </params>
+  </params>
+</root>

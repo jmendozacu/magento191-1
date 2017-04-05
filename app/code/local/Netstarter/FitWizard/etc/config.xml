@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Netstarter_FitWizard>
+            <version>0.1.3</version>
+        </Netstarter_FitWizard>
+    </modules>
+    <global>
+        <models>
+            <fitwizard>
+                <class>Netstarter_FitWizard_Model</class>
+                <resourceModel>fitwizard_resource</resourceModel>
+            </fitwizard>
+            <fitwizard_resource>
+                <class>Netstarter_FitWizard_Model_Resource</class>
+                <entities>
+                    <fitcategory>
+                        <table>net_fitwizard_category</table>
+                    </fitcategory>
+                    <net_fitwizard_category>
+                        <table>net_fitwizard_category</table>
+                    </net_fitwizard_category>
+                    <net_fitwizard_coupons>
+                        <table>net_fitwizard_coupons</table>
+                    </net_fitwizard_coupons>
+                </entities>
+            </fitwizard_resource>
+        </models>
+        <blocks>
+            <fitwizard>
+                <class>Netstarter_FitWizard_Block</class>
+            </fitwizard>
+        </blocks>
+        <helpers>
+            <fitwizard>
+                <class>Netstarter_FitWizard_Helper</class>
+            </fitwizard>
+        </helpers>
+        <resources>
+            <netstarter_fitwizard_setup>
+                <setup>
+                    <module>Netstarter_FitWizard</module>
+                </setup>
+            </netstarter_fitwizard_setup>
+        </resources>
+
+
+        <fieldsets>
+            <fitwizard_config_options>
+                <cup>
+                    <tab_value>2</tab_value>
+                    <tab_title>Cup Type</tab_title>
+                    <tab_question>Choose your preferred cup type</tab_question>
+                    <options>
+                        <pushup>
+                            <value>1</value>
+                            <title>Push Up</title>
+                            <img>cup_00.png</img>
+                        </pushup>
+                        <contour>
+                            <value>2</value>
+                            <title>Contour</title>
+                            <img>cup_11.png</img>
+                        </contour>
+                        <neither>
+                            <value>3</value>
+                            <title>No Padding / Unlined</title>
+                            <img>cup_22.png</img>
+                        </neither>
+                    </options>
+                </cup>
+                <fullness>
+                    <tab_value>3</tab_value>
+                    <tab_title>UPPER BREAST FULLNESS</tab_title>
+                    <tab_question>Choose the type that best matches your shape</tab_question>
+                    <options>
+                        <top>
+                            <value>1</value>
+                            <title>Full</title>
+                            <img>fullness_00.png</img>
+                        </top>
+                        <semi>
+                            <value>2</value>
+                            <title>Semi Full</title>
+                            <img>fullness_11.png</img>
+                        </semi>
+                        <bottom>
+                            <value>3</value>
+                            <title>Shallow</title>
+                            <img>fullness_22.png</img>
+                        </bottom>
+                    </options>
+                </fullness>
+                <position>
+                    <tab_value>4</tab_value>
+                    <tab_title>POSITION</tab_title>
+                    <tab_question>Choose the type that best matches your shape</tab_question>
+                    <options>
+                        <support>
+                            <value>1</value>
+                            <title>High</title>
+                            <img>position_00.png</img>
+                        </support>
+                        <semi>
+                            <value>2</value>
+                            <title>Medium</title>
+                            <img>position_11.png</img>
+                        </semi>
+                        <full>
+                            <value>3</value>
+                            <title>Low</title>
+                            <img>position_22.png</img>
+                        </full>
+                    </options>
+                </position>
+            </fitwizard_config_options>
+
+            <fitwizard_import_fields>
+                <cup>1</cup>
+                <fullness>2</fullness>
+                <position>3</position>
+                <category_id>4</category_id>
+            </fitwizard_import_fields>
+        </fieldsets>
+
+        <template>
+            <email>
+                <netstarter_fitwizard_emailconfig_email_template translate="label" module="modulerewrites">
+                    <label>Netstarter Bra Finder Email Template</label>
+                    <file>netstarter/fitwizard_coupon.html</file>
+                    <type>html</type>
+                </netstarter_fitwizard_emailconfig_email_template>
+            </email>
+        </template>
+
+    </global>
+    <frontend>
+        <routers>
+            <fitwizard>
+                <use>standard</use>
+                <args>
+                    <module>Netstarter_FitWizard</module>
+                    <frontName>bra-finder</frontName>
+                </args>
+            </fitwizard>
+        </routers>
+        <layout>
+            <updates>
+                <fitwizard>
+                    <file>fitwizard.xml</file>
+                </fitwizard>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <admin_fitwizard>
+                <use>admin</use>
+                <args>
+                    <module>Netstarter_FitWizard</module>
+                    <frontName>bra-finder-admin</frontName>
+                </args>
+            </admin_fitwizard>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <fitwizard_layout>
+                    <file>fitwizard.xml</file>
+                </fitwizard_layout>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

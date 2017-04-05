@@ -1,0 +1,37 @@
+<?php $_cartQty = $this->getSummaryCount() ?>
+<?php $_items = $this->getRecentItems(); ?>
+<?php if(count($_items)): ?>
+    <p class="subtotal">
+        <?php if ($this->canApplyMsrp()): ?>
+            <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+        <?php else: ?>
+            <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+            <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+            <?php endif; ?>
+        <?php endif; ?>
+    </p>
+    <div class="block-content">
+        <p class="block-subtitle"><?php echo $this->__('Recently added item(s)') ?></p>
+        <ol id="cart-sidebar" class="mini-products-list products-list">
+            <?php foreach($_items as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+        </ol>
+        <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+        <div class="actions clear">
+            <a href="<?php echo $this->getUrl('checkout/cart') ?>" class="view-cart full-width text-uppercase clear text-center">
+                <span><?php echo $this->__('Load more') ?></span>
+            </a>
+                        <a href="<?php echo $this->getCheckoutUrl() ?>"><span><?php echo $this->__('Checkout') ?></span></a>
+                        <?php  echo $this->getChildHtml('extra_actions')  ?>
+            <a href="javascript:void(0)" id="arw_remove_product" class="button pull-right text-uppercase clearfix" onclick="">
+                <span><?php echo $this->__('Remove Product') ?></span>
+            </a>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="block-content">
+        <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    </div>
+<?php endif ?>

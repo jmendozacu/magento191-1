@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+            <cartbannerpromotion module="cartbannerpromotion">
+                <title>Manage Cart Promotion</title>
+                <sort_order>80</sort_order>
+
+                <children>
+                    <promotionlist module="cartbannerpromotion">
+                        <title>Cart Promotion List</title>
+                        <sort_order>0</sort_order>
+                        <action>cartbannerpromotion/adminhtml_promotionlist</action>
+                    </promotionlist>
+                </children>
+            </cartbannerpromotion>
+        </menu>
+    <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <cartbannerpromotion>
+                            <title>Manage Cart Promotion</title>
+                            <sort_order>200</sort_order>
+                            <children>
+                                <promotionlist module="cartbannerpromotion" translate="title">
+                                    <title>Cart Promotion Details</title>
+                                    <sort_order>0</sort_order>
+                                </promotionlist>
+                            </children>
+                        </cartbannerpromotion>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+</config>

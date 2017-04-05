@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+        <modules>
+            <Netstarter_DisableQuoteLoading>
+                <version>0.0.1</version>
+            </Netstarter_DisableQuoteLoading>
+        </modules>
+    <frontend>
+        <events>
+            <customer_login>
+                <observers>
+                    <loadCustomerQuote>
+                        <type>disabled</type>
+                    </loadCustomerQuote>
+                </observers>
+            </customer_login>
+        </events>
+    </frontend>
+</config>

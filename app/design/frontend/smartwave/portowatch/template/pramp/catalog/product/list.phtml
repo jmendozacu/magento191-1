@@ -1,0 +1,71 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$_helperAMP = $this->helper('pramp');
+?>
+
+<?php echo $this->getChildHtml('catalog.leftnav') ?>
+<?php echo $this->getChildHtml('catalog.layer.state') ?>
+<?php echo $this->getChildHtml('catalogsearch.leftnav') ?>
+<?php echo $this->getChildHtml('catalogsearch.layer.state') ?>
+<div class="col-left">
+    <?php echo $this->getChildHtml('catalog.left') ?> 
+</div>
+<div class="col-right">
+    <?php $toolbarHtml = $this->getChildHtml('product_list_toolbar') ?> 
+    <ul class="products-grid">
+        <?php foreach ($_productCollection as $_product): ?>
+            <li class="item">
+                <div class="item-area">
+                    <div class="product-image-area" product_url="<?php echo $_product->getProductUrl() ?>">
+                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                            <amp-img width="230" height="230" layout="responsive" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(230); ?>"
+                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" ></amp-img>
+                        </a>
+                    </div>
+                    <div class="details-area product-info">
+                        <h2 class="product-name">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>">
+                                <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                            </a>
+                        </h2>
+                        <div class="price-box"><?php echo $this->getPriceHtml($_product, true) ?></div>
+                        <div class="actions">
+                            <?php if (!$_product->canConfigure() && $_product->isSaleable()): ?>
+                                <a class="button btn-cart" href="<?php echo $_helperAMP->getAddToCartUrl($_product) ?>"><i class="icon-cart"></i><?php echo $this->__('Add to Cart'); ?></a>
+                            <?php elseif ($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                                <?php
+                                $_productUrl = ($_helperAMP->getIframeSrc($_product) == false) ? $_helperAMP->getCanonicalUrl($_product->getProductUrl(), array('noforce' => 1)) : $_helperAMP->getAmpUrl($_product->getProductUrl());
+                                ?>
+                                <a class="button btn-cart" href="<?php echo $_productUrl ?>"><?php echo $this->__('View Details') ?></a>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="clearer"></div>
+                </div>
+            </li>
+<?php endforeach; ?>
+    </ul>
+        <?php echo $toolbarHtml ?>
+</div>

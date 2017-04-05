@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <order>
+                    <children>
+                        <netstarter_retaildirections_rdmissed translate="title" module="netstarter_retaildirections">
+                            <title>RD Missed Orders</title>
+                            <action>adminhtml/rdmissed/index</action>
+                        </netstarter_retaildirections_rdmissed>
+                    </children>
+                </order>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <order>
+                                <children>
+                                    <netstarter_retaildirections_rdmissed translate="title" module="netstarter_retaildirections">
+                                        <title>RD Missed Orders</title>
+                                    </netstarter_retaildirections_rdmissed>
+                                </children>
+                            </order>
+                        </children>
+                    </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <netstarter_retaildirections translate="title" module="netstarter_retaildirections">
+                                        <title>Retail Directions API</title>
+                                    </netstarter_retaildirections>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

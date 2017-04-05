@@ -1,0 +1,38 @@
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <globaltags translate="title" module="Netstarter_Seo">
+                                        <title>Globaltags</title>
+                                        <sort_order>60</sort_order>
+                                    </globaltags>
+                                    <xmlsitemap translate="title" module="Netstarter_Seo">
+                                        <title>Globaltags</title>
+                                        <sort_order>60</sort_order>
+                                    </xmlsitemap>
+                                    <htmlsitemap translate="title" module="Netstarter_Seo">
+                                        <title>Globaltags</title>
+                                        <sort_order>60</sort_order>
+                                    </htmlsitemap>
+                                    <tagmanager translate="title" module="Netstarter_Seo">
+                                        <title>Globaltags</title>
+                                        <sort_order>60</sort_order>
+                                    </tagmanager>
+                                    <nswebredirects translate="title" module="Netstarter_Seo">
+                                        <title>Globaltags</title>
+                                        <sort_order>10</sort_order>
+                                    </nswebredirects>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

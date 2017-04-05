@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_Dhlflatrate>
+            <version>0.0.0.1</version>
+        </Netstarter_Dhlflatrate>
+    </modules>
+    <global>
+        <models>
+            <netstarter_dhlflatrate>
+                <class>Netstarter_Dhlflatrate_Model</class>
+            </netstarter_dhlflatrate>
+        </models>
+        <helpers>
+            <netstarter_dhlflatrate>
+                <class>Netstarter_Dhlflatrate_Helper</class>
+            </netstarter_dhlflatrate>
+        </helpers>
+    </global>
+    <default>
+        <carriers>
+            <netstarter_dhlflatrate>
+                <active>1</active>
+                <model>netstarter_dhlflatrate/carrier_dhlflatrate</model>
+                <title>Netstarter Dhlflatrate</title>
+                <name>Dhlflatrate</name>
+            </netstarter_dhlflatrate>
+        </carriers>
+    </default>
+</config>

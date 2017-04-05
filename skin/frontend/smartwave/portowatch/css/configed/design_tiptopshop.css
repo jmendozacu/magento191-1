@@ -1,0 +1,49 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * 2015-03-12 14:57:19 */
+
+.header-container.type2 .main-nav .menu-wrapper,
+.header-container.type3 .main-nav,
+.header-container.type4 .main-nav .menu-wrapper,
+.header-container.type9 .main-nav .menu-wrapper,
+.header-container.type10 .header-wrapper{
+    background-color:#0088cc;
+}
+.header-container.type1 .main-nav ul.menu>li>a,
+.header-container.type2 .main-nav ul.menu>li>a,
+.header-container.type3 .main-nav ul.menu>li>a,
+.header-container.type4 .main-nav ul.menu>li>a,
+.header-container.type5 .main-nav ul.menu>li>a,
+.header-container.type6 .main-nav ul.menu>li>a,
+.header-container.type7 .main-nav ul.menu>li>a,
+.header-container.type8 .main-nav ul.menu>li>a,
+.header-container.type9 .main-nav ul.menu>li>a,
+.header-container.type10 .main-nav ul.menu>li>a{
+    color:#ffffff;
+}
+.header-container.type1 .main-nav ul.menu>li:hover,.header-container.type1 .main-nav ul.menu>li.act,
+.header-container.type2 .main-nav ul.menu>li:hover,.header-container.type2 .main-nav ul.menu>li.act,
+.header-container.type3 .main-nav ul.menu>li:hover,.header-container.type3 .main-nav ul.menu>li.act,
+.header-container.type4 .main-nav ul.menu>li:hover,.header-container.type4 .main-nav ul.menu>li.act,
+.header-container.type5 .main-nav ul.menu>li:hover,.header-container.type5 .main-nav ul.menu>li.act,
+.header-container.type6 .main-nav ul.menu>li:hover,.header-container.type6 .main-nav ul.menu>li.act,
+.header-container.type7 .main-nav ul.menu>li:hover,.header-container.type7 .main-nav ul.menu>li.act,
+.header-container.type8 .main-nav ul.menu>li:hover,.header-container.type8 .main-nav ul.menu>li.act,
+.header-container.type9 .main-nav ul.menu>li:hover,.header-container.type9 .main-nav ul.menu>li.act,
+.header-container.type10 .main-nav ul.menu>li:hover,.header-container.type10 .main-nav ul.menu>li.act{
+    background-color:#f0f0ed;
+}
+.header-container.type1 .main-nav ul.menu>li:hover>a,.header-container.type1 .main-nav ul.menu>li.act>a,
+.header-container.type2 .main-nav ul.menu>li:hover>a,.header-container.type2 .main-nav ul.menu>li.act>a,
+.header-container.type3 .main-nav ul.menu>li:hover>a,.header-container.type3 .main-nav ul.menu>li.act>a,
+.header-container.type4 .main-nav ul.menu>li:hover>a,.header-container.type4 .main-nav ul.menu>li.act>a,
+.header-container.type5 .main-nav ul.menu>li:hover>a,.header-container.type5 .main-nav ul.menu>li.act>a,
+.header-container.type6 .main-nav ul.menu>li:hover>a,.header-container.type6 .main-nav ul.menu>li.act>a,
+.header-container.type7 .main-nav ul.menu>li:hover>a,.header-container.type7 .main-nav ul.menu>li.act>a,
+.header-container.type8 .main-nav ul.menu>li:hover>a,.header-container.type8 .main-nav ul.menu>li.act>a,
+.header-container.type9 .main-nav ul.menu>li:hover>a,.header-container.type9 .main-nav ul.menu>li.act>a,
+.header-container.type10 .main-nav ul.menu>li:hover>a,.header-container.type10 .main-nav ul.menu>li.act>a{
+    color:#0088cc;
+}
+.main-nav .menu>li.menu-full-width .nav-sublist-dropdown,.main-nav .menu>li.menu-static-width .nav-sublist-dropdown,.fixed-header .menu>li.menu-full-width .nav-sublist-dropdown,.fixed-header .menu>li.menu-static-width .nav-sublist-dropdown{
+}

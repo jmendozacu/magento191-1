@@ -1,0 +1,508 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php
+$store = Mage::app()->getStore();
+$code = $store->getCode();
+$__['day'] = Mage::helper('estimateddeliverydate/data')->__('day');
+$__['days'] = Mage::helper('estimateddeliverydate/data')->__('days');
+$__['hour'] = Mage::helper('estimateddeliverydate/data')->__('hour');
+$__['hours'] = Mage::helper('estimateddeliverydate/data')->__('hours');
+$__['min'] = Mage::helper('estimateddeliverydate/data')->__('minute');
+$__['mins'] = Mage::helper('estimateddeliverydate/data')->__('minutes');
+$__['second'] = Mage::helper('estimateddeliverydate/data')->__('second');
+$__['seconds'] = Mage::helper('estimateddeliverydate/data')->__('seconds');
+
+
+$countdown_format = Mage::getStoreConfig("estimateddeliverydate/display_settings/countdown_format");
+$dynamic_countdown = Mage::getStoreConfig("estimateddeliverydate/display_settings/dynamic_countdown") ? "1" : "0";
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $sPrice = $_product->getSpecialPrice(); ?>
+<?php $_product->load($_product->getId())->setFinalPrice($sPrice)->setMinimalPrice($sPrice); ?>
+<?php
+//get category ids of product to check show logo category
+$baby_catid = Mage::getStoreConfig("legenda_setting/general_settings/baby_catid");
+$g_shock_catid = Mage::getStoreConfig("legenda_setting/general_settings/gshock_catid");
+$cat_ids = $_product->getCategoryIds();
+
+
+//end
+?>
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+            <div class="row">
+                <div class="product-img-box col-sm-5">
+                    <?php echo $this->getChildHtml('media') ?>
+                                           <!--add by fgc-->
+                                           
+                           <div id="brand-wacth">
+                      <div id="list-social">
+                                             
+                                               <a href="https://www.facebook.com/buywatchesonline.com.au/" target="_blank">
+                                                    <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social1.png'; ?>"  height="24" width="24" class="">
+                                                </a>
+                                               <a href="http://instagram.com/buywatchesonline.com.au" target="_blank">
+                                                   <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social2.png'; ?>"  height="24" width="24" class="">
+                                               </a>
+                                                   <a href="https://www.youtube.com/channel/UCsZjmaQxS-BYmiUBhuhoG5g" target="_blank">
+                                                    <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/social3.png'; ?>"  height="24" width="24" class="">
+                                                </a>
+                                           </div>
+                    <?php
+if (in_array($baby_catid, $cat_ids)) {//Baby G  ?>
+  <p class="more-casio" id="baby-desktop"><a href="/baby-g.html" title="More Casio Baby-G Watches">More Casio Baby-G Watches</a></p>
+  <a class="baby-g" href="/baby-g.html" title="More Casio Baby-G Watches"><img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/babyg.jpg'; ?>" alt="More Casio Baby-G Watches"/></a>
+   <p class="more-casio" id="baby-mobile"><a href="/baby-g.html" title="More Casio Baby-G Watches">More Casio Baby-G Watches</a></p>
+<?php }?>
+
+<?php if (in_array($g_shock_catid, $cat_ids)) {//G Shock  ?>
+    <p class="more-casio" id="g-shock-desktop"><a href="/g-shock.html" title="More Casio G Shock Watches">More Casio G Shock Watches</a></p>
+    <a class="g-shock"  href="/g-shock.html" title="More Casio G Shock Watches"><img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/gshock.jpg'; ?>" alt="More Casio G Shock Watches" /></a>
+      <p class="more-casio" id="g-shock-mobile"><a href="/g-shock.html" title="More Casio G Shock Watches">More Casio G Shock Watches</a></p>
+<?php }?>
+   </div>
+                </div>
+                <div class="product-shop col-sm-7">
+                    <?php
+                    if (Mage::getStoreConfig("porto_settings/product_view/prev_next", $code)) {
+                        ?>
+                        <div class="prev-next-products">
+                            <?php $_prev = Mage::helper('porto')->getPreviousProduct(); ?>
+                            <?php $_next = Mage::helper('porto')->getNextProduct(); ?>
+
+                            <?php if ($_prev): ?><a class="product-prev" href="<?php echo $_prev; ?>" title="<?php echo $this->__("Previous Product"); ?>"><?php echo Mage::getStoreConfig("porto_settings/product_view/prev_text", $code); ?></a><?php endif; ?>
+                            <?php if ($_next): ?><a class="product-next" href="<?php echo $_next; ?>" title="<?php echo $this->__("Next Product"); ?>"><?php echo Mage::getStoreConfig("porto_settings/product_view/next_text", $code); ?></a><?php endif; ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    </div>
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+                    <?php if ($_product->getShortDescription()): ?>
+                        <div class="short-description">
+                            <h2><?php echo $this->__('Quick Overview') ?></h2>
+                            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="product-info">
+                        <?php echo $this->getChildHtml('product_type_data') ?>
+                        <?php echo $this->getTierPriceHtml() ?>
+                        <?php echo $this->getChildHtml('extrahint') ?>
+
+                        <script>
+                            var elapsed_time = 0;
+                            function countdown(decrement) {
+                                $$('.edd_countdown').each(function (countdown) {
+
+
+                                    if (countdown) {
+                                        var current_countdown = parseInt(countdown.getAttribute('countdown')) - elapsed_time;
+                                        if (decrement) {
+                                            elapsed_time += 1;
+                                        }
+                                        if (current_countdown <= 0) {
+                                            countdown.update("");
+                                            return;
+                                        }
+                                        var d = Math.floor(current_countdown / 86400);
+                                        var h = Math.floor(current_countdown % 86400 / 3600);
+                                        var m = Math.floor(current_countdown % 86400 % 3600 / 60);
+                                        var s = (current_countdown % 86400 % 3600 % 60);
+
+                                        var timer = new Array();
+                                        if (<?php echo $countdown_format; ?> >= 1) {
+                                            var day = (d > 0) ? ((d > 1) ? (d + " <?php echo $__['days']; ?>") : (d + " <?php echo $__['day']; ?>")) : "";
+                                            if (day != "")
+                                                timer.push(day);
+                                        }
+                                        if (<?php echo $countdown_format; ?> >= 2) {
+                                            var hour = (h > 0) ? ((h > 1) ? (h + " <?php echo $__['hours']; ?>") : (h + " <?php echo $__['hour']; ?>")) : "";
+                                            if (hour != "")
+                                                timer.push(hour);
+                                        }
+                                        if (<?php echo $countdown_format; ?> >= 3) {
+                                            var min = (m > 0) ? ((m > 1) ? (m + " <?php echo $__['mins']; ?>") : (m + " <?php echo $__['min']; ?>")) : "";
+                                            if (min != "")
+                                                timer.push(min);
+                                        }
+                                        if (<?php echo $countdown_format; ?> >= 4) {
+                                            var sec = (s > 0) ? ((s > 1) ? (s + " <?php echo $__['seconds']; ?>") : (s + " <?php echo $__['second']; ?>")) : "";
+                                            if (sec != "")
+                                                timer.push(sec);
+                                        }
+
+                                        countdown.update(timer.join().replace(/,/g, ', '));
+                                    }
+                                })
+                            }
+                            document.observe("dom:loaded", function () {
+                                countdown();
+                                if (<?php echo $dynamic_countdown; ?> == 1) {
+                                    setInterval(function () {
+                                        countdown(true);
+                                    }, 1000);
+                                }
+                            });
+                        </script>
+
+                        <?php
+                        if ($_product->isConfigurable()) {
+
+
+                            $attributes = array();
+                            $_attributes = $_product->getTypeInstance(true)->getConfigurableAttributes($_product);
+                            foreach ($_attributes as $_attribute) {
+                                $attributes[] = Mage::getModel('eav/config')->getAttribute('catalog_product', $_attribute->getAttributeId());
+                            }
+
+
+
+                            $AssociatedProduct = $_product->getTypeInstance()->getUsedProducts();
+                            $children = array();
+                            $i = 0;
+                            foreach ($AssociatedProduct as $child) {
+                                foreach ($attributes as $attr) {
+                                    $children[$i]["attribute" . $attr->getAttributeId()] = $child->getData($attr->getAttributeCode());
+                                }
+                                $children[$i]['message'] = Mage::helper("estimateddeliverydate/data")->getProductMessage($child, Mage::app()->getStore()->getId());
+//            $children[$i]['message'] .="<br>". Mage::helper("estimateddeliverydate/data")->getProductMessage2($child, Mage::app()->getStore()->getId());
+
+                                $i++;
+                            };
+                            ?>
+                            <script>
+                                var edd = <?php echo json_encode($children); ?>;
+                                var launched = false;
+                                document.observe("dom:loaded", function () {
+                                    $$(".super-attribute-select").each(function (sa) {
+
+                                        sa.observe("change", function () {
+                                            attr = [];
+                                            selection = true;
+                                            $$(".super-attribute-select").each(function (s) {
+                                                if (s.value === "")
+                                                    selection = false;
+                                                attr.push({'id': s.id, 'value': s.value});
+                                            });
+
+                                            if (selection) {
+
+                                                edd.each(function (e) {
+                                                    found = true;
+                                                    attr.each(function (a) {
+
+                                                        if (eval("e." + a.id) !== a.value)
+                                                            found = false;
+                                                    });
+                                                    if (found) {
+                                                        $("leattimes").update(e.message);
+                                                        countdown(false);
+                                                    }
+
+                                                })
+                                            } else {
+                                                $("leattimes").update();
+                                            }
+                                        })
+                                    })
+                                })
+
+
+
+
+
+                            </script>
+                            <div class="notice" id="leattimes"></div>
+                        <?php } else { ?>
+                            <div class="notice leattimes" id='leattimes1'> <?php echo Mage::helper("estimateddeliverydate/data")->getProductMessage($_product, Mage::app()->getStore()->getId()); ?></div>
+                            <!--        <div class="notice leattimes" id='leattimes2'> <?php echo Mage::helper("estimateddeliverydate/data")->getProductMessage2($_product, Mage::app()->getStore()->getId()); ?></div>
+                            -->
+                        <?php } ?>
+
+
+
+                        <?php echo $this->getChildHtml('alert_urls') ?>
+                        <?php echo $this->getChildHtml('other'); ?>
+                    </div>
+                    <div class="subsubheader">
+                        <div class="subheader">
+                            <div class="items">
+                                <div class="item">
+                                    <a href="<?php echo $this->getUrl('express-shipping') ?>">
+                                        <span class="nextdayd">Next Day Delivery</span>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="<?php echo $this->getUrl('money-back-guarantee') ?>">
+                                        <span class="easyreturn">Easy 365 day returns</span>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="<?php echo $this->getUrl('official-casio-warranty') ?>">
+                                        <span class="offwarn">Official warranty</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if (!$this->hasOptions()): ?>
+                        <div class="clearer"></div>
+                        <div class="add-to-box">
+                            <?php if ($_product->isSaleable()): ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                                <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php echo $this->getChildHtml('addto') ?>
+                            <?php echo $this->getChildHtml('partner') ?>
+
+                        </div>
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
+                        <div class="clearer"></div>
+                        <div class="add-to-box">
+                            <?php echo $this->getChildHtml('addto') ?>
+
+                        </div>
+                    <?php endif; ?>
+                        <!--add by fgc-->
+                        
+                        <div id="some-help">
+                
+                            <h3>Need some help?</h3>
+                            <p class="some-help-des">Talk with our friendly team number</p>
+                            <div class="some-help-active">
+                               
+                                    <img src="<?php echo Mage::getBaseUrl() . 'skin/frontend/smartwave/portowatch/images/casio/call.jpg'; ?>" alt="call me"/>
+                                  <span>
+                                      Request a Call
+                                </span>
+                            </div>
+        
+                        </div>
+                        
+                        <div id="popup-call-me" class="hide_popup"  data-action="<?php echo Mage::getBaseUrl().'sendmailpopup/index/sendmail'; ?>" >                       
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('call-me')->toHtml();?>
+                            <div id="overlay"></div>     
+                        </div>
+                        
+                        
+
+                    <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('smartwave_sharetool'); ?>
+                </div>
+
+            </div>
+            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif; ?>
+        </form>
+        <?php if (Mage::getStoreConfig('ajaxcart/addtocart/enableproduct') && (Mage::app()->getFrontController()->getRequest()->getModuleName() == "catalog") || (Mage::app()->getFrontController()->getRequest()->getModuleName() == "quickview")): ?>
+            <script type="text/javascript">
+                //<![CDATA[
+                var productAddToCartForm = new VarienForm('product_addtocart_form');
+                productAddToCartForm.submit = function (button, url) {
+                    if (this.validator.validate()) {
+                        var form = this.form;
+                        var oldUrl = form.action;
+
+                        if (url) {
+                            form.action = url;
+                        }
+                        var e = null;
+                        if (!url) {
+                            url = jQuery('#product_addtocart_form').attr('action');
+                        }
+                        if (url.indexOf("wishlist/index/cart") != -1) {
+                            url = url.replace("wishlist/index/cart", "ajaxcart/index/add"); // New Code
+                        } else {
+                            url = url.replace("checkout/cart", "ajaxcart/index"); // New Code
+                        }
+                        if (window.location.href.match("https://") && !url.match("https://")) {
+                            url = url.replace("http://", "https://");
+                        }
+                        if (window.location.href.match("http://") && !url.match("http://")) {
+                            url = url.replace("https://", "http://");
+                        }
+                        var data = jQuery('#product_addtocart_form').serialize();
+                        data += '&isAjax=1';
+                        jQuery('#loading-mask').show();
+                        try {
+                            jQuery.ajax({
+                                url: url,
+                                dataType: 'json',
+                                type: 'post',
+                                data: data,
+                                success: function (data) {
+                                    jQuery('#loading-mask').hide();
+                                    if (data.status == 'ERROR') {
+                                        portoAlert(data.message.replace("<br/>", ""));
+                                    } else {
+                                        if (jQuery('.header .mini-cart')) {
+                                            jQuery('.header .mini-cart').replaceWith(data.toplink);
+                                        }
+                                        if (jQuery('.fixed-header .mini-cart')) {
+                                            jQuery('.fixed-header .mini-cart').replaceWith(data.toplink);
+                                        }
+                                        if (jQuery('.col-right .block.block-cart')) {
+                                            jQuery('.col-right .block.block-cart').replaceWith(data.cart_sidebar);
+                                        }
+    <?php $autoclose = Mage::getStoreConfig('ajaxcart/addtocart/autoclose', $code); ?>
+                                        ajaxcart_sec = <?php echo ($autoclose && is_numeric($autoclose)) ? $autoclose : 5; ?>;
+                                        timer_sec = ajaxcart_sec;
+                                        jQuery('#after-loading-success-message').fadeIn(200);
+                                        ajaxcart_timer = setInterval(function () {
+                                            timer_sec--;
+                                            jQuery('#after-loading-success-message .timer').html(timer_sec);
+                                        }, 1000)
+                                        setTimeout(function () {
+                                            jQuery('#after-loading-success-message').fadeOut(200);
+                                            clearTimeout(ajaxcart_timer);
+                                            setTimeout(function () {
+                                                jQuery('#after-loading-success-message .timer').html(ajaxcart_sec);
+                                            }, 1000);
+                                        }, ajaxcart_sec * 1000);
+                                    }
+                                }
+                            });
+                        } catch (e) {
+                        }
+                        this.form.action = oldUrl;
+                        if (e) {
+                            throw e;
+                        }
+                    }
+                }.bind(productAddToCartForm);
+                //]]>
+            </script>
+        <?php else : ?>
+            <script type="text/javascript">
+                //<![CDATA[
+                var productAddToCartForm = new VarienForm('product_addtocart_form');
+                productAddToCartForm.submit = function (button, url) {
+                    if (this.validator.validate()) {
+                        var form = this.form;
+                        var oldUrl = form.action;
+
+                        if (url) {
+                            form.action = url;
+                        }
+                        var e = null;
+                        try {
+                            this.form.submit();
+                        } catch (e) {
+                        }
+                        this.form.action = oldUrl;
+                        if (e) {
+                            throw e;
+                        }
+
+                        if (button && button != 'undefined') {
+                            button.disabled = true;
+                        }
+                    }
+                }.bind(productAddToCartForm);
+                //]]>
+            </script>
+        <?php endif; ?>
+        <script type="text/javascript">
+            productAddToCartForm.submitLight = function (button, url) {
+                if (this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        </script>
+    </div>
+
+    <div class="product-collateral">
+        <?php echo $this->getChildHtml('product_additional_data'); ?>
+    </div>
+    <?php echo $this->getChildHtml('upsell_products'); ?>
+</div>
+
+<script type="text/javascript">
+    jQuery(function($){
+        $('.some-help-active img').click(function(){
+            $('#popup-call-me').removeClass('hide_popup');
+            $('#popup-call-me').addClass('show_popup');
+        });
+        $('#overlay,#callMeCancel').click(function(){
+             $('#popup-call-me').removeClass('show_popup');
+            $('#popup-call-me').addClass('hide_popup');
+        });
+        $("#callMeSubmit").click(function(){
+            var j = true;
+            if($("#callNumber").val()== "" || $("#callNumber").val()== null){
+            $("#callNumberInvalidMsg").show();
+            $("#callMeErrors").show();
+             j = false;
+            }
+//        if (/^(\()?[2-9]\d{2}(\))?(-|\.)?[2-9]\d{2}(-|\.)?\d{4}$/.test($("#callNumber").val())) $("#callNumberInvalidMsg").hide();
+//        else {
+//            $("#callNumberInvalidMsg").show();
+//            $("#callMeErrors").show();
+//            j = false;
+//        }
+//        if (/^(x)?\d*$/.test($("#callExtension").val())) $("#callExtensionInvalidMsg").hide();
+//        else {
+//            $("#callExtensionInvalidMsg").show();
+//            $("#callMeErrors").show();
+//            j = false;
+//        }
+        if (j == true && $("#callMeErrors").hide())
+        { 
+            $('#callMeModalContent .owl-item.loading').show();
+           // alert($('#send-mail-popup').attr('action'));
+            $.ajax({
+                url:$('#popup-call-me').attr('data-action'),
+                data:"phone_number="+$('#callNumber').val()+"&ext="+$('#callExtension').val(),
+                success:function(data){
+                   if(data == "true"){
+                       $('#callMeModalContent').hide();
+                       $('#callMeModalThankYou').show();
+                       $('#callMeModalContent .owl-item.loading').hide();
+                       setTimeout(function(){   
+                           $('#popup-call-me').removeClass('show_popup');
+                             $('#popup-call-me').addClass('hide_popup');},5000);
+                   }
+                   else{
+                       $("#callMeErrors").show();
+                   }
+                }
+            });
+            return j;}
+          
+        });
+    });
+</script>

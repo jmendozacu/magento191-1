@@ -1,0 +1,23 @@
+/* 
+    Created on : Dec 29, 2016, 8:33:55 AM
+    Author     : Tran Trong Thang
+    Email      : trantrongthang1207@gmail.com
+    Skype      : trantrongthang1207
+*/
+/*.amp-cat amp-img.-amp-layout-responsive i-amp-sizer {
+    display: none !important;
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    padding: 0 !important;
+}
+.amp-cat .-amp-layout-size-defined .-amp-fill-content{
+    position: static;    
+}*/
+.main-container {
+    padding: 10px;
+    position: relative;
+}
+h1 a.logo{
+    margin-bottom: -5%;
+}

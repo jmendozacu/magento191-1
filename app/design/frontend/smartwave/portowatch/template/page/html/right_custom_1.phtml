@@ -1,0 +1,22 @@
+<div class="custom-block custom-block-1">
+    <div>
+        <i class="icn-delivery"></i><h3><a href="<?php echo $this->getUrl('express-shipping');?>">PREE EXPRESS SHIPPING</a> </h3><p>Order before 2pm and we'll ship the same day!
+        </p>
+    </div>
+    <div>
+        <i class="icn-receive-cash"></i><h3><a href="<?php echo $this->getUrl('money-back-guarantee');?>">MONEY BACK GUARANTEE</a></h3><p>100% money back guarantee.</p>
+    </div>
+      <div>
+        <i class="icn-receive-cash"></i><h3><a href="<?php echo $this->getUrl('money-back-guarantee');?>">EASY 365 DAY RETURNS</a></h3><p>Return your purchase within 365 days for a full refund.</p>
+    </div>
+       <div>
+        <i class="icn-receive-cash"></i><h3><a href="<?php echo $this->getUrl('express-shipping');?>">UNBEATABLE CUSTOMER SERVICE</a></h3><p>We are here for you before, during and after your purchase.</p>
+    </div>
+    <div style="display: none">
+        <?php if (Mage::app()->getStore()->getCode() == 'english2'):?>
+            <i class="icn-refresh-shield"></i><h3><a href="<?php echo $this->getUrl('official-casio-warranty');?>">OFFICIAL WARRANTY</a></h3><p>Full Australian Warranty</p>
+        <?php else:?>
+            <i class="icn-refresh-shield"></i><h3><a href="<?php echo $this->getUrl('official-casio-warranty');?>">OFFICIAL WARRANTY</a></h3><p>24 months international warranty</p>
+        <?php endif;?>
+    </div>
+</div>

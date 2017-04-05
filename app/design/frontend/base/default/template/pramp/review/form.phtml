@@ -1,0 +1,89 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+<?php if ($this->getAllowWriteReviewFlag()): ?>
+    <?php $_product = $this->getProductInfo() ?>
+    <div class="product-review-form">
+        <h4><?php echo $this->__('Write Your Own Review') ?></h4>
+        <?php if (Mage::helper('pramp')->isSecure()) : ?>
+            <form method="post" action-xhr="<?php echo Mage::getUrl('pramp/product/post', array('id' => $_product->getId(), '_secure' => true)) ?>" target="_top">
+                <div class="form-row">
+                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>">
+                </div>
+                <?php if (count($this->getRatings())) : ?>
+                    <div class="form-row">
+                        <table class="data-table" id="product-review-form-table">
+                            <thead>
+                                <th>
+                                    <?php for ($i=1;$i<=5;$i++) : ?>
+                                        <td><div class="icon f-fullstar"></div></td>
+                                    <?php endfor; ?>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <?php foreach($this->getRatings() as $_rating): ?>
+                                    <tr>
+                                        <th><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></th>
+                                        <?php foreach ($_rating->getOptions() as $_option): ?>
+                                            <td class="value"><label for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>">
+                                                <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" required></label></td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+                <div class="form-row">
+                    <label for="review_field" class="required"><em>*</em><?php echo $this->__('Let us know your thoughts') ?></label>
+                    <textarea name="detail" id="review_field" required><?php echo $this->escapeHtml($data->getTitle()) ?></textarea>
+                </div>
+                <div class="form-row">
+                <label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
+                    <input type="text" name="title" id="summary_field" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" required>
+                </div>
+                <div class="form-row">
+                    <label for="nickname_field" class="required"><em>*</em><?php echo $this->__("What's your nickname?") ?></label>
+                    <input type="text" name="nickname" id="nickname_field" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" required>
+                </div>
+                <div class="form-row">
+                    <input type="submit" value="Send" class="button button-primary other-input">
+                </div>
+                <div submit-success>
+                  <template type="amp-mustache">
+                    <span class="message-{{result}}">{{message}}
+                  </template>
+                </div>
+                <div submit-error>
+                  <template type="amp-mustache">
+                    <?php echo $this->__('Error') ?>: {{message}}
+                  </template>
+                </div>
+            </form>
+        <?php else : ?>
+            <?php
+                $href = Mage::getUrl('review/product/list', array(
+                    'id' => $_product->getId(),
+                    'category' => $_product->getCategoryId(),
+                    'noforce' => true,
+                    '_fragment' => 'review-form'
+                ));
+            ?>
+            <a href="<?php echo Mage::helper('pramp')->getCanonicalUrl($href); ?>"><?php echo $this->__('Add Your Review') ?></a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

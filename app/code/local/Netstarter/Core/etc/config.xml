@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_Core>
+            <version>0.0.0.1</version>
+        </Netstarter_Core>
+    </modules>
+    <adminhtml>
+        <events>
+            <catalogrule_after_apply>
+                <observers>
+                    <enterprise_pagecache>
+                        <type>disabled</type>
+                    </enterprise_pagecache>
+                </observers>
+            </catalogrule_after_apply>
+        </events>
+    </adminhtml>
+</config>

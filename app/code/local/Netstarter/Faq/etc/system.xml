@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <faq_tab translate="label" module="netstarter_faq">
+            <label>FAQ</label>
+            <sort_order>999</sort_order>
+        </faq_tab>
+    </tabs>
+    <sections>
+        <faq_section translate="label" module="netstarter_faq">
+            <class>separator-top</class>
+            <label>FAQ Settings</label>
+            <tab>faq_tab</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings_tab>
+                    <label>Settings</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <config_faq_description translate="label">
+                            <label>Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_faq_description>
+                        <config_faq_enable translate="label">
+                            <label>Show Description</label>
+                            <comment>Show and Hide Description</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </config_faq_enable>
+                        <config_faq_title translate="label">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_faq_title>
+                        <config_faq_keywords translate="label">
+                            <label>Meta keywords</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_faq_keywords>
+                        <config_faq_meta_description translate="label">
+                            <label>Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_faq_meta_description>
+                    </fields>
+                </settings_tab>
+            </groups>
+        </faq_section>
+    </sections>
+</config>

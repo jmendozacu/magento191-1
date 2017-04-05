@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+* B2B E-Commerce Solutions.
+*
+* @category    B2b
+* @package     B2b_Gtm
+* @author      B2B
+* @copyright   Copyright
+*/
+-->
+<layout version="0.1.0">
+
+    <default translate="label" module="page">
+        <reference name="head">
+            <action method="addItem" ifconfig="sydneyecommerce_gtm/tagmanager/datalayer_funnel_js">
+                <type>skin_js</type>
+                <name>js/sydneyecommerce/tag.js</name>
+            </action>
+        </reference>
+
+        <reference name="after_body_start">
+            <block type="sydneyecommerce_gtm/datalayer" before="-" name="sydneyecommerce.gtm.datalayer"/>
+        </reference>
+    </default>
+
+</layout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <cms>
+                            <children>
+                                <afeature translate="title" module="afeature">
+                                    <title>Afeature</title>
+                                    <sort_order>1</sort_order>
+                                </afeature>
+                            </children>
+                        </cms>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <menu>
+            <cms>
+                <children>
+                    <afeature translate="title" module="afeature">
+                        <title>Afeature</title>
+                        <sort_order>1</sort_order>
+                        <action>afeature/adminhtml_afeature</action>
+                    </afeature>
+                </children>
+            </cms>
+        </menu>
+</config>

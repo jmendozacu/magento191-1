@@ -1,0 +1,8 @@
+<?php 
+	$block = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('free-returns');
+	if($block->getId()):
+?>
+<div class="returns">
+	<?php echo $block->getContent();?>
+</div>
+<?php endif;?>

@@ -1,0 +1,39 @@
+<?php 
+	$rootCatId 	= Mage::app()->getStore()->getRootCategoryId();
+	$collection = Mage::getModel('catalog/category')->getCategories($rootCatId);
+    $helper     = Mage::helper('catalog/category');
+?>
+<div class="container wrap-categories">
+  <div class="row">
+  	<?php foreach ($collection as $_category):?>
+        <?php if($_category->getIsActive()):?>
+        	<?php 
+                $cur_category = Mage::getModel('catalog/category')->load($_category->getId());
+                $_img = $cur_category->getImageUrl();  
+                if ($image = $cur_category->getThumbnail()) {
+			         $_img = Mage::getBaseUrl('media').'catalog/category/'.$image;
+			    } 
+            ?>
+            <div class="col-xs-3">
+		      	<div class="categ-box">
+		        	<div class="categ-img">
+		          		<a href="<?php echo $helper->getCategoryUrl($_category);?>" title="<?php echo $_category->getName(); ?>">
+		          			<img src="<?php echo $_img; ?>" alt="<?php echo $_category->getName(); ?>">
+		          		</a>
+		       		</div>
+		        	<h4>
+		          		<a href="<?php echo $helper->getCategoryUrl($_category);?>" title="<?php echo $_category->getName(); ?>">
+		          		<?php echo $_category->getName(); ?>
+		          		</a>
+		        	</h4>
+		        	<div class="categ-btn-box">
+		          		<a href="<?php echo $helper->getCategoryUrl($_category);?>" class="categ-btn" title="<?php echo $_category->getName(); ?>">
+		          		<?php echo $this->__('Shop Now') ?>
+		          		</a>
+		        	</div>
+		      	</div>
+		    </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_Exacttarget>
+            <version>0.0.0.1</version>
+        </Netstarter_Exacttarget>
+    </modules>
+    <global>
+        <models>
+            <netstarter_exacttarget>
+                <class>Netstarter_Exacttarget_Model</class>
+            </netstarter_exacttarget>
+        </models>
+        <helpers>
+            <netstarter_exacttarget>
+                <class>Netstarter_Exacttarget_Helper</class>
+            </netstarter_exacttarget>
+        </helpers>
+        <blocks>
+            <netstarter_exacttarget>
+                <class>Netstarter_Exacttarget_Block</class>
+            </netstarter_exacttarget>
+        </blocks>
+    </global>
+</config>

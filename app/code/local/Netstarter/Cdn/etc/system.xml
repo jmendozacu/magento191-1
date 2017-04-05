@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <cdn translate="label" module="cdn">
+            <label>Netstarter CDN</label>
+            <sort_order>300</sort_order>
+        </cdn>
+    </tabs>
+    <sections>
+        <cdn translate="label" module="cdn">
+            <label>CDN Settings</label>
+            <tab>cdn</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Turn on:</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </active>
+                        <rev_number translate="label">
+                            <label>Revision Number:</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>                            
+                        </rev_number>                        
+                    </fields>
+                </settings>
+            </groups>
+        </cdn>
+    </sections>
+</config>

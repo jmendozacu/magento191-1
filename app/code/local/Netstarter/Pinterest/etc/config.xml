@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Netstarter_Pinterest>
+            <version>0.0.0.2</version>
+        </Netstarter_Pinterest>
+    </modules>
+    <global>
+        <blocks>
+            <pinterest>
+                <class>Netstarter_Pinterest_Block</class>
+            </pinterest>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <pinterest>
+                <use>standard</use>
+                <args>
+                    <module>Netstarter_Pinterest</module>
+                    <frontName>oembed</frontName>
+                </args>
+            </pinterest>
+        </routers>
+        <layout>
+            <updates>
+                <pinterest>
+                    <file>pinterest.xml</file>
+                </pinterest>
+            </updates>
+        </layout>
+    </frontend>
+</config>

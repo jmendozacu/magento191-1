@@ -1,0 +1,68 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php if($this->getItems()->getSize()) : ?>
+<?php
+    $ration_width = 500;
+    $ration_height = 500;
+?>
+<div class="related-prod-hld">
+    <div class="title"><?php echo $this->__('Related Products:') ?></div>
+    <amp-carousel
+        width="<?php echo $ration_height; ?>"
+        height="<?php echo $ration_height; ?>"
+        layout="responsive"
+        type="slides"
+        autoplay
+        delay="5000"
+    >
+        <?php
+        	/**
+        	 * Select four random products
+        	 */
+            $products = array();
+            foreach($this->getItems() as $_item) {
+            	$products[] = $_item;
+            }
+
+            if (count($products) > 4) {
+                $products = array_slice($products, 0, 4);
+            }
+
+            shuffle($products);
+        ?>
+
+        <?php foreach($products as $product) : ?>
+        	<?php
+                $productName = $this->htmlEscape($product->getName());
+                $productUrl = $product->getProductUrl();
+        	?>
+	        <div>
+	            <a class="img-link" href="<?php echo $productUrl ?>" title="<?php echo $productName ?>"><amp-img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(230, 230) ?>" width="230" height="230" alt="<?php echo $productName ?>"></amp-img></a>
+	            <a href="<?php echo $productUrl ?>" class="prod-link" title="<?php echo $productName ?>">
+	                <span><?php echo $productName ?></span>
+	            </a>
+	            <div class="prod-rate-hld">
+	                <?php echo $this->getReviewsSummaryHtml($product, 'short', false) ?>
+	            </div>
+	            <?php echo $this->getPriceHtml($product, true, '-related') ?>
+	        </div>
+        <?php endforeach ?>
+    </amp-carousel>
+</div>
+<?php endif; ?>

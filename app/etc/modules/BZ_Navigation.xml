@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <BZ_Navigation>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_CatalogSearch/>
+            </depends>
+        </BZ_Navigation>
+    </modules>
+</config>

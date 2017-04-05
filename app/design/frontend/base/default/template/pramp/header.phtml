@@ -1,0 +1,83 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php 
+    $logo = $this->helper('pramp')->getLogoSrc();
+    $searchEnabled = $this->helper('pramp')->isSearchEnabled();
+?>
+<div class="header-container">
+    <div class="header">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+            <amp-img height="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoHeight()); ?>" width="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoWidth()); ?>" layout="responsive" src="<?php echo $logo ? $logo : $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></amp-img>
+        </a>
+    </div>
+
+    <div class="acc-cwrap">
+        <?php if ($searchEnabled) { ?>
+        <a href="<?php echo $this->getUrl('pramp/search'); ?>" class="skip-link skip-search">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->__('Search') ?></span>
+        </a>
+        <?php } ?>
+
+        <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-link skip-account">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->__('Account') ?></span>
+        </a>
+
+        <!-- Cart -->
+        <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-target-element="#header-cart" class="skip-link skip-cart  no-count">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->helper('checkout')->__('Cart') ?></span>
+        </a>
+    </div>
+
+    <div class="desktop">
+        <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+
+    <div class="skip-links <?php echo ($searchEnabled) ? 'links-4' : 'links-3' ?>">
+        <span class="skip-link" aria-haspopup="true">
+            <span class="skip-nav">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Menu') ?></span>
+            </span>
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </span>
+        <?php if ($searchEnabled) { ?>
+        <span class="skip-link">
+            <a href="<?php echo $this->getUrl('pramp/search'); ?>" class="skip-search">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Search') ?></span>
+            </a>
+        </span>
+        <?php } ?>
+        <span class="skip-link">
+            <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-account">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Account') ?></span>
+            </a>
+        </span>
+        <span class="skip-link">
+            <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-target-element="#header-cart" class="skip-cart">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->helper('checkout')->__('Cart') ?></span>
+            </a>
+        </span>
+    </div>
+</div>

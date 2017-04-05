@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+    	<Netstarter_Maintenance>
+    		<version>0.1.0</version>
+    	</Netstarter_Maintenance>
+  	</modules>
+  
+  	<global>
+    	<page>
+			<layouts>
+        		<site_maintenance module="page" translate="label">
+          			<label>Maintenance Page</label>
+          			<template>page/site-maintenance.phtml</template>
+          			<layout_handle>page_site_maintenance</layout_handle>
+        		</site_maintenance>
+        		<!-- add more layouts here -->
+      		</layouts>
+    	</page>
+  	</global>
+</config>

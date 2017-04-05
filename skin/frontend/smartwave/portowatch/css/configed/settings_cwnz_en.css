@@ -1,0 +1,19 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * 2016-02-16 11:26:22 */
+
+div.custom-block{padding-right:50px}
+.mb0{margin-bottom:0;}
+.mt-10{margin-top:10px;}
+.fs-14{font-size:14px !important;}
+.fs-16{font-size:16px;}
+.header .custom-block{
+    max-width: 40%;
+    text-align: center;
+    position: absolute;
+}
+@media(min-width:1200px) {
+	.header .custom-block {		
+             width: 100%;
+	}
+}

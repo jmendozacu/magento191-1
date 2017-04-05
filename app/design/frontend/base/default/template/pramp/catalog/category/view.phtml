@@ -1,0 +1,60 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+	$_helper    = $this->helper('catalog/output');
+	$_category  = $this->getCurrentCategory();
+	$_imgHtml   = '';
+	if ($_imgUrl = $_category->getImageUrl()) {
+	    $_imgHtml = '<p class="category-image"><amp-img height="568" width="1302" layout="responsive" src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" ></amp-img></p>';
+	    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+	}
+
+	$_description = $this->getCurrentCategory()->getDescription();
+	$isLongDescription = strlen($_description) > 700;
+?>
+<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+
+<?php if (!$isLongDescription) { ?>
+	<?php if($_imgUrl): ?>
+	    <?php echo $_imgHtml ?>
+	<?php endif; ?>
+	<?php if($_description): ?>
+	    <p><?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?></p>
+	<?php endif; ?>
+<?php } ?>
+
+<?php if($this->isContentMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+
+<?php elseif($this->isMixedMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+    <?php echo $this->getChildHtml('product_list') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('product_list') ?>
+<?php endif; ?>
+
+<?php if ($isLongDescription) { ?>
+	<?php if($_imgUrl): ?>
+	    <?php echo $_imgHtml ?>
+	<?php endif; ?>
+	<?php if($_description): ?>
+	    <p><?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?></p>
+	<?php endif; ?>
+<?php } ?>

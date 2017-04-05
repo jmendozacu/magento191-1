@@ -1,0 +1,112 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+$logo = $this->helper('pramp')->getLogoSrc();
+$searchEnabled = $this->helper('pramp')->isSearchEnabled();
+?>
+
+<div class="header-container">
+    <div class="header">
+        <div class="customer-area">
+            <span class="skip-link">
+                <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-account">
+                    <i class="icon-profile-1"></i>
+                </a>
+            </span>
+        </div>
+        <?php if ($this->getIsHomePage()): ?>
+            <h1>
+                <strong><?php echo $this->getLogoAlt() ?></strong>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                    <amp-img height="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoHeight()); ?>" width="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoWidth()); ?>" layout="responsive" src="<?php echo $logo ? $logo : $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" ></amp-img>
+                </a>
+            </h1>
+        <?php else: ?>
+            <h1>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                    <amp-img height="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoHeight()); ?>" width="<?php echo $this->escapeHtml($this->helper('pramp')->getLogoWidth()); ?>" layout="responsive" src="<?php echo $logo ? $logo : $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></amp-img>
+                </a>
+            </h1>
+        <?php endif ?>
+        <div class="iconsarea">
+            <div class="cart-area">
+                <?php echo $this->getChildHtml('minicart'); ?>
+            </div>
+        </div>
+    </div>
+    <div id="header-search" class="tvheader-container">
+        <?php echo $this->getChildHtml('topSearch') ?>
+    </div>
+
+    <div class="menu-icon"><a href="javascript:void(0)"><i class="tvfa tvfa-bars"></i></a><span>MENU</span></div> 
+    <?php echo $this->getChildHtml('mobile.nav') ?>
+
+    <div class="acc-cwrap">
+        <?php if ($searchEnabled) { ?>
+            <a href="<?php echo $this->getUrl('pramp/search'); ?>" class="skip-link skip-search">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Search') ?></span>
+            </a>
+        <?php } ?>
+
+        <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-link skip-account">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->__('Account') ?></span>
+        </a>
+
+        <!-- Cart -->
+        <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-target-element="#header-cart" class="skip-link skip-cart  no-count">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->helper('checkout')->__('Cart') ?></span>
+        </a>
+    </div>
+
+    <div class="desktop">
+        <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+</div>
+<div class="subheader">
+    <div class="items row">
+        <div class="item">
+            <a href="<?php echo $this->getUrl('express-shipping') ?>">
+                <span class="nextdayd">Free Next Day Delivery</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('money-back-guarantee') ?>">
+                <span class="easyreturn">Easy 365 day returns</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('official-casio-warranty') ?>">
+                <span class="offwarn">Official warranty</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('melbourne-warehouse') ?>">
+                <span class="warehouse">melbourne warehouse</span>
+            </a>
+        </div>
+        <div class="item lastitem">
+            <a href="tel:1-300-484-505">
+                <span class="phonenum">1300 484 505</span>
+            </a>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Netstarter_Wrightexpress>
+            <version>0.0.0.1</version>
+        </Netstarter_Wrightexpress>
+    </modules>
+    <global>
+        <models>
+            <wrightexpress>
+                <class>Netstarter_Wrightexpress_Model</class>
+            </wrightexpress>
+        </models>
+        <helpers>
+            <wrightexpress>
+                <class>Netstarter_Wrightexpress_Helper</class>
+            </wrightexpress>
+        </helpers>
+    </global>
+    <default>
+        <giftcardsapi>
+            <wrightexpress>
+                <active>1</active>
+                <model>wrightexpress/giftcard</model>
+                <name>Wrightexpress</name>
+                <title>Wright Express</title>
+            </wrightexpress>
+        </giftcardsapi>
+    </default>
+</config>

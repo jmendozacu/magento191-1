@@ -1,0 +1,313 @@
+<config>
+    <modules>
+        <Netstarter_Modulerewrites>
+            <version>0.0.5</version>
+        </Netstarter_Modulerewrites>
+    </modules>
+
+    <admin>
+        <fieldsets>
+            <customer_dataflow>
+                <city>
+                    <billing>1</billing>
+                    <shipping>1</shipping>
+                </city>
+            </customer_dataflow>
+        </fieldsets>
+
+
+        <!--  Magento Error with PHP version admin currency  page goes to 404 page-->
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Netstarter_Modulerewrites before="Mage_Adminhtml">Netstarter_Modulerewrites</Netstarter_Modulerewrites>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <!-- Add pdf upload to WYSIWYG -->
+    <adminhtml>
+        <layout>
+            <updates>
+                <Netstarter_Modulerewrites>
+                    <file>netstarter/adminemail.xml</file>
+                </Netstarter_Modulerewrites>
+            </updates>
+        </layout>
+        <cms>
+            <browser>
+                <extensions>
+                    <allowed>
+                        <jpg>1</jpg>
+                        <jpeg>1</jpeg>
+                        <png>1</png>
+                        <gif>1</gif>
+                        <flv>1</flv>
+                        <zip>1</zip>
+                        <pdf>1</pdf>
+                        <mp3>1</mp3>
+                        <mp4>1</mp4>
+                        <doc>1</doc>
+                        <gz>1</gz>
+                        <xml>1</xml>
+                        <xls>1</xls>
+                        <xlsx>1</xlsx>
+                        <csv>1</csv>
+                        <odf>1</odf>
+                    </allowed>
+                    <image_allowed>
+                        <jpg>1</jpg>
+                        <jpeg>1</jpeg>
+                        <png>1</png>
+                        <gif>1</gif>
+                    </image_allowed>
+                    <media_allowed>
+                        <flv>1</flv>
+                        <swf>1</swf>
+                        <avi>1</avi>
+                        <mov>1</mov>
+                        <rm>1</rm>
+                        <wmv>1</wmv>
+                    </media_allowed>
+                </extensions>
+            </browser>
+        </cms>
+    </adminhtml>
+
+    <global>
+        <blocks>
+            <modulerewrites>
+                <class>Netstarter_Modulerewrites_Block</class>
+            </modulerewrites>
+            <page>
+                <rewrite>
+                    <switch>Netstarter_Modulerewrites_Block_Page_Switch</switch>
+                </rewrite>
+            </page>
+            <customer>
+                <rewrite>
+                    <account_navigation>Netstarter_Modulerewrites_Block_Customer_Account_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+            <adminhtml>
+                <rewrite>
+                    <system_email_template_edit>Netstarter_Modulerewrites_Block_Adminhtml_System_Email_Template_Edit</system_email_template_edit>
+                    <system_email_template_edit_form>Netstarter_Modulerewrites_Block_Adminhtml_System_Email_Template_Edit_Form</system_email_template_edit_form>
+                    <cms_wysiwyg_images_content_files>Netstarter_Modulerewrites_Block_Adminhtml_Cms_Wysiwyg_Images_Content_Files_Thumb</cms_wysiwyg_images_content_files>
+                    <newsletter_subscriber_grid>Netstarter_Modulerewrites_Block_Adminhtml_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+            <wishlist>
+                <rewrite>
+                    <share_email_items>Netstarter_Modulerewrites_Block_Wishlist_Share_Email_Items</share_email_items>
+                </rewrite>
+            </wishlist>
+            <enterprise_importexport>
+                <rewrite>
+                    <adminhtml_scheduled_operation_edit_form_export>Netstarter_Modulerewrites_Block_ImportExport_Adminhtml_Scheduled_Operation_Edit_Form_Export</adminhtml_scheduled_operation_edit_form_export>
+                </rewrite>
+            </enterprise_importexport>
+        </blocks>
+        <helpers>
+            <modulerewrites>
+                <class>Netstarter_Modulerewrites_Helper</class>
+            </modulerewrites>
+            <catalog>
+                <rewrite>
+                    <product_compare>Netstarter_Modulerewrites_Helper_Catalog_Product_Compare</product_compare>
+                </rewrite>
+            </catalog>
+            <cms>
+                <rewrite>
+                    <wysiwyg_images>Netstarter_Modulerewrites_Helper_Cms_Wysiwyg_Images_File</wysiwyg_images>
+                </rewrite>
+            </cms>
+        </helpers>
+        <models>
+            <modulerewrites>
+                <class>Netstarter_Modulerewrites_Model</class>
+            </modulerewrites>
+            <customer>
+                <rewrite>
+                    <address>Netstarter_Modulerewrites_Model_Customer_Address</address>
+                    <customer>Netstarter_Modulerewrites_Model_Customer_Customer</customer>
+                </rewrite>
+            </customer>
+            <enterprise_pagecache>
+                <rewrite>
+                    <container_breadcrumbs>Netstarter_Modulerewrites_Model_Container_Breadcrumbs</container_breadcrumbs>
+                </rewrite>
+            </enterprise_pagecache>
+            <captcha>
+                <rewrite>
+                    <zend>Netstarter_Modulerewrites_Model_Captcha_Zend</zend>
+                </rewrite>
+            </captcha>
+            <directory_resource>
+                <rewrite>
+                    <country_collection>Netstarter_Modulerewrites_Model_Directory_Resource_Country_Collection</country_collection>
+                </rewrite>
+            </directory_resource>
+            <newsletter>
+                <rewrite>
+                    <subscriber>Netstarter_Modulerewrites_Model_Newsletter_Subscriber</subscriber>
+                </rewrite>
+            </newsletter>
+            <catalogsearch_resource>
+                <rewrite>
+                    <fulltext>Netstarter_Modulerewrites_Model_CatalogSearch_Resource_Fulltext</fulltext>
+                </rewrite>
+            </catalogsearch_resource>
+            <paypal>
+                <rewrite>
+                    <api_nvp>Netstarter_Modulerewrites_Model_Paypal_Api_Nvp</api_nvp>
+                </rewrite>
+            </paypal>
+            <log_resource>
+                <rewrite>
+                    <visitor>Netstarter_Modulerewrites_Model_Resource_Log_Visitor</visitor>
+                </rewrite>
+            </log_resource>
+            <enterprise_importexport>
+                <rewrite>
+                    <scheduled_operation_data>Netstarter_Modulerewrites_Model_ImportExport_Adminhtml_Scheduled_Operation_Data</scheduled_operation_data>
+                    <scheduled_operation>Netstarter_Modulerewrites_Model_ImportExport_Scheduled_Operation</scheduled_operation>
+                </rewrite>
+            </enterprise_importexport>
+            <enterprise_reward>
+                <rewrite>
+                    <observer>Netstarter_Modulerewrites_Model_Reward_Observer</observer>
+                </rewrite>
+            </enterprise_reward>
+        </models>
+
+        <events>
+            <!-- enable captcha for contact us form -->
+            <!-- Change by Mahbub remove captcha on 07/07/2014-->
+            <!--<controller_action_predispatch_contacts_index_post>
+                <observers>
+                    <modulerewrites_contacts_observer>
+                        <class>Netstarter_Modulerewrites_Model_Contacts_Observer</class>
+                        <method>checkCaptcha</method>
+                    </modulerewrites_contacts_observer>
+                </observers>
+            </controller_action_predispatch_contacts_index_post>-->
+            <!-- Change by Mahbub remove captcha on 07/07/2014-->
+            <!-- If the customer is guest, and submit for account creation after order placement, assign the most recent order to the customer-->
+            <customer_register_success>
+                <observers>
+                    <modulerewrites_customer_observer>
+                        <class>Netstarter_Modulerewrites_Model_Customer_Observer</class>
+                        <method>reassignOrder</method>
+                    </modulerewrites_customer_observer>
+                </observers>
+            </customer_register_success>
+            <!-- end -->
+
+            <!-- set subscribe register date for subscribe list -->
+            <newsletter_subscriber_save_before>
+                <observers>
+                    <modulerewrites_newsletter_observer>
+                        <class>modulerewrites/newsletter_observer</class>
+                        <method>saveNewsletterSubscriberObserve</method>
+                    </modulerewrites_newsletter_observer>
+                </observers>
+            </newsletter_subscriber_save_before>
+            <!-- end -->
+        </events>
+
+        <resources>
+            <netstarter_customer_setup>
+                <setup>
+                    <module>Netstarter_Modulerewrites</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </netstarter_customer_setup>
+        </resources>
+
+    </global>
+    <!-- enable captcha for contact us form -->
+
+    <default>
+        <captcha>
+            <frontend>
+                <areas>
+                    <contact_form>
+                        <label>Contact Form</label>
+                    </contact_form>
+                </areas>
+            </frontend>
+        </captcha>
+        <customer>
+            <captcha>
+                <always_for>
+                    <contact_form>1</contact_form>
+                </always_for>
+            </captcha>
+        </customer>
+    </default>
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>default</name>
+                </package>
+                <theme>
+                    <default>bnt</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
+    <!-- Module: Mage_Newsletter rewrites for modifications -->
+
+    <frontend>
+        <routers>
+            <rewrites>
+                <use>standard</use>
+                <args>
+                    <module>Netstarter_Modulerewrites</module>
+                    <frontName>rewrites</frontName>
+                </args>
+            </rewrites>
+            <newsletter>
+                <args>
+                    <modules>
+                        <Netstarter_Modulerewrites before="Mage_Newsletter">Netstarter_Modulerewrites_Newsletter</Netstarter_Modulerewrites>
+                    </modules>
+                </args>
+            </newsletter>
+            <review>
+                <args>
+                    <modules>
+                        <Netstarter_Modulerewrites before="Mage_Review">Netstarter_Modulerewrites_Review</Netstarter_Modulerewrites>
+                    </modules>
+                </args>
+            </review>
+            <customer>
+                <args>
+                    <modules>
+                        <Netstarter_Modulerewrites before="Mage_Customer">Netstarter_Modulerewrites_Customer</Netstarter_Modulerewrites>
+                    </modules>
+                </args>
+            </customer>
+            <shipping>
+                <args>
+                    <modules>
+                        <Netstarter_Modulerewrites before="Mage_Shipping">Netstarter_Modulerewrites_Shipping</Netstarter_Modulerewrites>
+                    </modules>
+                </args>
+            </shipping>
+        </routers>
+        <cache>
+            <requests>
+                <cms>modulerewrites/processor_cms</cms>
+            </requests>
+        </cache>
+    </frontend>
+
+</config>

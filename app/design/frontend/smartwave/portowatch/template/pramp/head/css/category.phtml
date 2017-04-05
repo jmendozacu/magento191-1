@@ -1,0 +1,91 @@
+<?php
+$priceTextColor = $this->helper('pramp')->getPriceTextColor();
+$buttonBgColor = $this->helper('pramp')->getButtonBgColor();
+$buttonBgColorHover = $this->helper('pramp')->getButtonBgColorHover();
+$buttonTextColor = $this->helper('pramp')->getButtonTextColor();
+$buttonTextColorHover = $this->helper('pramp')->getButtonTextColorHover();
+$linkColor = $this->helper('pramp')->getLinkColor();
+$linkColorHover = $this->helper('pramp')->getLinkColorHover();
+?>
+
+.block-layered-nav{width:23%;float:left;padding-right:2%}
+.dir-rtl .block-layered-nav{float:right;padding-right:0;padding-left:2%}
+#narrow-by-list{border:1px solid #ccc;border-bottom:0;font-size:14px}
+#narrow-by-list span{font-size:14px}
+.dir-rtl #narrow-by-list span.count{float:right;display:inline-block;margin-left:3px}
+span.swatch-label amp-img{top:3px}
+.block-layered-nav .block-content>dl>dt{background:#f4f4f4;padding:8px 10px}
+.block-layered-nav .block-content>dl>dd{padding:10px 10px 10px 25px;margin:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+.block-layered-nav a:hover{color:<?php echo $linkColor; ?>}
+.block-layered-nav dd span{color:#a0a0a0}
+.block-layered-nav .block-subtitle{display:none;margin:5px 0;text-transform:uppercase;font-weight:700}
+.block-layered-nav .currently-show .block-subtitle{display:block}
+.block-layered-nav .currently li{margin:0 0 5px 10px}
+.btn-remove{float:right;margin-left:6px;display:inline-block;width:20px;height:20px;border:1px solid #ededed;text-align:center;font:0/0 a;text-shadow:none;color:transparent;position:relative;background:#ffffff}
+.btn-remove:hover{background:<?php echo $linkColorHover; ?>}
+.btn-remove:before{content:"";display:inline-block;width:12px;height:13px;position:absolute;border-top:1px solid <?php echo $linkColor; ?>;transform:rotate(45deg);transform-origin:center;top:50%;left:50%;margin-top:-2px;margin-left:-11px}
+.btn-remove:after{content:"";display:inline-block;width:12px;height:12px;position:absolute;border-top:1px solid <?php echo $linkColor; ?>;transform:rotate(-47deg);transform-origin:center;top:50%;left:50%;margin-top:-2px;margin-left:-2px}
+
+
+.toolbar{margin:0 0 5px;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f4f4f4;padding:0 10px;font-size:0px}
+.sortby-lable{font-size:13px;display:inline-block;margin-right:7px}
+.toolbar a:hover{text-decoration:none}
+.sorter{float:left;margin:7px 0}
+.dir-rtl .sorter{float:right}
+.sorter a.sorter-active{color:<?php echo $linkColorHover; ?>}
+.sorter a{display:inline-block;margin-right:5px;line-height:30px;border:1px solid #ccc;padding:0 5px;background:#fff;font-size:13px}
+.pager{overflow:hidden}
+.toolbar p{margin:9px 0 5px}
+.sort-by-switcher{display:inline-block;width:25px;height:30px;overflow:hidden;text-indent:-999px;vertical-align:middle;text-align:center;vertical-align:top}
+.sort-by-switcher:before{font-family:font-icon;font-size:13px;display:block;text-indent:0}
+.sort-by-switcher.sort-asc:before{content:"\e904"}
+.sort-by-switcher.sort-desc:before{content:"\e905"}
+
+.col-right{width:75%;float:left}
+.col-right>ol,.col-right>ul{font-size:0}
+.col-right>ol li,.col-right>ul li{width:25%;display:inline-block;position:relative;margin:0 0 20px 0;text-align:center;font-size:14px;vertical-align:top;padding:5px;box-sizing:border-box}
+.col-right>ol li h2,.col-right>ul li h2{min-height:32px;text-transform:uppercase;margin:5px 0;font-size:14px;font-family:"Raleway","Helvetica Neue",Verdana,Arial,sans-serif}
+.col-main li .link-learn{background:#3399cc;display:block;padding:7px 15px;color:#FFFFFF;font-size:13px;text-transform:uppercase;max-width:120px;margin:5px auto}
+.col-main li .link-learn:hover{background:#2e8ab8;text-decoration:none}
+.col-main li .price-box p{display:inline-block;margin:0}
+.col-main li .price{color:<?php echo $priceTextColor ?>;font-size:16px}
+.col-main li .old-price .price{color:#a0a0a0;text-decoration:line-through}
+.col-main li .btn-cart{background:<?php echo $buttonBgColor  ?>;display:inline-block;padding:7px 15px;border:0;
+ color:<?php echo $buttonTextColor ?> ;font-size:13px;line-height:normal;text-transform:uppercase;margin:10px 0 0 0}
+.col-main li .btn-cart:hover{background:<?php echo $buttonBgColorHover ?>;text-decoration:none; color:<?php echo $buttonTextColorHover?>}
+.col-main li .price-label{display:none};
+.col-main .toolbar{margin:10px 0 15px 0;border-bottom:1px solid #ccc;border-top:1px solid #ccc;background:#f4f4f4;padding:0 10px}
+.pages{margin-bottom:10px}
+.pages ol,pages ul{display:inline-block}
+.pages li{display:inline-block;padding:0 5px}
+.pager p{margin:9px 0 5px;font-size:13px}
+@media (max-width:780px){
+.col-right>ol li,.col-right>ul li{width:50%}
+.col-right{width:100%;float:none}
+
+.block-layered-nav{width:100%;float:none;padding:0 0 2%;position:relative}
+.dir-rtl .block-layered-nav{float:none}
+.block-layered-nav .block-title{display:none}
+.block-layered-nav .block-content>.block-subtitle{background:<?php echo $linkColor; ?>;display:block;margin:7px 0 0 0;padding:8px 10px;color:#fff}
+.block-layered-nav .block-content>.block-subtitle:before{content:"";width:0;height:0;border-style:solid;border-width:4px 0 4px 4px;border-color:transparent transparent transparent #fff;display:inline-block;vertical-align:middle;margin:-2px 8px 0 0}
+.dir-rtl .block-layered-nav .block-content>.block-subtitle:before{margin:-2px 0 0 8px;border-width:4px 4px 4px 0;border-color:transparent #fff transparent transparent}
+.block-layered-nav .block-content:hover #narrow-by-list{height:auto;padding:10px;}
+#narrow-by-list{border-top:0;border-bottom:1px solid #ccc;margin:0;height:0;overflow:hidden}
+.block-layered-nav:hover:after{content:"";display:block;position:absolute;width:100%;min-height:300px;z-index:500}
+.block-layered-nav .block-content>dl>dt{border:1px solid #ccc;border-top:0}
+.block-layered-nav .block-content>dl>dt:before{content:"";width:0;height:0;border-style:solid;border-width:4px 0 4px 4px;border-color:transparent transparent transparent <?php echo $linkColor; ?>;display:inline-block;vertical-align:middle;margin:-2px 8px 0 0}
+.dir-rtl .block-layered-nav .block-content>dl>dt:before{border-width:4px 4px 4px 0;border-color:transparent #39C transparent transparent;margin:-2px 0 0 8px}
+.block-layered-nav .block-content>dl>dd{height:0;padding:0;border-top:0;overflow:hidden;border:0;position:relative}
+.block-layered-nav .block-content>dl>dt:hover+dd,.block-layered-nav .block-content>dl>dd:hover{height:auto;min-height:150px;max-height:150px;overflow-y:auto;padding:10px 10px 10px 25px;border:1px solid #ccc;border-top:0;}
+.block-layered-nav .block-content>dl>dd:before{content:"";display:block;position:absolute;width:100%;height:100%;left:0;top:0;z-index:100;transition:all 1s 0s;visibility:visible}
+.block-layered-nav .block-content>dl>dt:hover+dd:before,.block-layered-nav .block-content>dl>dd:hover:before{visibility:hidden}
+.block-layered-nav .block-content>dl>dt:first-child{border-top:1px solid #ccc}
+
+.currently{padding:5px}
+}
+@media (max-width:550px){
+.sorter,.pager{float:none}
+}
+@media (max-width:480px){
+.col-right>ol li,.col-right>ul li{width:100%} 
+}

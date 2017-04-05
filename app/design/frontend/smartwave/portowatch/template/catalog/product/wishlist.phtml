@@ -1,0 +1,11 @@
+<?php
+
+$wishlistArray = Mage::helper('newizze_guestwishlist')->getWlProductsIds();
+$productsInWish = array_keys($wishlistArray);
+$_product = $this->getProduct();
+?>
+<?php if (!in_array($_product->getId(),$productsInWish)): ?>
+    <div class="img-wish"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" ></a></div>
+<?php else : ?>
+    <div class="img-wish"><a href="<?php echo Mage::getUrl('wishlist/index/removeAjax',array('item' => $wishlistArray[$_product->getId()], Mage_Core_Model_Url::FORM_KEY => Mage::getSingleton('core/session')->getFormKey())) ?>" class="link-wishlist added"></a></div>
+<?php endif; ?>

@@ -1,0 +1,79 @@
+<?php $_currentCategory = Mage::registry('current_category'); ?>
+<?php $_categoryName = $_currentCategory->getName(); ?>
+<?php $_categories = $this->getCurrentChildCategories(); ?>
+<?php if(!$_categories):?>
+    <?php $_ids = explode('/',$_currentCategory->getPath()) ?>
+    <?php $_category = Mage::getModel('catalog/category')->load($_ids[2]); ?>
+    <?php $_categories = $_category->getChildrenCategories(); ?>
+    <?php $_categoryName = $_category->getName(); ?>
+<?php endif; ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php
+    function getChildrenCategoriesHtml($_category){
+        $current = (Mage::registry('current_category')->getId() == $_category->getId()) ? true : false;
+        $children = explode( ",", $_category->getChildren() );
+        $content = '';
+        $content .= '<li class="';
+        if(!$children[0])
+            $content .= 'has-no-children';
+        else
+            $content .= 'has-children';
+        $content .= '">';
+        $content .= '<a href="'.$_category->getUrl().'" ';
+        if ($current) $content .= 'class="current" ';
+        $content .= '>'.$_category->getName().'</a> <sup>('.$_category->getProductCount().')</sup>';
+        if($children[0]){
+            $content .= '<a href="javascript:void(0)" class="plus"><i class="icon-plus-squared"></i></a>';
+            $content .= '<ul>';
+            foreach($children as $child){
+                $_subcat = Mage::getModel( 'catalog/category' )->load( $child );
+                $content .= getChildrenCategoriesHtml($_subcat);
+            }
+            $content .= '</ul>';
+        }
+        $content .= '</li>';
+        return $content;
+    }
+?>
+<?php if($_count): ?>
+<div class="block block-category-nav">
+    <div class="block-title">
+        <strong><span><?php echo $_categoryName; ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ul class="category-list">
+        <?php foreach ($_categories as $_category): ?>
+            <?php
+            if($_category->getIsActive()){
+                echo getChildrenCategoriesHtml($_category);
+            }
+            ?>
+        <?php endforeach ?>
+        </ul>
+    </div>
+<script type="text/javascript">
+    jQuery(function($){
+        $(".block.block-category-nav .block-title").click(function(){
+            if($(this).hasClass("closed")){
+                $(".block.block-category-nav .block-content").slideDown();
+                $(this).removeClass("closed");
+            } else {
+                $(".block.block-category-nav .block-content").slideUp();
+                $(this).addClass("closed");
+            }
+        });
+        $(".block.block-category-nav .category-list a.plus").click(function(){
+            if($(this).parent().hasClass("opened")){
+                $(this).parent().children("ul").slideUp();
+                $(this).parent().removeClass("opened");
+                $(this).children("i.icon-minus-squared").removeClass("icon-minus-squared").addClass("icon-plus-squared");
+            } else {
+                $(this).parent().children("ul").slideDown();
+                $(this).parent().addClass("opened");
+                $(this).children("i.icon-plus-squared").removeClass("icon-plus-squared").addClass("icon-minus-squared");
+            }
+        });
+    });
+</script>
+</div>
+<?php endif; ?>

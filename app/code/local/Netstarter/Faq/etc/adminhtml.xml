@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menu>
+		<cms>
+			<children>
+				<faq translate="title" module="netstarter_faq">
+					<title>FAQ</title>
+					<sort_order>60</sort_order>
+					<children>
+                        <item translate="title" module="netstarter_faq">
+                            <title>Manage Items</title>
+                            <action>adminhtml/faq</action>
+                        </item>
+						<category translate="title" module="netstarter_faq">
+							<title>Manage Categories</title>
+							<action>adminhtml/faq_category</action>
+						</category>
+					</children>
+				</faq>
+			</children>
+		</cms>
+	</menu>
+
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <cms>
+                        <children>
+                            <faq translate="title" module="location">
+                                <title>FAQ</title>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <item translate="title">
+                                        <title>Manage Items</title>
+                                    </item>
+                                    <category translate="title">
+                                        <title>Manage Categories</title>
+                                    </category>
+                                </children>
+                            </faq>
+                        </children>
+                    </cms>
+                </children>
+                <system>
+                    <children>
+                        <config>
+                            <children>
+                                <faq_section>
+                                    <title>FAQ Settings</title>
+                                </faq_section>
+                            </children>
+                        </config>
+                    </children>
+                </system>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

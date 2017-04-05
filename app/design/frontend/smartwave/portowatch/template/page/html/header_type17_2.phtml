@@ -1,0 +1,139 @@
+<?php //echo $this->getChildHtml('sticky.nav')   ?>
+<?php
+$store = Mage::app()->getStore();
+$code = $store->getCode();
+$custom_block = Mage::getStoreConfig('porto_settings/header/static_block', $code);
+?>
+<div class="header-container type4">
+    <div class="header container">
+        <div class="lefticons">
+            <div class="accountarea">
+                <a href="<?php echo $this->getUrl('customer/account'); ?>"><i class="icon-profile-1"></i></a>
+            </div>
+            <div class="wishlistarea">
+                <a href="<?php echo $this->getUrl('wishlist') ?>">
+                    <i class="icon-heart"></i>
+                    <span class="counter <?php if ($count = Mage::helper('newizze_guestwishlist')->getWlCount()): ?> haveitems<?php endif; ?>">
+                        <span><?php echo $count; ?></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="logoarea">
+            <a href="<?php echo $this->getUrl(''); ?>" title="<?php echo $this->getLogoAlt(); ?>"
+               class="logo">
+                <strong><?php echo $this->getLogoAlt(); ?></strong>
+                <img src="<?php echo $this->getLogoSrc(); ?>" alt="<?php echo $this->getLogoAlt(); ?>"/>
+            </a>
+        </div>
+        <?php echo $this->getChildHtml('topSearch'); ?>
+        <script type="text/javascript">
+            document.getElementById('search').addEventListener('keydown', function (event) {
+                if (event.keyCode == 13) {
+                    // event.preventDefault();
+                }
+            });
+        </script>
+        <div class="iconsarea">
+            <div class="fordesc">
+                <div class="wishlistarea">
+                    <a href="<?php echo $this->getUrl('wishlist') ?>">
+                        <i class="icon-heart"></i>
+                        <span class="counter <?php if ($count = Mage::helper('newizze_guestwishlist')->getWlCount()): ?> haveitems<?php endif; ?>">
+                            <span><?php echo $count; ?></span>
+                        </span>
+                    </a>
+                </div>
+                <div class="accountarea">
+                    <a href="<?php echo $this->getUrl('customer/account'); ?>"><i class="icon-profile-1"></i></a>
+                </div>
+            </div>
+            <!--                <div class="search-area">-->
+            <!--                    <a href="javascript:void(0);" class="search-icon"><i class="icon-search"></i></a>-->
+            <!--                </div>-->
+            <div class="cart-area">
+                <?php echo $this->getChildHtml('minicart'); ?>
+            </div>
+        </div>
+<!--            <div class="menu-icon"><a href="javascript:void(0)"><i class="fa fa-bars"></i></a></div>-->
+    </div>
+    <div class="menucontainer fgcnav">
+        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('menu-header-bwo')->toHtml() ?>
+        <ul class="bwomenu"  id="fgc-menunav fgcnav">
+            <li><a href="/g-shock-watches.html" title="Casio G Shock"><span>Casio G Shock </span></a>
+                <div class="secondlevel" style="left:-5px !important;">
+                    <?php $_helper = Mage::helper('catalog/category') ?>
+                    <?php $_category = Mage::getModel('catalog/category')->load(1685) ?>
+                    <?php $_subcategories = $_category->getChildrenCategories() ?>
+                    <?php if (count($_subcategories) > 0): ?>
+                        <ul class="tvsubmenu">
+                            <?php foreach ($_subcategories as $_subcategory): ?>
+                                <li>
+                                    <a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>" title="<?php echo $_subcategory->getName() ?>"> 
+                                        <span><?php echo $_subcategory->getName() ?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li><a href="/baby-g-watches.html" title="Casio Baby G"><span>Casio Baby G</span></a>
+                <div class="secondlevel">
+                    <?php $_helper = Mage::helper('catalog/category') ?>
+                    <?php $_category = Mage::getModel('catalog/category')->load(1686) ?>
+                    <?php $_subcategories = $_category->getChildrenCategories() ?>
+                    <?php if (count($_subcategories) > 0): ?>
+                        <ul class="tvsubmenu">
+                            <?php foreach ($_subcategories as $_subcategory): ?>
+                                <li>
+                                    <a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>" title="<?php echo $_subcategory->getName() ?>"> 
+                                        <span><?php echo $_subcategory->getName() ?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li class="mobilehidden"><a href="/edifice-watches.html"title="Edifice" ><span>Edifice</span></a></li>
+            <li class="mobilehidden"><a href="/kids-teens-watches.html" title="Kids/Teens Watches"><span>Kids/Teens Watches</span></a></li>
+            <li class="mobilehidden"><a href="/citizen-watches.html" title="Citizen Eco Drive"><span>Citizen Eco Drive</span></a></li>
+            <li class="mobilehidden"><a href="/seiko-watches.html" title="Seiko"><span>Seiko</span></a></li>
+            <li><a href="/latest-releases.html" title="Latest Releases"><span>Latest Releases</span></a></li>
+            <li class="mobilehidden"><a href="/casioblog" title="Blog"><span>Blog</span></a></li>
+
+        </ul>
+    </div>
+    <div class="blacklayout"></div>
+</div>
+<?php echo $this->getChildHtml('mobile.nav') ?>
+<div class="subheader">
+    <div class="items row">
+        <div class="item">
+            <a href="<?php echo $this->getUrl('express-shipping') ?>">
+                <span class="nextdayd">Free Next Day Delivery</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('money-back-guarantee') ?>">
+                <span class="easyreturn">Easy 365 day returns</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('official-casio-warranty') ?>">
+                <span class="offwarn">Official warranty</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="<?php echo $this->getUrl('melbourne-warehouse') ?>">
+                <span class="warehouse">melbourne warehouse</span>
+            </a>
+        </div>
+        <div class="item lastitem">
+            <a href="tel:1-300-484-505">
+                <span class="phonenum">1300 484 505</span>
+            </a>
+        </div>
+    </div>
+</div>

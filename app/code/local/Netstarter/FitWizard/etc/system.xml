@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<config>
+<tabs>
+    <netstarter_extensions translate="label" >
+        <label>Netstarter Extensions</label>
+        <sort_order>8000</sort_order>
+    </netstarter_extensions>
+</tabs>
+<sections>
+    <netstarter_fitwizard translate="label">
+        <label>Netstarter Bra Finder</label>
+        <tab>netstarter_extensions</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>1000</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+        <groups>
+            <emailconfig translate="label">
+                <label>Email Settings</label>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <fields>
+                    <!-- netstarter_fitwizard_emailconfig_email_template -->
+                    <email_template translate="label">
+                        <label>Email Template</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_email_template</source_model>
+                        <sort_order>30</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </email_template>
+                </fields>
+            </emailconfig>
+
+            <settings>
+                <label>General Settings</label>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <fields>
+                    <rule_id>
+                        <label>Shopping Cart Price Rule Id</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </rule_id>
+                    <coupon>
+                        <label>Coupon Code Prefix</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>20</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </coupon>
+                    <code_length>
+                        <label>Coupon Code Length</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>30</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </code_length>
+
+                    <valid_days>
+                        <label>Valid through Number of Days</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>40</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </valid_days>
+
+                    <strict_coupons>
+                        <label>Use Strict Validation For Coupon Email</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <comment>if this set to YES, the emails are recorded once sent the coupon code, and won't send again</comment>
+                        <sort_order>50</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </strict_coupons>
+
+                    <size_filter>
+                        <label>Sizes Related to Bra Finder</label>
+                        <frontend_type>textarea</frontend_type>
+                        <comment>Size labels should be given comma separated. Bra Finder size select tab will show these
+                            sizes only
+                        </comment>
+                        <sort_order>60</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </size_filter>
+
+                    <logic_file>
+                        <label>Bra Finder Logic File</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>100</sort_order>
+                        <show_in_default>0</show_in_default>
+                        <show_in_website>0</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </logic_file>
+
+                </fields>
+            </settings>
+
+        </groups>
+    </netstarter_fitwizard>
+</sections>
+</config>

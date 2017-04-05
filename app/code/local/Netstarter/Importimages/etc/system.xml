@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <netstarter_importimages translate="label" module="netstarter_importimages">
+            <label>Shell Image Importer</label>
+            <tab>service</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>202</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <delete translate="label">
+                            <label>Which action to perform on a processed file image?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>netstarter_importimages/system_config_source_fileaction</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[
+                            * Delete instead of moving?
+                            ]]></comment>
+                        </delete>
+                        <base_folder translate="label">
+                            <label>Base Folder</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[
+                            From this folder on we will have subfolders for each stage of importing:
+                            <br />* Unprocessed: unprocessed/
+                            <br />* Processed: processed/
+                            ]]></comment>
+                        </base_folder>
+                    </fields>
+                </general>
+            </groups>
+        </netstarter_importimages>
+    </sections>
+</config>

@@ -1,0 +1,311 @@
+<config>
+
+    <tabs>
+        <globaltags translate="label" module="Netstarter_Seo">
+            <label>Netstarter SEO</label>
+            <sort_order>300</sort_order>
+        </globaltags>
+    </tabs>
+
+    <sections>
+
+        <globaltags translate="label" module="Netstarter_Seo">
+            <label>Common JavaScripts</label>
+            <tab>globaltags</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Global tags</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <embedded_head_tag translate="label">
+                            <label>Head js codes</label>
+                            <comment></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </embedded_head_tag>
+                        <embedded_body_tag translate="label">
+                            <label>Body js codes</label>
+                            <comment></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>101</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </embedded_body_tag>
+                    </fields>
+                </settings>
+
+            </groups>
+        </globaltags>
+
+        <xmlsitemap>
+            <label>XML Site Map</label>
+            <tab>globaltags</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>XML Sitemap</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    <xml_sitemapenable translate="label">
+                        <label>Enable / Disable Netstarter XML Sitemap</label>
+                        <comment>Netstarter XML Sitemap will generate individual priority / frequency for each Category / Product and Cms Page urls
+                        </comment>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>9</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </xml_sitemapenable>
+                    </fields>
+                </settings>
+            </groups>
+        </xmlsitemap>
+
+        <htmlsitemap>
+            <label>HTML Site Map</label>
+            <tab>globaltags</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>HTML Sitemap</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <html_sitemapenable translate="label">
+                            <label>Enable / Disable Netstarter HTML Sitemap</label>
+                            <comment>Netstarter HTML Sitemap will add Category Pages and Cms pages and each level can be show or hide
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </html_sitemapenable>
+                        <cms_enable translate="label">
+                            <label>Enable CMS Pages in Sitemap</label>
+                            <comment>This will add Cms pages and each level can be show or hide
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cms_enable>
+                    </fields>
+                </settings>
+            </groups>
+        </htmlsitemap>
+
+        <tagmanager>
+            <label>Google Tag Manager</label>
+            <tab>globaltags</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Google Tag Manager</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status translate="label">
+                            <label>Enable / Disable Google Tag Manager</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </status>
+                        <id translate="label">
+                            <label>Google Tag Manager ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </id>
+                        <affiliation>
+                            <label>Transaction Affiliation</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Optional</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </affiliation>
+                    </fields>
+                </settings>
+            </groups>
+        </tagmanager>
+
+        <nswebredirects>
+            <label>Mass Updates</label>
+            <tab>globaltags</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>99999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Product / Category Urls to be Updated</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <upload translate="label comment">
+                            <label>Upload Redirects File</label>
+                            <comment>Browse and select csv file and 'SAVE CONFIG' first to upload the file. If you have already uploaded a CSV file and wish to add or edit the URLs, please download the current CSV file and re-upload that file after making the changes.</comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir config="system/filesystem/media">netstarter/redirects</upload_dir>
+                            <base_url type="media">netstarter/redirects</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </upload>
+                        <download translate="label comment">
+                            <label>Download Redirects File</label>
+                            <comment>Right click on this link and click on 'Save Link As...'</comment>
+                            <frontend_model>netstarter_seo/system_config_backend_download</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </download>
+                        <update translate="label comment">
+                            <label>Update 301 Redirects</label>
+                            <comment>Click here to update. Make sure you have uploaded the correct csv file. It will take few minutes to update depending on your url list size.</comment>
+                            <frontend_model>netstarter_seo/system_config_backend_update</frontend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </update>
+                    </fields>
+                </settings>
+
+                <seomassupdate>
+                    <label>SEO values to be added</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <upload translate="label comment">
+                            <label>Upload SEO xml File</label>
+                            <comment>Browse and select xml file and 'SAVE CONFIG' first to upload the file. If you have already uploaded a xml file and wish to add or edit the values, please download the current xml file and re-upload that file after making the changes.</comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir config="system/filesystem/media">netstarter/seo</upload_dir>
+                            <base_url type="media">netstarter/seo</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </upload>
+                        <download translate="label comment">
+                            <label>Download SEO xml File</label>
+                            <comment>Right click on this link and click on 'Save Link As...'</comment>
+                            <frontend_model>netstarter_seo/system_config_backend_downloadseo</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </download>
+                        <update translate="label comment">
+                            <label>Update SEO Values</label>
+                            <comment>Click here to update. Make sure you have uploaded the correct xml file. It will take few minutes to update depending on your xml list size.</comment>
+                            <frontend_model>netstarter_seo/system_config_backend_updateseo</frontend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </update>
+                    </fields>
+
+                </seomassupdate>
+
+            </groups>
+        </nswebredirects>
+
+
+
+        <catalog>
+            <groups>
+                <seo>
+                    <fields>
+                        <category_canonical_tag_netstarter translate="label">
+                            <label>Use Custom Canonical Link Meta Tag For Categories</label>
+                            <comment>If you need to add custom canonical tag in category page, Please set "Use Canonical
+                                Link Meta Tag For Categories" above to "No"
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_canonical_tag_netstarter>
+                        <product_canonical_tag_netstarter translate="label">
+                            <label>Use Custom Canonical Link Meta Tag For Products</label>
+                            <comment>If you need to add custom canonical tag in products page, Please set "Use Canonical
+                                Link Meta Tag For Products" above to "No"
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_canonical_tag_netstarter>
+                    </fields>
+                </seo>
+            </groups>
+        </catalog>
+    </sections>
+</config>

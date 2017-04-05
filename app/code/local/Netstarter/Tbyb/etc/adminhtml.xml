@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <order>
+                    <children>
+                        <netstarter_tbyb translate="title" module="netstarter_tbyb">
+                            <title>Try Before You Buy</title>
+                            <action>adminhtml/tbyb/index</action>
+                        </netstarter_tbyb>
+                    </children>
+                </order>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <order>
+                                <children>
+                                    <netstarter_tbyb translate="title" module="netstarter_tbyb">
+                                        <title>Try Before You Buy</title>
+                                    </netstarter_tbyb>
+                                </children>
+                            </order>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

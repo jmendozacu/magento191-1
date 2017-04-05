@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog translate="title" module="location">
+            <children>
+                <attributes translate="title" module="catalog">
+                    <children>
+                        <attributeimages translate="title" module="catalog">
+                            <title>Manage Attribute Option Images</title>
+                            <action>attributeimages/adminhtml_index/index/</action>
+                        </attributeimages>
+                    </children>
+                </attributes>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <attributes translate="title" module="location">
+                        <sort_order>1</sort_order>
+                        <children>
+                            <attributeimages translate="title">
+                                <title>Manage Attribute Option Images</title>
+                            </attributeimages>
+                        </children>
+                    </attributes>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <attributeimages_config>
+                                        <title>Attribute Option Image Configuration</title>
+                                    </attributeimages_config>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

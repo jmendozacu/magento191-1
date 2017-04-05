@@ -1,0 +1,194 @@
+<?php
+/**
+ * iKantam LLC
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the iKantam EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://magento.ikantam.com/store/license-agreement
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade
+ * Thank You Page Module to newer versions in the future.
+ *
+ * @category   Ikantam
+ * @package    Ikantam_ThankYouPage
+ * @author     iKantam Team <support@ikantam.com>
+ * @copyright  Copyright (c) 2013 iKantam LLC (http://www.ikantam.com)
+ * @license    http://magento.ikantam.com/store/license-agreement  iKantam EULA
+ */
+?>
+	<div class="ikantam-typ-success-alert"> 
+		<h2 class="sub-title"><?php echo $this->__('Thank you, your order has been placed.') ?></h2>
+		<?php if ($this->getOrderId()):?>
+		
+            <?php if ($this->getCanViewOrder()) :?>
+                <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+            <?php  else :?>
+                <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+            <?php endif;?>
+                <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+            <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+                <p>
+                    <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+                    <?php //echo $this->getChildHtml() ?>
+                </p>
+            <?php endif;?>
+            
+            <img height ="0" width ="0" src ="https://www.myshopping.com.au/sale.asp?mid=<?php echo $this->getOrderId();?>" />
+		<?php endif;?>
+		
+		<?php if ($this->getAgreementRefId()): ?>
+			<p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+		<?php endif;?>
+
+		<?php if ($profiles = $this->getRecurringProfiles()):?>
+		<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+		<ul class="disc">
+		<?php foreach($profiles as $profile):?>
+		<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+			<li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+		<?php endforeach;?>
+		</ul>
+		<?php endif;?>	
+	</div>
+	
+	<?php if($this->isSocialEnabled()):?>
+	<div class="ikantam-typ-banner">
+		<div class="ikantam_thankpage_box social">
+			<!-- AddThis Button BEGIN -->
+			<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+			<a class="addthis_button_preferred_1"></a>
+			<a class="addthis_button_preferred_2"></a>
+			<a class="addthis_button_preferred_3"></a>
+			<a class="addthis_button_preferred_4"></a>
+			<a class="addthis_button_compact"></a>
+			<a class="addthis_counter addthis_bubble_style"></a>
+			</div>
+			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51c00c5833813cc9"></script>
+			<!-- AddThis Button END -->
+		</div>
+	</div>
+	<?php endif; ?>
+	
+	<?php if($this->isCmsEnabled()): ?>
+		<div class="ikantam-typ-banner">
+				<?php echo $this->getStaticBlock(); ?>
+		</div>
+	<?php endif; ?>
+		<div id="countbox-ikantam-thankpage" style="color: #000000; font-family: Verdana; font-size: 18px;"></div>
+				
+	<div class="ikantam-typ-banner">
+	<?php 
+		if($this->isProductsEnabled()):
+			echo $this->getProductsListHtml($this->getOrderId());
+			//echo $this->getChildHtml('thankyoupage_products');
+		endif;
+	?>
+	</div>
+	
+	<div class="ikantam-typ-banner">	
+	<?php 
+		if($this->isNewsletterEnabled()):
+			echo $this->getChildHtml('thankyoupage_newsletter');
+		endif;
+	?>
+	</div>
+	
+	<div class="buttons-set">
+		<button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+	</div>
+<?php $storeCode = Mage::app()->getStore()->getCode();?>
+<?php if ($storeCode == 'english2'):?>
+    <!-- Google Code for Sale Conversion Page -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 946444287;
+        var google_conversion_language = "en";
+        var google_conversion_format = "3";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "UjTmCIzVqWUQ_6-mwwM";
+        var google_conversion_value = <?php echo $order->getGrandTotal();?>;
+        var google_conversion_currency = "AUD";
+        var google_remarketing_only = false;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/946444287/?value=1.00&amp;currency_code=AUD&amp;label=UjTmCIzVqWUQ_6-mwwM&amp;guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+<?php endif;?>
+<?php $orderId = $this->getOrderId(); ?>
+<?php $order = Mage::getModel('sales/order')->loadByIncrementId($orderId); ?>
+<!-- START Google Trusted Stores Order -->
+<div id="gts-order" style="display:none;" translate="no">
+	<!-- start order and merchant information -->
+	<span id="gts-o-id"><?php echo $orderId; ?></span>
+	<span id="gts-o-email"><?php echo $order->getCustomerEmail(); ?></span>
+	<span id="gts-o-country">Australia</span>
+	<span id="gts-o-currency">Australian Dollar</span>
+	<span id="gts-o-total"><?php echo round($order->getGrandTotal(),2);?></span>
+	<span id="gts-o-discounts"><?php echo round($order->getBaseDiscountAmount(),2);?></span>
+	<span id="gts-o-shipping-total">0</span>
+	<span id="gts-o-tax-total"><?php echo round($order->getGrandTotal() * 0.1,2);?></span>
+	<span id="gts-o-est-ship-date"><?php echo date('Y-m-d',strtotime($order->getCreatedAt())); ?></span>
+	<span id="gts-o-est-delivery-date"><?php echo date('Y-m-d',strtotime($order->getCreatedAt()) + 86400); ?></span>
+	<span id="gts-o-has-preorder">N</span>
+	<span id="gts-o-has-digital">N</span>
+	<!-- end order and merchant information -->
+	<!-- start repeated item specific information -->
+	<?php foreach ($order->getAllVisibleItems() as $item): ?>
+		<?php $product = $item->getProduct(); ?>
+		<span class="gts-item">
+			<span class="gts-i-name"><?php echo $product->getName(); ?></span>
+			<span class="gts-i-price"><?php echo round($item->getPrice()); ?></span>
+			<span class="gts-i-quantity"><?php echo round($item->getQtyOrdered()); ?></span>
+			<span class="gts-i-prodsearch-id"><?php echo $product->getSku(); ?></span>
+			<span class="gts-i-prodsearch-store-id">106587957</span>
+		</span>
+	<?php endforeach; ?>
+	<!-- end repeated item specific information -->
+</div>
+<!-- END Google Trusted Stores Order -->
+
+
+<?php
+$orderIds = $this->getOrderId();
+$accountId = '533087';
+$categoryModel = Mage::getModel('catalog/category');
+if (!empty($orderIds)) {
+    $collection = Mage::getModel('sales/order')->load($orderIds, 'increment_id');
+    $collections = $collection->getAllItems();
+    $result = array();
+    $result[] = sprintf("_roi.push(['_setMerchantId', '%s']);", $this->jsQuoteEscape($accountId));
+    $result[] = sprintf("_roi.push(['_setOrderId', '%s']);", $collection->getIncrementId());
+    $result[] = sprintf("_roi.push(['_setOrderAmount', '%s']);", $collection->getBaseGrandTotal());
+    $result[] = sprintf("_roi.push(['_setOrderNotes', '%s']);", 'Notes');
+    foreach ($collections as $item) {
+        //Cat IDs                
+        $catIDs = $item->getProduct()->getCategoryIds();
+        $category = $categoryModel->load($catIDs[0]);
+        $catName = $category->getName();
+
+        $result[] = sprintf("_roi.push(['_addItem', '%s', '%s', '%s', '%s', '%s', '%s']);", $this->jsQuoteEscape($item->getSku()), $this->jsQuoteEscape($item->getName()), $catIDs[0] ? $catIDs[0] : '', $catName ? $catName : '', $item->getBasePrice(), $item->getQtyOrdered()
+        );
+    }
+    $result[] = "_roi.push(['_trackTrans']);";
+}
+?>
+<script type="text/javascript">
+var _roi = _roi || [];
+
+<?php echo implode("\n", $result);?>
+// Step 3: submit transaction to ECN ROI tracker
+
+_roi.push(['_trackTrans']);
+</script>
+<script type="text/javascript" src="https://stat.dealtime.com/ROI/ROI2.js"></script>

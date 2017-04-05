@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <netstarter_shipping translate="title" module="netstarter_startrack">
+                                <title>Shipping Advanced (BNT)</title>
+                                <children>
+                                    <netstarter_startrack_csv translate="title" module="netstarter_startrack">
+                                        <title>Export Startrack CSV</title>
+                                    </netstarter_startrack_csv>
+                                    <netstarter_startrack_csv_import translate="title" module="netstarter_startrack">
+                                        <title>Import Startrack CSV</title>
+                                    </netstarter_startrack_csv_import>
+                                </children>
+                            </netstarter_shipping>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <sales>
+            <children>
+                <netstarter_shipping translate="title" module="netstarter_startrack">
+                    <title>Shipments Advanced (BNT)</title>
+                    <sort_order>35</sort_order>
+                    <children>
+                        <netstarter_startrack_csv translate="title" module="netstarter_startrack">
+                            <title>Export Startrack CSV</title>
+                            <action>adminhtml/generatecsv/index</action>
+                        </netstarter_startrack_csv>
+                        <netstarter_startrack_csv_import translate="title" module="netstarter_startrack">
+                            <title>Import Startrack CSV</title>
+                            <action>adminhtml/importcsv/index</action>
+                        </netstarter_startrack_csv_import>
+                    </children>
+                </netstarter_shipping>
+            </children>
+        </sales>
+    </menu>
+</config>

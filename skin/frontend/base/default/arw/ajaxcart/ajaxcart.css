@@ -1,0 +1,105 @@
+/* mini cart */
+#arw-mini-cart{
+	background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #444444;
+    padding: 8px;
+    position: absolute;
+    text-align: left;
+    right: 0;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 3px 1px #ccc;
+    -moz-box-shadow: 0 0 3px 1px #ccc;
+    box-shadow: 0 0 3px 1px #ccc;
+    width: 100%;
+    z-index: 3000;
+}
+#arw-mini-cart li{
+   float: left;
+   width: 50%;
+   padding: 5px;
+   background: none;
+   margin-top: 0;
+   margin-bottom: 0.5em;
+}
+#arw-mini-cart li:nth-child(2n+1) {
+    clear: both;
+}
+#arw-mini-cart li:hover{
+    background-color: #dddddd;
+}
+
+#arw-mini-cart a.btn-remove, a.btn-edit {
+    float: right;
+    margin: 1px 0 2px 5px;
+}
+/* popup */
+#backgroundPopup {
+    background:#444444;
+    display:none;
+    height:100%;
+    left:0;
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:1;
+}
+#toPopup {
+    background: none repeat scroll 0 0 #FFFFFF;
+    -webkit-box-shadow: 0 0 5px 3px #444444;
+    -moz-box-shadow: 0 0 5px 3px #444444;
+    box-shadow: 0 0 5px 3px #444444;
+    color: #444444;
+    display: none;
+    font-size: 13px;
+    left: 50%;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 15px;
+	position: fixed;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+	top: 50%;
+    width: 50%;
+    z-index: 9999;
+}
+#toPopup  a.button{
+    cursor: pointer;
+    display:inline-block;
+    margin-right: 20px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+#toPopup .option-cf #items-count {
+    text-decoration: underline;
+}
+div.loader {
+    background: url("../../images/loading.gif") no-repeat 0 0;
+    display: none;
+    height: 50px;
+    left: 50%;
+    position: fixed;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    width: 50px;
+    z-index: 9999;
+}
+
+/* option cart */
+.input-box{margin:10px 0 10px;}
+label.required em{color:#EC6467}
+.action-cart {
+	margin: 20px 0 15px 0;
+}
+
+.truncated {
+    clear: both;
+}
+.truncated .item-options dt{
+    float: left;
+    margin-right: 10px;
+}

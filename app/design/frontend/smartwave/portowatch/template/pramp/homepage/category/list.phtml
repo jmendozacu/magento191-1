@@ -1,0 +1,60 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+$categories = $this->helper('pramp/homepage')->getTopLevelCategories();
+$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/category/';
+$defaultImage = $this->getSkinUrl('images/plumrocket/pramp/photos/homepage-default.png');
+$imageWidth = 380;
+$imageHeight = 380;
+$i = 0;
+?>
+<div class="col-main">
+    <div class="std">
+        <div class="amp-cat">
+            <?php foreach ($categories as $_category): ?>
+                <?php
+                $idCate = $_category->getId();
+                if (!in_array($idCate, array(1699, 1687, 1657, 1658))) {
+                    ?>
+                    <a href="<?php echo $_category->getUrl(); ?>" class="<?php echo $i % 2 == 0 ? 'odd' : 'even' ?>">
+                        <span>
+                            <?php
+                            $ampHomeImage = Mage::getResourceModel('catalog/category')->getAttributeRawValue($_category->getId(), "amp_homepage_image", Mage::app()->getStore()->getId());
+                            $imgUrl = $ampHomeImage ? $mediaUrl . $ampHomeImage : $defaultImage;
+                            $cropHeight = min($imageWidth / 1.0, $imageHeight);
+                            $cropWidth = $cropHeight * 1.0;
+                            ?>
+                            <amp-img layout="responsive" src="<?php echo $imgUrl; ?>"
+                                     alt="test" height="<?php echo $cropHeight; ?>" width="<?php echo $cropWidth; ?>"></amp-img>
+                            <span class="tvhide"><?php echo $_category->getName() ?></span>
+                        </span>
+                    </a>
+                    <?php
+                    $i++;
+                }
+            endforeach;
+            ?>
+        </div>
+    </div>
+</div>
+<style>
+    .amp-cat a span span.tvhide{
+        display: none;
+    }
+</style>

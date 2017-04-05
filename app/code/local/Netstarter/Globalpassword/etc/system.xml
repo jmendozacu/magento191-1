@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <customer>
+            <groups>
+                <netstarter_globalpassword translate="label">
+                    <label>Global password</label>
+                    <sort_order>9999</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <password translate="label">
+                            <label>Global password</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>netstarter_globalpassword/system_hash</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password>
+
+                    </fields>
+                </netstarter_globalpassword>
+            </groups>
+        </customer>
+    </sections>
+</config>

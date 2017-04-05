@@ -1,0 +1,47 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+	$_product		= $this->getProduct();
+	$_pUrl			= $_product->getUrlModel()->getUrl($_product);
+	$_rCount		= $this->getReviewsCount();
+	$ratingSummary	= $this->getRatingSummary();
+?>
+<div class="product-review-summary">
+	<?php if ($this->getReviewsCount() && $ratingSummary) : ?>
+		<div class="prod-rate-hld">
+			<div>
+				<?php $i = 0; while ($i < 100) :
+					$starClass = 'emptystar';
+					if ($i < $ratingSummary) {
+						$starClass = ($ratingSummary - $i < 12) ? 'halfstar' : 'fullstar';
+					}
+					$i = $i + 20; ?>
+					<div class="icon f-<?php echo $starClass ?>"></div>
+				<?php endwhile; ?>
+			</div>
+		</div>
+		<div>
+			<h4>
+				<?php echo $this->__('%s Review(s)', $_rCount) ?>
+				<span>(<span><?php echo number_format(($ratingSummary/20), 1) ?></span>/<span>5</span>)</span>
+			</h4>
+		</div>
+	<?php endif; ?>
+</div>
+
